@@ -1,0 +1,39 @@
+{
+  "name": "de-clutter",
+  "version": "0.0.1",
+  "description": "An Auction site as part of a project assignment for Noroff",
+  "main": "index.js",
+  "devDependencies": {
+    "eslint": "^8.28.0",
+    "husky": "^8.0.2",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1"
+  },
+  "scripts": {
+    "format": "prettier -w src/**/*.js",
+    "lint": "eslint src/**/*.js",
+    "lint-fix": "eslint src/**/*.js --cache --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Anclagen/Semester-Project-2.git"
+  },
+  "keywords": [
+    "Bid",
+    "Auction",
+    "E-Commerce"
+  ],
+  "author": "Alexander Barrett",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Anclagen/Semester-Project-2/issues"
+  },
+  "homepage": "https://github.com/Anclagen/Semester-Project-2#readme",
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.{scss,css,md}": "prettier --write"
+  }
+}
