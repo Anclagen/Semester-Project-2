@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../../dist/css/styles.css" />
-    <script src="../js/index.js"></script>
+    <script src="../js/index.js" type="module"></script>
     <script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/e4f6b5cf1a.js" crossorigin="anonymous"></script>
     <title>Login/Sign Up</title>
@@ -14,7 +14,7 @@
     <header class="bg-secondary">
       <nav class="navbar navbar-expand-md container-xxl">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">Fancy</br>  Logo</a>
+          <a class="navbar-brand" href="../index.html">Fancy</br>  Logo</a>
           <div>
           </div>
           <button
@@ -37,7 +37,7 @@
                 </form>
               </li>            
               <li class="nav-item ms-md-auto">
-                <a class="nav-link active" aria-current="page" href="#"><i class="fa-solid fa-house px-1"></i> Home</a>
+                <a class="nav-link active" aria-current="page" href="../index.html"><i class="fa-solid fa-house px-1"></i> Home</a>
               </li>
               <li class="nav-item" data-isLoggedVisibility="true">
                 <a class="nav-link" href="create.html"><i class="fa-sharp fa-solid fa-gavel px-1"></i>Sell</a>
@@ -52,10 +52,10 @@
                 <a class="nav-link" href="contact.html"><i class="fa-solid fa-headphones px-1"></i>Contact</a>
               </li>
               <li class="nav-item ms-md-auto" data-isLoggedVisibility="false">
-                <a class="nav-link" href="#"><i class="fa-sharp fa-solid fa-right-to-bracket px-1"></i>Login</a>
+                <a class="nav-link" href="authenticate.html?show=login"><i class="fa-sharp fa-solid fa-right-to-bracket px-1"></i>Login</a>
               </li>
               <li class="nav-item" data-isLoggedVisibility="false">
-                <a class="nav-link" href="#"><i class="fa-solid fa-user-plus pe-1"></i> Sign Up</a>
+                <a class="nav-link" href="authenticate.html?show=register"><i class="fa-solid fa-user-plus pe-1"></i> Sign Up</a>
               </li>
               <li class="ms-md-auto hidden-mobile" data-isLoggedVisibility="true">
                 <div>
@@ -100,7 +100,8 @@
             <div id="login-form-error" class="text-danger text-center error-reporting"></div>
             <div>
               <label for="login-email" class="form-label">Email address</label>
-              <input type="email" class="form-control mb-3 p-2" name="email" id="login-email" placeholder="name@example.com" />
+              <input type="email" class="form-control mb-3 p-2" name="email" id="login-email" placeholder="name@example.com" pattern="[\w\-.]+@stud.noroff.no$"
+              title="Only valid Noroff student emails are accepted." required/>
             </div>
             <div>
               <label for="login-password" class="form-label">Password</label>
@@ -110,29 +111,32 @@
                 id="login-password"
                 placeholder="Password"
                 name="password"
-                title="Password must be at least 8 characters, including a number and upper case character"
+                title="Password must be at least 8 characters."
+                minlength="8"
+                required
               />
             </div>
             <div class="checkbox mb-3">
               <label> <input type="checkbox" class="check-lg" value="remember-me" /> Remember me </label>
             </div>
             <button class="w-100 btn btn-lg btn-primary" id="submit-btn" type="submit">Login</button>
-            <div class="mt-3"><span id="toggle-text">Not a member?</span><button type="button">Sign Up Here</button></div>
+            <div class="mt-3"><span id="toggle-text">Not a member?</span><button id="show-register" type="button">Sign Up Here</button></div>
           </form>
           <!-- Register Form -->
-          <form id="register-form" class="hidden">
+          <form id="register-form">
             <div class="login-header">
               <img class="mb-4 px-4 rounded-circle bg-primary" src="" alt="Logo" />
               <h1 class="mb-3">Register</h1>
             </div>
-            <div id="register-form-error" class="text-danger text-center error-reporting"></div>
+            <div id="register-form-error" class="text-danger text-center error-reporting p-2"></div>
             <div>
               <label for="register-email" class="form-label">Email address</label>
-              <input type="email" name="email" class="form-control mb-3 p-2" id="register-email" placeholder="name@example.com" />
+              <input type="email" name="email" class="form-control mb-3 p-2" id="register-email" placeholder="name@example.com" pattern="[\w\-.]+@stud.noroff.no$"
+              title="Only valid Noroff student emails are accepted." required/>
             </div>
             <div>
               <label for="register-username" class="form-label">Username</label>
-              <input type="text" name="name" class="form-control mb-3 p-2" id="register-username" placeholder="Example_User" />
+              <input type="text" name="name" class="form-control mb-3 p-2" id="register-username" placeholder="Example_User" title="Must not contain punctuation symbols apart from underscore (_)." required/>
             </div>
             <div>
               <div class="text-center text-danger" id="password-error"></div>
@@ -143,8 +147,9 @@
                 id="register-password"
                 name="password"
                 placeholder="Password"
+                title="Password must be at least 8 characters."
                 minlength="8"
-                title="Password must be at least 8 characters, including a number and upper case character"
+                required
               />
             </div>
             <div>
@@ -153,10 +158,11 @@
                 type="password"
                 class="form-control mb-3 p-2"
                 id="register-password"
-                name="confirm-password"
+                name="confirmPassword"
                 placeholder="Password"
+                title="Password must be at least 8 characters."
                 minlength="8"
-                title="Password must be at least 8 characters, including a number and upper case character"
+                required
               />
             </div>
             <div>
@@ -164,7 +170,7 @@
               <input type="url" name="avatar" class="form-control mb-3 p-2" id="register-avatar" placeholder="example.com/images/your_avatar.jpg" />
             </div>
             <button class="w-100 btn btn-lg btn-primary" id="submit-btn" type="submit">Register</button>
-            <div class="mt-3"><span id="toggle-text">Already a member?</span><button type="button">Login Here</button></div>
+            <div class="mt-3"><span id="toggle-text">Already a member?</span><button id="show-login" type="button">Login Here</button></div>
           </form>
         </div>
         <div class="col-lg-7 col-xl-8 align-self-center entry-image text-center">
