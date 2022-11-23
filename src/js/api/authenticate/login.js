@@ -1,4 +1,4 @@
-import { baseURL } from "../constants";
+import { baseURL } from "../constants.js";
 
 /**
  * login a user

@@ -1,8 +1,9 @@
-import { login } from "../../api/authenticate/login";
-import { storage } from "../../storage/storage";
+import { login } from "../../api/authenticate/login.js";
+import { storage } from "../../storage/storage.js";
 
 export async function loginListener(event) {
   event.preventDefault();
+  const errorReporting = document.querySelector("#login-form-error");
   const form = event.target;
   const formData = new FormData(form);
   const loginBody = Object.fromEntries(formData.entries());
@@ -14,6 +15,7 @@ export async function loginListener(event) {
     storage.set("profile", userCredentials);
     location.href = "profile.html";
   } catch {
+    errorReporting.innerText = "Incorrect password or email.";
     return;
   }
 }
