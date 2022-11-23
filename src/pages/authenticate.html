@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../dist/css/styles.css" />
+    <script src="../js/index.js"></script>
+    <script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/e4f6b5cf1a.js" crossorigin="anonymous"></script>
+    <title>Login/Sign Up</title>
+  </head>
+  <body class="bg-background d-flex flex-column min-vh-100">
+    <header class="bg-secondary">
+      <nav class="navbar navbar-expand-md container-xxl">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Fancy</br>  Logo</a>
+          <div>
+          </div>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav flex-wrap me-auto mb-2 mb-lg-0 w-100">
+              <li class="nav-item mx-auto w-100 mt-2 mt-md-0 py-1">
+                <form class="d-flex mx-auto" role="search">
+                  <input class="form-control rounded-0 rounded-start" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-primary rounded-0 rounded-end" type="submit">Search</button>
+                </form>
+              </li>            
+              <li class="nav-item ms-md-auto">
+                <a class="nav-link active" aria-current="page" href="#"><i class="fa-solid fa-house px-1"></i> Home</a>
+              </li>
+              <li class="nav-item" data-isLoggedVisibility="true">
+                <a class="nav-link" href="create.html"><i class="fa-sharp fa-solid fa-gavel px-1"></i>Sell</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="listings.html"><i class="fa-solid fa-hand-holding-dollar px-1"></i>Buy</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="about.html"><i class="fa-sharp fa-solid fa-circle-info px-1"></i>About</a>
+              </li>
+              <li class="nav-item" data-isLoggedVisibility="true">
+                <a class="nav-link" href="contact.html"><i class="fa-solid fa-headphones px-1"></i>Contact</a>
+              </li>
+              <li class="nav-item ms-md-auto" data-isLoggedVisibility="false">
+                <a class="nav-link" href="#"><i class="fa-sharp fa-solid fa-right-to-bracket px-1"></i>Login</a>
+              </li>
+              <li class="nav-item" data-isLoggedVisibility="false">
+                <a class="nav-link" href="#"><i class="fa-solid fa-user-plus pe-1"></i> Sign Up</a>
+              </li>
+              <li class="ms-md-auto hidden-mobile" data-isLoggedVisibility="true">
+                <div>
+                  Your Bids! <br> 
+                  W: 1 / L: 2
+                </div>
+              </li>
+              <li class="nav-item dropdown" data-isLoggedVisibility="true">
+                <a class="nav-link dropdown-toggle hidden-mobile" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Profile Avatar</a>
+                <ul class="dropdown-menu bg-secondary border-primary">
+                  <li>
+                    <a class="dropdown-item" href="profile.html"><i class="fa-solid fa-circle-user px-1"></i>Profile</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="profile.html#your-bids"><i class="fa-solid fa-hand-holding-dollar px-1"></i>Your Bids</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="profile.html#your-listings"><i class="fa-solid fa-sign-hanging px-1"></i>Your Listings</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="profile.html#your-favourites"><i class="fa-solid fa-heart px-1"></i>Your Favourites</a>
+                  </li>
+                  <li class="border-top border-primary pt-2 mt-2">
+                    <a class="dropdown-item" href="#"><i class="fa-solid fa-right-from-bracket px-1"></i>Sign Out</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main class="container-xxl">
+      <section class="mx-2 row ">
+        <!-- Login Form -->
+        <div class="mx-auto my-4 p-4 bg-secondary rounded-3 col-lg-5 col-xl-4 entry-form-container align-self-center">
+          <form id="login-form">
+            <div class="login-header">
+              <img class="mb-4 px-4 rounded-circle bg-primary" src="" alt="Logo" />
+              <h1 class="mb-3">Login</h1>
+            </div>
+            <div id="login-form-error" class="text-danger text-center error-reporting"></div>
+            <div>
+              <label for="login-email" class="form-label">Email address</label>
+              <input type="email" class="form-control mb-3 p-2" name="email" id="login-email" placeholder="name@example.com" />
+            </div>
+            <div>
+              <label for="login-password" class="form-label">Password</label>
+              <input
+                type="password"
+                class="form-control mb-3 p-2"
+                id="login-password"
+                placeholder="Password"
+                name="password"
+                title="Password must be at least 8 characters, including a number and upper case character"
+              />
+            </div>
+            <div class="checkbox mb-3">
+              <label> <input type="checkbox" class="check-lg" value="remember-me" /> Remember me </label>
+            </div>
+            <button class="w-100 btn btn-lg btn-primary" id="submit-btn" type="submit">Login</button>
+            <div class="mt-3"><span id="toggle-text">Not a member?</span><button type="button">Sign Up Here</button></div>
+          </form>
+          <!-- Register Form -->
+          <form id="register-form" class="hidden">
+            <div class="login-header">
+              <img class="mb-4 px-4 rounded-circle bg-primary" src="" alt="Logo" />
+              <h1 class="mb-3">Register</h1>
+            </div>
+            <div id="register-form-error" class="text-danger text-center error-reporting"></div>
+            <div>
+              <label for="register-email" class="form-label">Email address</label>
+              <input type="email" name="email" class="form-control mb-3 p-2" id="register-email" placeholder="name@example.com" />
+            </div>
+            <div>
+              <label for="register-username" class="form-label">Username</label>
+              <input type="text" name="name" class="form-control mb-3 p-2" id="register-username" placeholder="Example_User" />
+            </div>
+            <div>
+              <div class="text-center text-danger" id="password-error"></div>
+              <label for="register-password" class="form-label">Password</label>
+              <input
+                type="password"
+                class="form-control mb-3 p-2"
+                id="register-password"
+                name="password"
+                placeholder="Password"
+                minlength="8"
+                title="Password must be at least 8 characters, including a number and upper case character"
+              />
+            </div>
+            <div>
+              <label for="confirm-password" class="form-label">Confirm Password</label>
+              <input
+                type="password"
+                class="form-control mb-3 p-2"
+                id="register-password"
+                name="confirm-password"
+                placeholder="Password"
+                minlength="8"
+                title="Password must be at least 8 characters, including a number and upper case character"
+              />
+            </div>
+            <div>
+              <label for="register-avatar" class="form-label">Avatar Image</label>
+              <input type="url" name="avatar" class="form-control mb-3 p-2" id="register-avatar" placeholder="example.com/images/your_avatar.jpg" />
+            </div>
+            <button class="w-100 btn btn-lg btn-primary" id="submit-btn" type="submit">Register</button>
+            <div class="mt-3"><span id="toggle-text">Already a member?</span><button type="button">Login Here</button></div>
+          </form>
+        </div>
+        <div class="col-lg-7 col-xl-8 align-self-center entry-image text-center">
+          <img src="../images/login_register.jpg" alt="login-image" />
+        </div>
+      </section>
+    </main>
+    <footer class="py-3 mt-auto bg-secondary d-flex justify-content-center">
+      <div class="d-flex justify-content-center">
+        <div class="display-4 pe-2">©</div>
+        <div class="d-flex flex-column align-self-center">
+          <span>Copyright 2022</span>
+          <span>Fancy Name</span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
