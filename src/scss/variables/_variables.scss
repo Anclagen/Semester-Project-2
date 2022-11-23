@@ -1,0 +1,56 @@
+//colours
+
+$primary: #5709a5;
+$secondary: #e2e1fb;
+$success: #3bcf18;
+$danger: #b50000;
+
+//unused for the moment
+$light: #f7f7f7;
+$dark: #343a40;
+$info: #0098b6;
+$warning: #dbba00;
+
+//navigation variables
+$navbar-brand-padding-y: 0;
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1200px,
+  xxl: 1600px,
+);
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1200px,
+  xxl: 1600px,
+);
+
+$spacer: 1.5rem;
+
+//put all variable changes above this!
+@import "../../../node_modules/bootstrap/scss/functions";
+@import "../../../node_modules/bootstrap/scss/variables";
+
+$extra-theme-colors: (
+  //Page background
+  "background": #f9f9ff,
+  //Winning/Losing text for navbar
+  "winning": #004100,
+  "losing": #910202
+);
+
+$theme-colors: map-merge($extra-theme-colors, $theme-colors);
+
+//needed to change input box colours
+@each $name, $colour in $theme-colors {
+  .place-text-#{$name}::placeholder {
+    color: $colour !important;
+    font-style: italic;
+  }
+}
