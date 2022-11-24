@@ -4,9 +4,9 @@
 
 User Stories
 
-- [ ] A user with a stud.noroff.no email may register
-- [ ] A registered user may login
-- [ ] A registered user may logout
+- [x] A user with a stud.noroff.no email may register
+- [x] A registered user may login
+- [x] A registered user may logout
 - [ ] A registered user may update their avatar
 - [ ] A registered user may view their total credit
 - [ ] A registered user may create a Listing with a title, deadline date, media gallery and description
@@ -30,7 +30,7 @@ User Experience
 Design Appeal
 
 - [ ] Theme is appealing to the target audience
-- [ ] Theme palette is WCAG colour compliant
+- [x] Theme palette is WCAG colour compliant
 - [ ] Content is arranged into an appealing responsive layout
 
 Configuration
@@ -54,7 +54,7 @@ Configuration
     <tr>
       <th>Design Prototype</th>
       <td><a href="https://xd.adobe.com/view/f07ca203-09ac-4cda-b808-8d35e7f94ef0-a52f/">Desktop Prototype</a> </br>
-      <a href="https://xd.adobe.com/view/f07ca203-09ac-4cda-b808-8d35e7f94ef0-a52f/">Mobile Prototype</a></td>
+      <a href="https://xd.adobe.com/view/7a90c2e2-12b2-4135-bdda-00d2514d612b-2fc3/">Mobile Prototype</a></td>
     </tr>
     <tr>
       <th>Style Guide</th>

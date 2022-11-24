@@ -1,6 +1,6 @@
 {
   "name": "de-clutter",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "An Auction site as part of a project assignment for Noroff",
   "main": "index.js",
   "devDependencies": {
@@ -17,6 +17,8 @@
     "sass": "^1.56.1"
   },
   "scripts": {
+    "build": "sass src/scss:dist/css",
+    "start": "sass --watch src/scss:dist/css",
     "test": "npm run test-unit && npm run test-e2e-cli",
     "test-e2e": "cypress open",
     "test-e2e-report": "cypress run --reporter mochawesome",
