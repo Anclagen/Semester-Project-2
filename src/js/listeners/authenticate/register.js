@@ -5,9 +5,16 @@ import { storage } from "../../storage/storage.js";
 export async function registerListener(event) {
   event.preventDefault();
   const errorReporting = document.querySelector("#register-form-error");
+  const errorReportingPassword = document.querySelector("#password-error");
   const form = event.target;
   const formData = new FormData(form);
   const registerBody = Object.fromEntries(formData.entries());
+
+  if (registerBody.password !== registerBody.confirmPassword) {
+    errorReportingPassword.innerHTML = "Your passwords don't match.";
+    return;
+  }
+
   delete registerBody.confirmPassword;
 
   try {
