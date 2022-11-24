@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../dist/css/styles.css" />
+    <script src="../js/index.js" type="module"></script>
+    <script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/e4f6b5cf1a.js" crossorigin="anonymous"></script>
+    <title>Profile</title>
+  </head>
+  <body class="bg-background d-flex flex-column min-vh-100">
+    <header class="bg-secondary">
+      <nav class="navbar navbar-expand-md container-xxl">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="../index.html"
+            >Fancy<br />
+            Logo</a
+          >
+          <div></div>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav flex-wrap me-auto mb-2 mb-lg-0 w-100">
+              <li class="nav-item mx-auto w-100 mt-2 mt-md-0 py-1">
+                <form class="d-flex mx-auto" role="search">
+                  <input class="form-control rounded-0 rounded-start" type="search" placeholder="Search" aria-label="Search" />
+                  <button class="btn btn-primary rounded-0 rounded-end" type="submit">Search</button>
+                </form>
+              </li>
+              <li class="nav-item ms-md-auto">
+                <a class="nav-link active" href="../index.html"><i class="fa-solid fa-house px-1"></i> Home</a>
+              </li>
+              <li class="nav-item" data-isLoggedVisibility="true">
+                <a class="nav-link" href="create.html"><i class="fa-sharp fa-solid fa-gavel px-1"></i>Sell</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="listings.html"><i class="fa-solid fa-hand-holding-dollar px-1"></i>Buy</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="about.html"><i class="fa-sharp fa-solid fa-circle-info px-1"></i>About</a>
+              </li>
+              <li class="nav-item" data-isLoggedVisibility="true">
+                <a class="nav-link" href="contact.html"><i class="fa-solid fa-headphones px-1"></i>Contact</a>
+              </li>
+              <li class="nav-item ms-md-auto" data-isLoggedVisibility="false">
+                <a class="nav-link" href="authenticate.html?show=login"><i class="fa-sharp fa-solid fa-right-to-bracket px-1"></i>Login</a>
+              </li>
+              <li class="nav-item" data-isLoggedVisibility="false">
+                <a class="nav-link" href="authenticate.html?show=register"><i class="fa-solid fa-user-plus pe-1"></i> Sign Up</a>
+              </li>
+              <li class="ms-md-auto hidden-mobile" data-isLoggedVisibility="true">
+                <div>
+                  Your Bids! <br />
+                  W: 1 / L: 2
+                </div>
+              </li>
+              <li class="nav-item dropdown" data-isLoggedVisibility="true">
+                <a class="nav-link dropdown-toggle hidden-mobile" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Profile Avatar</a>
+                <ul class="dropdown-menu bg-secondary border-primary">
+                  <li>
+                    <a class="dropdown-item" href="profile.html" aria-current="page"><i class="fa-solid fa-circle-user px-1"></i>Profile</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="profile.html#your-bids"><i class="fa-solid fa-hand-holding-dollar px-1"></i>Your Bids</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="profile.html#your-listings"><i class="fa-solid fa-sign-hanging px-1"></i>Your Listings</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="profile.html#your-favourites"><i class="fa-solid fa-heart px-1"></i>Your Favourites</a>
+                  </li>
+                  <li class="border-top border-primary pt-2 mt-2">
+                    <a class="dropdown-item" href="#" id="logout-btn"><i class="fa-solid fa-right-from-bracket px-1"></i>Sign Out</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main class="container-xxl">
+      <section class="bg-secondary rounded-3 p-2 p-md-4 mt-3">
+        <h1 class="text-center">{Insert Username Here!}</h1>
+        <!-- Update avatar form modal -->
+        <div class="modal-dialog modal-dialog-centered hidden" data-isUsersProfile="true">
+          <div class="modal fade" id="updateAvatarModal" tabindex="-1" aria-labelledby="exampleModalCenterTitle" style="display: block" aria-modal="true" role="dialog">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <form id="update-avatar-form">
+                  <div class="modal-header">
+                    <h3 class="modal-title fs-5" id="exampleModalCenterTitle">Update Avatar Image</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <label class="form-label" for="avatar">Avatar</label>
+                    <input type="url" class="form-control" name="avatar" id="avatar" placeholder="example.com/avatar.jpg" />
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Save change</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Profile Details -->
+        <div class="row">
+          <div class="col-md-3 text-center">
+            <img class="rounded-circle w-100" id="userAvatarImage" src="../images/default-avatar.png" alt="User's Avatar" />
+            <button type="button" class="btn btn-primary mt-2 hidden" data-bs-toggle="modal" data-isUsersProfile="true" data-bs-target="#updateAvatarModal">Update Avatar</button>
+          </div>
+          <div class="col">
+            <table class="w-100 ms-md-3">
+              <tr>
+                <td>Contact Info:</td>
+                <td id="contact-info">{insert info}</td>
+              </tr>
+              <tr data-isUsersProfile="true" class="hidden">
+                <td>Balance:</td>
+                <td id="balance">{insert name}</td>
+              </tr>
+              <tr data-isUsersProfile="true" class="hidden">
+                <td>Bids Ongoing:</td>
+                <td id="bids">{insert winning/losing stats}</td>
+              </tr>
+              <tr>
+                <td>Active Listings:</td>
+                <td id="active-listings">{insert number}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </section>
+      <section id="your-bids">
+        <h2>Your Bids</h2>
+        <div id="ongoing-bids-container"></div>
+      </section>
+      <section id="your-listings">
+        <h2>Your Listings</h2>
+        <div class="row w-100" id="your-listings-container"></div>
+      </section>
+      <section id="your-favourites">
+        <h2>Your Favourites</h2>
+        <div id="ongoing-bids-container"></div>
+      </section>
+    </main>
+    <footer class="py-3 mt-auto bg-secondary d-flex justify-content-center">
+      <div class="d-flex justify-content-center">
+        <div class="display-4 pe-2">©</div>
+        <div class="d-flex flex-column align-self-center">
+          <span>Copyright 2022</span>
+          <span>Fancy Name</span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
