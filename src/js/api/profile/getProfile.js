@@ -7,7 +7,7 @@ import { createAuthHeader } from "../authHeader.js";
  * @returns {Object} with users profile data
  */
 export async function getUserProfile(username) {
-  const url = `${baseURL}profiles/${username}?_listings=true&_bids=true`;
+  const url = `${baseURL}profiles/${username}?_listings=true`;
 
   const myHeaders = createAuthHeader();
 

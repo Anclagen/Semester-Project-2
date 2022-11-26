@@ -26,6 +26,6 @@ export const profileSetup = async function () {
     "#your-listings-container"
   );
   await profileListings.map((listing) => {
-    yourListingsContainer.innerHTML += createListingCard(listing);
+    yourListingsContainer.append(createListingCard(listing));
   });
 };
