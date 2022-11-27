@@ -3,7 +3,7 @@ import { baseURL } from "../constants.js";
 /**
  * login a user
  * @param {Object} bodyData {email, password}
- * @returns {Object} response object
+ * @returns {Promise<Object>} response object
  */
 export async function login(bodyData) {
   const url = `${baseURL}auth/login`;
