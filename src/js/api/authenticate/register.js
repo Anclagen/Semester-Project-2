@@ -3,7 +3,7 @@ import { baseURL } from "../constants.js";
 /**
  * Register a new user
  * @param {Object} bodyData {name, email, password, avatar}
- * @returns {Object} response object
+ * @returns {Promise<Object>} response object
  */
 export async function register(bodyData) {
   const url = `${baseURL}auth/register`;
