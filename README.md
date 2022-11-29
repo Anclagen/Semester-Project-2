@@ -9,7 +9,7 @@ User Stories
 - [x] A registered user may logout
 - [x] A registered user may update their avatar
 - [x] A registered user may view their total credit
-- [ ] A registered user may create a Listing with a title, deadline date, media gallery and description
+- [x] A registered user may create a Listing with a title, deadline date, media gallery and description
 - [ ] A registered user may add a Bid to another user’s Listing
 - [ ] A registered user may view Bids made on a Listing
 - [ ] A registered user may use credit to make a Bid on another user’s Listing
