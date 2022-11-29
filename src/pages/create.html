@@ -94,17 +94,15 @@
       <section>
         <h1 class="text-center">{Inset Create/Update Listing Here}</h1>
         <div class="row">
-          <div class="col-6">
+          <div class="col-6 p-3">
             <h2 id="preview-title"></h2>
-            <img id="preview-image" src="../images/empty_image.jpg" alt="preview-image" class="w-100 px-5" />
+            <img id="preview-image" src="../images/empty_image.jpg" onerror="src='../images/empty_image.jpg'" alt="preview-image" class="w-100 px-5 py-3" />
             <!-- Will come back to this when core features are added.
               <div id="preview-image-slider"></div> -->
             <h3>Description</h3>
             <p id="preview-description"></p>
             <h3>Tags</h3>
             <p id="preview-tags"></p>
-            <h3>Ends At</h3>
-            <p id="preview-end-date"></p>
           </div>
           <div class="col-6">
             <form id="create-form">
