@@ -1,5 +1,5 @@
 import { createListing } from "../../api/listing/createListing.js";
-import { deleteListing } from "../../api/listing/deleteListing.js";
+//import { deleteListing } from "../../api/listing/deleteListing.js";
 import { updateListing } from "../../api/listing/updateListing.js";
 
 export const createUpdateFormListener = async function (event) {
@@ -35,8 +35,8 @@ export const createUpdateFormListener = async function (event) {
     }
     console.log(response);
 
-    const deleted = await deleteListing(response.id);
-    console.log(deleted);
+    //const deleted = await deleteListing(response.id);
+    //console.log(deleted);
   } catch (error) {
     console.log(error);
   }
