@@ -3,7 +3,7 @@ import { timeLeft } from "../tools/timeLeft.js";
 export const createListingCard = function ({ id, title, endsAt, media, bids }) {
   let bidAmount = `No Bids!`;
   if (bids.length > 0) {
-    bidAmount = `£${bids[0].amount}`;
+    bidAmount = `£${bids[bids.length - 1].amount}`;
   }
 
   const listing = document.createElement("div");
@@ -15,7 +15,13 @@ export const createListingCard = function ({ id, title, endsAt, media, bids }) {
   listing.append(listingInnerContainer);
 
   const listingLink = document.createElement("a");
-  listingLink.href = `specific.html?id=${id}`;
+  const currentPage = window.location.href;
+  if (currentPage.match("index.html")) {
+    listingLink.href = `pages/specific.html?id=${id}`;
+  } else {
+    listingLink.href = `specific.html?id=${id}`;
+  }
+
   listingLink.classList = `h-100 d-block`;
   listingInnerContainer.append(listingLink);
 
