@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../dist/css/styles.css" />
+    <script src="../js/index.js" type="module"></script>
+    <script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/e4f6b5cf1a.js" crossorigin="anonymous"></script>
+    <title>Specific Listing</title>
+  </head>
+  <body class="bg-background d-flex flex-column min-vh-100">
+    <header class="bg-secondary">
+      <nav class="navbar navbar-expand-md container-xxl">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="../index.html"
+            >Fancy<br />
+            Logo</a
+          >
+          <div></div>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav flex-wrap me-auto mb-2 mb-lg-0 w-100">
+              <li class="nav-item mx-auto w-100 mt-2 mt-md-0 py-1">
+                <form class="d-flex mx-auto" role="search">
+                  <input class="form-control rounded-0 rounded-start" type="search" placeholder="Search" aria-label="Search" />
+                  <button class="btn btn-primary rounded-0 rounded-end" type="submit">Search</button>
+                </form>
+              </li>
+              <li class="nav-item ms-md-auto">
+                <a class="nav-link" href="../index.html"><i class="fa-solid fa-house px-1"></i> Home</a>
+              </li>
+              <li class="nav-item" data-isLoggedVisibility="true">
+                <a class="nav-link active" href="create.html"><i class="fa-sharp fa-solid fa-gavel px-1"></i>Sell</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="listings.html"><i class="fa-solid fa-hand-holding-dollar px-1"></i>Buy</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="about.html"><i class="fa-sharp fa-solid fa-circle-info px-1"></i>About</a>
+              </li>
+              <li class="nav-item" data-isLoggedVisibility="true">
+                <a class="nav-link" href="contact.html"><i class="fa-solid fa-headphones px-1"></i>Contact</a>
+              </li>
+              <li class="nav-item ms-md-auto" data-isLoggedVisibility="false">
+                <a class="nav-link" href="authenticate.html?show=login"><i class="fa-sharp fa-solid fa-right-to-bracket px-1"></i>Login</a>
+              </li>
+              <li class="nav-item" data-isLoggedVisibility="false">
+                <a class="nav-link" href="authenticate.html?show=register"><i class="fa-solid fa-user-plus pe-1"></i> Sign Up</a>
+              </li>
+              <li class="ms-md-auto hidden-mobile" data-isLoggedVisibility="true">
+                <div>
+                  Your Bids! <br />
+                  W: 1 / L: 2
+                </div>
+              </li>
+              <li class="nav-item dropdown" data-isLoggedVisibility="true">
+                <a class="nav-link dropdown-toggle hidden-mobile" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Profile Avatar</a>
+                <ul class="dropdown-menu bg-secondary border-primary">
+                  <li>
+                    <a class="dropdown-item" href="profile.html" aria-current="page"><i class="fa-solid fa-circle-user px-1"></i>Profile</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="profile.html#your-bids"><i class="fa-solid fa-hand-holding-dollar px-1"></i>Your Bids</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="profile.html#your-listings"><i class="fa-solid fa-sign-hanging px-1"></i>Your Listings</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="profile.html#your-favourites"><i class="fa-solid fa-heart px-1"></i>Your Favourites</a>
+                  </li>
+                  <li class="border-top border-primary pt-2 mt-2">
+                    <a class="dropdown-item" href="#" id="logout-btn"><i class="fa-solid fa-right-from-bracket px-1"></i>Sign Out</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <main class="container-xxl">
+      <section>
+        <h1 class="text-center">{Inset Item Title Here}</h1>
+        <div class="row">
+          <!-- Replace this with an image slider! -->
+          <div class="col-md-7 p-3 pt-1">
+            <div class="specific-image-container">
+              <div class="specific-image-container">
+                <img id="listing-image" class="w-100" src="" onerror="src='../images/empty_image.jpg'" alt="Item image" />
+              </div>
+            </div>
+            <div id="image-thumbnails-container" class="row">
+              <div class="col">
+                <img class="w-100" src="" onerror="src='../images/empty_image.jpg'" alt="Item image" />
+              </div>
+              <div class="col">
+                <img class="w-100" src="" onerror="src='../images/empty_image.jpg'" alt="Item image" />
+              </div>
+              <div class="col">
+                <img class="w-100" src="" onerror="src='../images/empty_image.jpg'" alt="Item image" />
+              </div>
+            </div>
+          </div>
+          <div class="col-md-5">
+            <!-- Bidding form for selecting bid amount -->
+            <form id="bidding-form">
+              <div>
+                <!-- place description here? or in bottom collapse tabs? -->
+                <h2>Description</h2>
+                <p id="listing-description-content"></p>
+              </div>
+              <div class="border-primary border-top border-bottom mt-1">
+                <p class="py-3 m-0"><span id="time-left"></span> <span class="ms-3" id="number-bids"></span></p>
+              </div>
+              <div class="pb-3">
+                <table class="w-100">
+                  <tr>
+                    <td>Winning Bid:</td>
+                    <td id="winning-bid-amount">{amount}</td>
+                  </tr>
+                  <tr>
+                    <td>Current Winner:</td>
+                    <td id="winning-user">{Username}</td>
+                  </tr>
+                  <tr data-isLoggedVisibility="true" data-isNotSeller="false">
+                    <td>Minimum Bid:</td>
+                    <td id="minimum-amount">{amount}</td>
+                  </tr>
+                  <tr data-isLoggedVisibility="true" data-isNotSeller="false">
+                    <td><label for="bid-amount">Your Bid:</label></td>
+                    <td class="position-relative">
+                      <span class="position-absolute ps-1 pt-1 fs-5">£</span><input class="form-control ps-3 fs-5" id="bid-amount" name="amount" type="number" min="1" required />
+                    </td>
+                  </tr>
+                </table>
+                <div class="d-flex justify-content-around">
+                  <a data-isLoggedVisibility="false" href="authenticate.html?show=login" class="btn btn-primary my-3">Login</a>
+                  <a data-isLoggedVisibility="false" href="authenticate.html?show=register" class="btn btn-primary my-3">Sign</a>
+                </div>
+                <div class="d-flex justify-content-around">
+                  <button id="delete-listing-btn" data-isLoggedVisibility="true" data-isNotSeller="true" type="button" class="btn btn-danger my-3">Delete Listing</button>
+                  <a id="edit-listing-btn" data-isLoggedVisibility="true" data-isNotSeller="true" type="button" class="btn btn-primary my-3">Edit Listing</a>
+                </div>
+                <div data-isLoggedVisibility="true" data-isNotSeller="false">
+                  <button type="submit" class="btn btn-primary w-100 my-3">Place Bid</button>
+                </div>
+              </div>
+            </form>
+            <div>
+              <div class="border-bottom border-top border-primary py-3 mb-3 d-flex justify-content-around">
+                <!-- <button class="btn btn-primary collapsed" data-bs-toggle="collapse" href="#description" role="button" aria-expanded="true" aria-controls="description">Description</button> -->
+                <button class="btn btn-primary collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#bid-history" aria-expanded="true" aria-controls="bid-history">Bid History</button>
+                <button class="btn btn-primary collapsed" data-bs-toggle="collapse" href="#seller-info" role="button" aria-expanded="false" aria-controls="seller-info">Seller</button>
+              </div>
+              <!-- <div class="mb-2 multi-collapse collapse show" id="description">
+                <div id="listing-description-content" class="card card-body">{Description Here}</div>
+              </div> -->
+              <div class="mb-2 multi-collapse collapse show" id="bid-history">
+                <div class="card card-body">
+                  <ul class="m-0" id="bid-history-content">
+                    <li>No Bids Yet!</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="mb-2 multi-collapse collapse" id="seller-info">
+                <div id="seller-info-content" class="card card-body">{Seller Info Here}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="py-3 mt-auto bg-secondary d-flex justify-content-center">
+      <div class="d-flex justify-content-center">
+        <div class="display-4 pe-2">©</div>
+        <div class="d-flex flex-column align-self-center">
+          <span>Copyright 2022</span>
+          <span>Fancy Name</span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
