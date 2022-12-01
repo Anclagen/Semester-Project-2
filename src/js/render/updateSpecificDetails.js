@@ -7,8 +7,10 @@ export const updateSpecificPostDetails = function (
   let winningBidAmount = 0;
   let winningUser = "No Bidders";
   if (bids.length > 0) {
-    winningBidAmount = bids[bids.length - 1].amount;
-    winningUser = bids[bids.length - 1].bidderName;
+    //sorted due to weird bug that gave me the
+    const sortedBids = bids.sort((a, b) => b.amount - a.amount);
+    winningBidAmount = sortedBids[0].amount;
+    winningUser = sortedBids[0].bidderName;
   }
 
   const listingTitle = document.querySelector("h1");
