@@ -3,3 +3,9 @@
   background-color: transparent;
   border-color: $primary;
 }
+
+.btn-primary[aria-expanded="false"] {
+  color: black;
+  background-color: $secondary;
+  border: none;
+}

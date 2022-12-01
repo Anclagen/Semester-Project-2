@@ -3,6 +3,7 @@ import { isUserLoggedIn } from "./interface/isLoggedIn.js";
 import { profileSetup } from "./pages/profile.js";
 import { homeSetup } from "./pages/home.js";
 import { createUpdatePageSetup } from "./pages/create.js";
+import { specificPageSetup } from "./pages/specific.js";
 
 isUserLoggedIn();
 
@@ -16,6 +17,8 @@ if (currentPage.match("authenticate.html")) {
   homeSetup();
 } else if (currentPage.match("create.html")) {
   createUpdatePageSetup();
+} else if (currentPage.match("specific.html")) {
+  specificPageSetup();
 } else {
   console.log("errrm, dude where are we?!?!");
 }
