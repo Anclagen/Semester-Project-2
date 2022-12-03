@@ -8,7 +8,7 @@
     <script src="../js/index.js" type="module"></script>
     <script src="../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/e4f6b5cf1a.js" crossorigin="anonymous"></script>
-    <title>Create A Listing</title>
+    <title>Listing</title>
   </head>
   <body class="bg-background d-flex flex-column min-vh-100">
     <header class="bg-secondary">
@@ -42,10 +42,10 @@
                 <a class="nav-link" href="../index.html"><i class="fa-solid fa-house px-1"></i> Home</a>
               </li>
               <li class="nav-item" data-isLoggedVisibility="true">
-                <a class="nav-link active" href="create.html"><i class="fa-sharp fa-solid fa-gavel px-1"></i>Sell</a>
+                <a class="nav-link" href="create.html"><i class="fa-sharp fa-solid fa-gavel px-1"></i>Sell</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="listings.html"><i class="fa-solid fa-hand-holding-dollar px-1"></i>Buy</a>
+                <a class="nav-link active" href="listings.html"><i class="fa-solid fa-hand-holding-dollar px-1"></i>Buy</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="about.html"><i class="fa-sharp fa-solid fa-circle-info px-1"></i>About</a>
@@ -92,72 +92,22 @@
     </header>
     <main class="container-xxl">
       <section>
-        <h1 class="text-center">{Inset Create/Update Listing Here}</h1>
-        <div class="row">
-          <div class="col-6 p-3">
-            <h2 id="preview-title"></h2>
-            <img id="preview-image" src="../images/empty_image.jpg" onerror="src='../images/empty_image.jpg'" alt="preview-image" class="w-100 px-5 py-3" />
-            <!-- Will come back to this when core features are added.
-              <div id="preview-image-slider"></div> -->
-            <h3>Description</h3>
-            <p id="preview-description"></p>
-            <h3>Tags</h3>
-            <p id="preview-tags"></p>
-          </div>
-          <div class="col-6">
-            <form id="create-form">
-              <div>
-                <label for="form-title" class="form-label">Title</label>
-                <input type="text" name="title" id="form-title" class="form-control mb-3 p-2" minlength="10" maxlength="150" placeholder="Your Item Title" title="A title is required" required />
-              </div>
-              <div>
-                <label for="form-description" class="form-description">Description</label>
-                <textarea name="description" class="form-control mb-3 p-2" maxlength="280" id="form-description" placeholder="Additional item info, condition" required></textarea>
-              </div>
-              <div>
-                <label for="form-tags" class="form-label">Tags (8 max, separate with ",")</label>
-                <input type="text" name="tags" id="form-tags" class="form-control mb-3 p-2" placeholder="Tag 1, Tag 2, Tag 3, ..etc" required />
-              </div>
-              <div id="media-inputs-container">
-                <label for="form-media" class="form-label">Images (8 images max)</label>
-                <input type="url" name="media" id="form-media" class="form-control mb-2 p-2 media-input" placeholder="example.com/your-item.jpg" title="At least 1 image URL is required." required />
+        <h1 class="text-center">All Listings</h1>
+        <div id="listing-filters " class="border-bottom border-primary pb-2">
+          <fieldset>
+            <legend class="hidden">Sort Listings</legend>
+            <input type="radio" class="btn-check" name="options" id="newest" autocomplete="off" value="newest" />
+            <label class="btn btn-secondary me-2" for="newest">Newest</label>
 
-                <label for="form-media-image1" class="form-label closing hidden">Image 2</label>
-                <input type="url" name="media" id="form-media-image1" class="form-control mb-2 p-2 media-input closing hidden" placeholder="example.com/your-item.jpg" disabled />
+            <input type="radio" class="btn-check" name="options" id="ending-soon" autocomplete="off" value="ends-soon" />
+            <label class="btn btn-secondary me-2" for="ending-soon">Ending Soon</label>
 
-                <label for="form-media-image2" class="form-label closing hidden">Image 3</label>
-                <input type="url" name="media" id="form-media-image2" class="form-control mb-2 p-2 media-input closing hidden" placeholder="example.com/your-item.jpg" disabled />
-
-                <label for="form-media-image3" class="form-label closing hidden">Image 4</label>
-                <input type="url" name="media" id="form-media-image3" class="form-control mb-2 p-2 media-input closing hidden" placeholder="example.com/your-item.jpg" disabled />
-
-                <label for="form-media-image4" class="form-label closing hidden">Image 5</label>
-                <input type="url" name="media" id="form-media-image4" class="form-control mb-2 p-2 media-input closing hidden" placeholder="example.com/your-item.jpg" disabled />
-
-                <label for="form-media-image5" class="form-label closing hidden">Image 6</label>
-                <input type="url" name="media" id="form-media-image5" class="form-control mb-2 p-2 media-input closing hidden" placeholder="example.com/your-item.jpg" disabled />
-
-                <label for="form-media-image6" class="form-label closing hidden">Image 7</label>
-                <input type="url" name="media" id="form-media-image6" class="form-control mb-2 p-2 media-input closing hidden" placeholder="example.com/your-item.jpg" disabled />
-
-                <label for="form-media-image7" class="form-label closing hidden">Image 8</label>
-                <input type="url" name="media" id="form-media-image7" class="form-control mb-2 p-2 media-input closing hidden" placeholder="example.com/your-item.jpg" disabled />
-
-                <div class="mb-3">
-                  <button type="button" class="btn btn-primary" id="add-more-media-btn">Add Another Image</button>
-                  <button type="button" class="btn btn-primary hidden" id="remove-media-btn">Remove Image</button>
-                </div>
-              </div>
-              <div>
-                <label for="form-ending-at" class="form-label">Ending Date</label>
-                <input type="datetime-local" class="form-control mb-3 p-2 display-inline" name="endingAt" id="form-ending-at" title="Ending date is required" required />
-              </div>
-              <div>
-                <button type="submit" class="btn btn-primary" id="form-submit">Create Listing</button>
-              </div>
-            </form>
-          </div>
+            <input type="radio" class="btn-check" name="options" id="popular" autocomplete="off" value="popular" />
+            <label class="btn btn-secondary me-2" for="popular">Popular</label>
+          </fieldset>
         </div>
+        <div id="listing-results" class="row"></div>
+        <div id="listing-page-controls"></div>
       </section>
     </main>
     <footer class="py-3 mt-auto bg-secondary d-flex justify-content-center">
