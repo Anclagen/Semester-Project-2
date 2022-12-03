@@ -13,7 +13,7 @@ User Stories
 - [x] A registered user may add a Bid to another user’s Listing
 - [x] A registered user may view Bids made on a Listing
 - [x] A registered user may use credit to make a Bid on another user’s Listing
-- [ ] An unregistered user may search through Listings
+- [x] An unregistered user may search through Listings
 
 Best Practices
 
