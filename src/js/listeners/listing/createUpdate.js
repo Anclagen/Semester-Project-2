@@ -9,7 +9,10 @@ export const createUpdateFormListener = async function (event) {
     event.target.querySelectorAll("input[type=url]:enabled")
   );
 
-  console.log(event.target.endingAt);
+  const queryString = window.location.search;
+  const params = new URLSearchParams(queryString);
+  let id = params.get("id");
+
   const bodyData = {
     title: event.target.title.value,
     description: event.target.description.value,
@@ -20,12 +23,12 @@ export const createUpdateFormListener = async function (event) {
     media: mediaInputs.map((input) => input.value),
     endsAt: new Date(event.target.endingAt.value),
   };
-  console.log(bodyData);
+
+  if (id) {
+    delete bodyData.endsAt;
+  }
 
   try {
-    const queryString = window.location.search;
-    const params = new URLSearchParams(queryString);
-    let id = params.get("id");
     let response = {};
 
     if (id === null) {

@@ -6,9 +6,9 @@ export const updateSpecificPostDetails = function (
 ) {
   let winningBidAmount = 0;
   let winningUser = "No Bidders";
+  const sortedBids = bids.sort((a, b) => b.amount - a.amount);
   if (bids.length > 0) {
     //sorted due to weird bug that gave me the
-    const sortedBids = bids.sort((a, b) => b.amount - a.amount);
     winningBidAmount = sortedBids[0].amount;
     winningUser = sortedBids[0].bidderName;
   }
@@ -45,7 +45,7 @@ export const updateSpecificPostDetails = function (
   const listingBidHistory = document.querySelector("#bid-history-content");
   if (bids.length > 0) {
     listingBidHistory.innerHTML = "";
-    bids.reverse().forEach((bid) => {
+    sortedBids.forEach((bid) => {
       listingBidHistory.innerHTML += `<li>
                                         <strong>${bid.bidderName}:</strong> £${
         bid.amount
