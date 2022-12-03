@@ -4,8 +4,11 @@ import { profileSetup } from "./pages/profile.js";
 import { homeSetup } from "./pages/home.js";
 import { createUpdatePageSetup } from "./pages/create.js";
 import { specificPageSetup } from "./pages/specific.js";
+import { listingPageSetup } from "./pages/listing.js";
+import { searchBarListener } from "./listeners/search.js";
 
 isUserLoggedIn();
+searchBarListener();
 
 const currentPage = window.location.href;
 
@@ -19,6 +22,6 @@ if (currentPage.match("authenticate.html")) {
   createUpdatePageSetup();
 } else if (currentPage.match("specific.html")) {
   specificPageSetup();
-} else {
-  console.log("errrm, dude where are we?!?!");
+} else if (currentPage.match("listings.html")) {
+  listingPageSetup();
 }

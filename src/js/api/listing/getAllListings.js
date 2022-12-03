@@ -11,9 +11,10 @@ import { myHeader } from "../header.js";
 export async function getAllListings(
   sort = "created",
   order = "desc",
-  offset = 0
+  offset = 0,
+  limit = 100
 ) {
-  const url = `${baseURL}listings?_seller=true&_bids=true&offset=${offset}&sort=${sort}&sortOrder=${order}`;
+  const url = `${baseURL}listings?_seller=true&_bids=true&sort=${sort}&sortOrder=${order}&offset=${offset}&limit=${limit}`;
 
   const requestOptions = {
     method: "GET",
