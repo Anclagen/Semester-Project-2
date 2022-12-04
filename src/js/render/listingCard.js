@@ -7,6 +7,10 @@ export const createListingCard = function ({ id, title, endsAt, media, bids }) {
     bidAmount = `£${sortedBids[0].amount}`;
   }
 
+  if (media.length === 0) {
+    media[0] = "";
+  }
+
   const listing = document.createElement("div");
   listing.classList = "p-2 p-xl-3 col-sm-6 col-md-4 col-lg-3 listing-card";
 
