@@ -5,6 +5,7 @@ import { getParamURL } from "../tools/getParamsURL.js";
 import { searchListings } from "./search.js";
 import { sortListings } from "./sort.js";
 import { addListingPageControls } from "../listeners/addListingPageControls.js";
+import { updateListingPageDetails } from "../render/updateListingPageDetails.js";
 
 let listings = [];
 let sortedActiveListings = [];
@@ -97,6 +98,7 @@ export const showSortedListings = async function (
                                     <div>`;
     }
 
+    updateListingPageDetails();
     addListingPageControls(page, numberPages, offset, listings);
   } catch (error) {
     console.log(error);
