@@ -9,18 +9,25 @@ export const createUpdatePageSetup = async function () {
   const queryString = window.location.search;
   const params = new URLSearchParams(queryString);
   let id = params.get("id");
+
+  const form = document.querySelector("#create-form");
+  const H1 = document.querySelector("h1");
+
+  H1.innerText = "Create A Listing";
+
   if (id) {
+    H1.innerText = "Update Listing";
     try {
       const listingData = await getAListings(id);
       console.log(listingData);
       fillUpdateListingDetails(listingData);
       updatePreview();
+      form.endingAt.setAttribute("disabled", "");
     } catch (error) {
       console.log(error);
     }
   }
 
-  const form = document.querySelector("#create-form");
   form.addEventListener("submit", createUpdateFormListener);
   form.addEventListener("change", updatePreview);
 

@@ -14,15 +14,15 @@ export const timeLeft = function (endsAt) {
   const monthsLeft = Math.floor((totalSeconds / 2592000) % 12);
 
   if (monthsLeft > 0) {
-    return `Time Left: ${monthsLeft} Months, ${daysLeft} Days`;
+    return `Ends In: ${monthsLeft} Months, ${daysLeft} Days`;
   }
 
   if (daysLeft > 0) {
-    return `Time Left: ${daysLeft} Days, ${hoursLeft} Hours`;
+    return `Ends In: ${daysLeft} Days, ${hoursLeft} Hours`;
   }
 
   if (hoursLeft > 0) {
-    return `Time Left: ${hoursLeft} Hours, ${minutesLeft} Minutes`;
+    return `Ends In: ${hoursLeft} Hours, ${minutesLeft} Minutes`;
   }
 
   //countdown timer? need to build listing with document create element.

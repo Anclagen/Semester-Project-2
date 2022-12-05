@@ -3,7 +3,12 @@ import { timeLeft } from "../tools/timeLeft.js";
 export const createListingCard = function ({ id, title, endsAt, media, bids }) {
   let bidAmount = `No Bids!`;
   if (bids.length > 0) {
-    bidAmount = `£${bids[bids.length - 1].amount}`;
+    const sortedBids = bids.sort((a, b) => b.amount - a.amount);
+    bidAmount = `£${sortedBids[0].amount}`;
+  }
+
+  if (media.length === 0) {
+    media[0] = "";
   }
 
   const listing = document.createElement("div");
@@ -11,18 +16,13 @@ export const createListingCard = function ({ id, title, endsAt, media, bids }) {
 
   const listingInnerContainer = document.createElement("div");
   listingInnerContainer.classList =
-    "container-fluid h-100 p-1 bg-white rounded-2";
+    "container-fluid h-100 p-2 bg-white rounded-2";
   listing.append(listingInnerContainer);
 
   const listingLink = document.createElement("a");
   const currentPage = window.location.href;
-  if (currentPage.match("index.html")) {
-    listingLink.href = `pages/specific.html?id=${id}`;
-  } else {
-    listingLink.href = `specific.html?id=${id}`;
-  }
 
-  listingLink.classList = `h-100 d-block`;
+  listingLink.classList = `h-100 d-flex flex-column align-content-around`;
   listingInnerContainer.append(listingLink);
 
   const imageOuterContainer = document.createElement("div");
@@ -30,7 +30,7 @@ export const createListingCard = function ({ id, title, endsAt, media, bids }) {
   listingLink.append(imageOuterContainer);
 
   const imageInnerContainer = document.createElement("div");
-  imageInnerContainer.classList = "listing-image-container";
+  imageInnerContainer.classList = "listing-image-container rounded";
   imageOuterContainer.append(imageInnerContainer);
 
   const listingImage = document.createElement("img");
@@ -39,16 +39,26 @@ export const createListingCard = function ({ id, title, endsAt, media, bids }) {
   listingImage.alt = title;
   imageInnerContainer.append(listingImage);
 
+  if (currentPage.match("index.html")) {
+    listingLink.href = `pages/specific.html?id=${id}`;
+    listingImage.setAttribute("onerror", "this.src='./images/404_image.jpg'");
+  } else {
+    listingLink.href = `specific.html?id=${id}`;
+    listingImage.setAttribute("onerror", "this.src='../images/404_image.jpg'");
+  }
+
   const listingTitle = document.createElement("h3");
   listingTitle.innerText = title;
-  listingTitle.classList = "mt-2";
+  listingTitle.classList = "mt-2 d-block flex-fill px-1";
   listingLink.append(listingTitle);
 
   const listingPrice = document.createElement("p");
-  listingPrice.innerText = `Current Bid: ${bidAmount}`;
+  listingPrice.classList = "d-block px-1";
+  listingPrice.innerText = `Winning Bid: ${bidAmount}`;
   listingLink.append(listingPrice);
 
   const listingTime = document.createElement("p");
+  listingTime.classList = "bg-secondary p-1";
   listingTime.append(timeLeft(endsAt));
   listingLink.append(listingTime);
 

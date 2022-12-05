@@ -11,11 +11,13 @@ export const renderActiveListings = function (
   listings,
   displayAmount
 ) {
-  for (let i = 0; 0 < displayAmount; i++) {
-    const timeLeft = new Date(listings[i].endsAt) - new Date();
+  if (displayAmount > listings.length) {
+    displayAmount = listings.length;
+  }
 
+  for (let i = 0; i < displayAmount; i++) {
+    const timeLeft = new Date(listings[i].endsAt) - new Date();
     if (timeLeft > 0) {
-      displayAmount--;
       container.append(createListingCard(listings[i]));
     }
   }
