@@ -18,3 +18,20 @@
 .entry-form-container {
   height: fit-content;
 }
+
+.login-logo {
+  display: block;
+  margin: 0 auto;
+  max-width: 200px;
+}
+
+//create/update form page
+textarea {
+  resize: none;
+  height: 12rem;
+}
+
+.preview-container {
+  height: fit-content;
+  box-shadow: 1px 2px 3px $secondary;
+}
