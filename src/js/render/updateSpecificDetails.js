@@ -1,6 +1,7 @@
 import { timeLeft } from "../tools/timeLeft.js";
+import { renderImageSlider } from "./createImageSlider.js";
 
-export const updateSpecificPostDetails = function (
+export const updateSpecificListingDetails = function (
   { title, bids, endsAt, description, media, seller },
   { credits }
 ) {
@@ -63,9 +64,7 @@ export const updateSpecificPostDetails = function (
                                   <p>Name: ${seller.name}</p>
                                  <p>Contact: ${seller.email}</p>`;
 
-  const ListingMediaImage = document.querySelector("#listing-image");
-  ListingMediaImage.src = media[0];
-  ListingMediaImage.alt = title;
-
-  // add image slider thumbnails/slides!
+  if (media.length > 0) {
+    renderImageSlider(media);
+  }
 };
