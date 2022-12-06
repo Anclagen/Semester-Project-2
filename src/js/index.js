@@ -6,9 +6,11 @@ import { createUpdatePageSetup } from "./pages/create.js";
 import { specificPageSetup } from "./pages/specific.js";
 import { listingPageSetup } from "./pages/listing.js";
 import { searchBarListener } from "./listeners/search.js";
+import { updateNavAvatar } from "./interface/navAvatar.js";
 
 isUserLoggedIn();
 searchBarListener();
+updateNavAvatar();
 
 const currentPage = window.location.href;
 

@@ -13,7 +13,7 @@ export async function loginListener(event) {
     storage.set("token", userCredentials.accessToken);
     delete userCredentials.accessToken;
     storage.set("profile", userCredentials);
-    location.href = "profile.html";
+    location.href = "./profile.html";
   } catch {
     errorReporting.innerText = "Incorrect password or email.";
     return;

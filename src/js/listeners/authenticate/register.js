@@ -26,11 +26,12 @@ export async function registerListener(event) {
 
   try {
     delete registerBody.name;
+    delete registerBody.avatar;
     const userCredentials = await login(registerBody);
     storage.set("token", userCredentials.accessToken);
     delete userCredentials.accessToken;
     storage.set("profile", userCredentials);
-    location.href = "profile.html";
+    location.href = "./profile.html";
   } catch {
     errorReporting.innerText =
       "An error occurred logging into your new account";
