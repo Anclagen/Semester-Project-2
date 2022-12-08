@@ -1,3 +1,7 @@
+/**
+ *
+ * @param {Object} ListingData Listing data to update
+ */
 export const fillUpdateListingDetails = function ({
   title,
   description,
@@ -18,11 +22,16 @@ export const fillUpdateListingDetails = function ({
   endingDateInput.value = endsAt;
 
   const mediaInputs = document.querySelectorAll("input[type=url]");
+  const addMoreMediaBtn = document.querySelector("#add-more-media-btn");
+
   media.forEach((url, i) => {
     mediaInputs[i].value = url;
     if (i > 0) {
-      mediaInputs.classList.remove("hidden");
-      mediaInputs.removeAttribute("disabled");
+      //triggers add more event
+      addMoreMediaBtn.click();
     }
   });
+
+  const submitBtn = document.querySelector("#form-submit");
+  submitBtn.innerHTML = "Update Listing";
 };

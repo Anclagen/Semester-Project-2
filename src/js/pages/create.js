@@ -1,9 +1,9 @@
 import { getAListings } from "../api/listing/getAListing.js";
 import { createUpdateFormListener } from "../listeners/listing/createUpdate.js";
-import { removeMediaInput } from "../listeners/removeMediaInputs.js";
-import { addMoreMedia } from "../listeners/showMoreMediaInputs.js";
 import { fillUpdateListingDetails } from "../render/fillUpdateListingDetails.js";
 import { updatePreview } from "../render/updateListingPreview.js";
+import { addMoreMedia } from "../listeners/listing/showMoreMediaInputs.js";
+import { removeMediaInput } from "../listeners/listing/removeMediaInputs.js";
 
 export const createUpdatePageSetup = async function () {
   const queryString = window.location.search;
@@ -15,25 +15,29 @@ export const createUpdatePageSetup = async function () {
 
   H1.innerText = "Create A Listing";
 
-  if (id) {
-    H1.innerText = "Update Listing";
-    try {
-      const listingData = await getAListings(id);
-      console.log(listingData);
-      fillUpdateListingDetails(listingData);
-      updatePreview();
-      form.endingAt.setAttribute("disabled", "");
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  form.addEventListener("submit", createUpdateFormListener);
-  form.addEventListener("change", updatePreview);
-
   const addMoreMediaBtn = document.querySelector("#add-more-media-btn");
   addMoreMediaBtn.addEventListener("click", addMoreMedia);
 
   const removeMediaBtn = document.querySelector("#remove-media-btn");
   removeMediaBtn.addEventListener("click", removeMediaInput);
+
+  form.addEventListener("submit", createUpdateFormListener);
+  form.addEventListener("change", updatePreview);
+
+  if (id) {
+    H1.innerText = "Update Listing";
+    try {
+      const listingData = await getAListings(id);
+      fillUpdateListingDetails(listingData);
+      form.endingAt.setAttribute("disabled", "");
+      updatePreview(listingData.media);
+    } catch (error) {
+      console.log(error);
+      const errorContainer = document.querySelector(
+        "#error-reporting-container"
+      );
+      errorContainer.innerHTML = `<p class="p-3 text-losing bg-secondary"> An error occurred please refresh and try again. If problems persist, check the listing still exists.</p>`;
+      location.hash = "#error-reporting-container";
+    }
+  }
 };

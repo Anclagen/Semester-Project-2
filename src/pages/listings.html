@@ -14,11 +14,9 @@
     <header class="bg-secondary">
       <nav class="navbar navbar-expand-md container-xxl">
         <div class="container-fluid">
-          <a class="navbar-brand" href="../index.html"
-            >Fancy<br />
-            Logo</a
-          >
-          <div></div>
+          <a class="navbar-brand" href="../index.html">
+            <img class="nav-logo" src="../images/full_forgotten_treasures_logo.jpg" alt="Forgotten Treasures Logo" />
+          </a>
           <button
             class="navbar-toggler"
             type="button"
@@ -39,19 +37,16 @@
                 </form>
               </li>
               <li class="nav-item ms-md-auto">
-                <a class="nav-link" href="../index.html"><i class="fa-solid fa-house px-1"></i> Home</a>
+                <a class="nav-link" href="../index.html"><i class="fa-solid fa-house pe-1"></i> Home</a>
               </li>
               <li class="nav-item" data-isLoggedVisibility="true">
-                <a class="nav-link" href="create.html"><i class="fa-sharp fa-solid fa-gavel px-1"></i>Sell</a>
+                <a class="nav-link" href="create.html"><i class="fa-sharp fa-solid fa-gavel pe-1"></i>Sell</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" href="listings.html"><i class="fa-solid fa-hand-holding-dollar px-1"></i>Buy</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="about.html"><i class="fa-sharp fa-solid fa-circle-info px-1"></i>About</a>
+                <a class="nav-link active" href="listings.html"><i class="fa-solid fa-hand-holding-dollar pe-1"></i>Buy</a>
               </li>
               <li class="nav-item" data-isLoggedVisibility="true">
-                <a class="nav-link" href="contact.html"><i class="fa-solid fa-headphones px-1"></i>Contact</a>
+                <a class="nav-link" href="contact.html"><i class="fa-solid fa-headphones pe-1"></i>Contact</a>
               </li>
               <li class="nav-item ms-md-auto" data-isLoggedVisibility="false">
                 <a class="nav-link" href="authenticate.html?show=login"><i class="fa-sharp fa-solid fa-right-to-bracket px-1"></i>Login</a>
@@ -59,14 +54,10 @@
               <li class="nav-item" data-isLoggedVisibility="false">
                 <a class="nav-link" href="authenticate.html?show=register"><i class="fa-solid fa-user-plus pe-1"></i> Sign Up</a>
               </li>
-              <li class="ms-md-auto hidden-mobile" data-isLoggedVisibility="true">
-                <div>
-                  Your Bids! <br />
-                  W: 1 / L: 2
-                </div>
-              </li>
-              <li class="nav-item dropdown" data-isLoggedVisibility="true">
-                <a class="nav-link dropdown-toggle hidden-mobile" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Profile Avatar</a>
+              <li class="nav-item dropdown ms-md-auto" data-isLoggedVisibility="true">
+                <a class="nav-link dropdown-toggle hidden-mobile" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <img id="nav-avatar" class="rounded-circle" src="../images/default-avatar.png" alt="user avatar" /> Account
+                </a>
                 <ul class="dropdown-menu bg-secondary border-primary">
                   <li>
                     <a class="dropdown-item" href="profile.html" aria-current="page"><i class="fa-solid fa-circle-user px-1"></i>Profile</a>
@@ -76,9 +67,6 @@
                   </li>
                   <li>
                     <a class="dropdown-item" href="profile.html#your-listings"><i class="fa-solid fa-sign-hanging px-1"></i>Your Listings</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="profile.html#your-favourites"><i class="fa-solid fa-heart px-1"></i>Your Favourites</a>
                   </li>
                   <li class="border-top border-primary pt-2 mt-2">
                     <a class="dropdown-item" href="#" id="logout-btn"><i class="fa-solid fa-right-from-bracket px-1"></i>Sign Out</a>

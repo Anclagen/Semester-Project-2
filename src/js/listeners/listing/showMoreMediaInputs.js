@@ -1,4 +1,5 @@
-import { showInputContainer } from "../tools/inputAccordion.js";
+import { showInputContainer } from "../../tools/inputAccordion.js";
+import { updatePreview } from "../../render/updateListingPreview.js";
 
 /**
  * Shows an extra media input field on create/update form
@@ -6,7 +7,6 @@ import { showInputContainer } from "../tools/inputAccordion.js";
  */
 export const addMoreMedia = function (event) {
   const mediaInputContainer = document.querySelector("#media-inputs-container");
-  //const disabledMediaInputs = mediaInputContainer.querySelectorAll("input[type=url]:disabled");
   const disabledMediaInputs = mediaInputContainer.querySelectorAll(
     "input[type=url].hidden"
   );
@@ -18,4 +18,5 @@ export const addMoreMedia = function (event) {
   removeMediaBtn.classList.remove("hidden");
 
   showInputContainer(disabledMediaInputs[0]);
+  updatePreview();
 };

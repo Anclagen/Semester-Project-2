@@ -12,13 +12,11 @@
   </head>
   <body class="bg-background d-flex flex-column min-vh-100">
     <header class="bg-secondary">
-      <nav class="navbar navbar-expand-md container-xxl">
+      <nav class="navbar navbar-expand-md container-xxl py-1">
         <div class="container-fluid">
-          <a class="navbar-brand" href="index.html"
-            >Fancy<br />
-            Logo</a
-          >
-          <div></div>
+          <a class="navbar-brand" href="./index.html">
+            <img class="nav-logo" src="./images/full_forgotten_treasures_logo.jpg" alt="Forgotten Treasures Logo" />
+          </a>
           <button
             class="navbar-toggler"
             type="button"
@@ -39,34 +37,27 @@
                 </form>
               </li>
               <li class="nav-item ms-md-auto">
-                <a class="nav-link active" href="index.html"><i class="fa-solid fa-house px-1"></i> Home</a>
+                <a class="nav-link active" href="index.html"><i class="fa-solid fa-house pe-1"></i> Home</a>
               </li>
               <li class="nav-item" data-isLoggedVisibility="true">
-                <a class="nav-link" href="./pages/create.html"><i class="fa-sharp fa-solid fa-gavel px-1"></i>Sell</a>
+                <a class="nav-link" href="./pages/create.html"><i class="fa-sharp fa-solid fa-gavel pe-1"></i>Sell</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="./pages/listings.html"><i class="fa-solid fa-hand-holding-dollar px-1"></i>Buy</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="./pages/about.html"><i class="fa-sharp fa-solid fa-circle-info px-1"></i>About</a>
+                <a class="nav-link" href="./pages/listings.html"><i class="fa-solid fa-hand-holding-dollar pe-1"></i>Buy</a>
               </li>
               <li class="nav-item" data-isLoggedVisibility="true">
-                <a class="nav-link" href="./pages/contact.html"><i class="fa-solid fa-headphones px-1"></i>Contact</a>
+                <a class="nav-link" href="./pages/contact.html"><i class="fa-solid fa-headphones pe-1"></i>Contact</a>
               </li>
               <li class="nav-item ms-md-auto" data-isLoggedVisibility="false">
-                <a class="nav-link" href="./pages/authenticate.html?show=login"><i class="fa-sharp fa-solid fa-right-to-bracket px-1"></i>Login</a>
+                <a class="nav-link" href="./pages/authenticate.html?show=login"><i class="fa-sharp fa-solid fa-right-to-bracket pe-1"></i>Login</a>
               </li>
               <li class="nav-item" data-isLoggedVisibility="false">
                 <a class="nav-link" href="./pages/authenticate.html?show=register"><i class="fa-solid fa-user-plus pe-1"></i> Sign Up</a>
               </li>
-              <li class="ms-md-auto hidden-mobile" data-isLoggedVisibility="true">
-                <div>
-                  Your Bids! <br />
-                  W: 1 / L: 2
-                </div>
-              </li>
-              <li class="nav-item dropdown" data-isLoggedVisibility="true">
-                <a class="nav-link dropdown-toggle hidden-mobile" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Profile Avatar</a>
+              <li class="nav-item dropdown ms-md-auto" data-isLoggedVisibility="true">
+                <a class="nav-link dropdown-toggle hidden-mobile" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <img id="nav-avatar" class="rounded-circle" src="./images/default-avatar.png" alt="user avatar" /> Account
+                </a>
                 <ul class="dropdown-menu bg-secondary border-primary">
                   <li>
                     <a class="dropdown-item" href="./pages/profile.html" aria-current="page"><i class="fa-solid fa-circle-user px-1"></i>Profile</a>
@@ -76,9 +67,6 @@
                   </li>
                   <li>
                     <a class="dropdown-item" href="./pages/profile.html#your-listings"><i class="fa-solid fa-sign-hanging px-1"></i>Your Listings</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="./pages/profile.html#your-favourites"><i class="fa-solid fa-heart px-1"></i>Your Favourites</a>
                   </li>
                   <li class="border-top border-primary pt-2 mt-2">
                     <a class="dropdown-item" href="#" id="logout-btn"><i class="fa-solid fa-right-from-bracket px-1"></i>Sign Out</a>
@@ -90,32 +78,73 @@
         </div>
       </nav>
     </header>
-    <main class="container-xxl">
+    <main class="container-xxl px-1 px-sm-4 my-4">
       <section class="banner mb-3">
-        <div class="position-relative">
-          <h1 class="position-absolute d-block banner-text">
-            Fancy Name,<br />
-            Find That Diamond In The Rough
-          </h1>
-          <img src="./images/banner_image_mobile.jpg" class="w-100 mobile-banner" alt="sparsely decorated room and assorted items" />
-          <img src="./images/banner_image_desktop.jpg" class="w-100 desktop-banner" alt="sparsely decorated room and assorted items" />
+        <div class="text-center">
+          <h1 class=""><img class="h1-logo" src="./images/compact_forgotten_treasures_logo-white.jpg" alt="Forgotten Treasures logo" /> <span class="text-primary">Forgotten</span> Treasures</h1>
+          <div class="row">
+            <img class="mobile-banner col-md-4 col-xl-4" src="./images/auction-online.png" class="w-100 desktop-banner" alt="Online Auction Image" />
+            <p class="col-6 col-sm-5 col-md-4 col-xl-4 px-xl-5 text-center display-4 py-4 align-self-center banner-text">Find That Diamond In The Rough.</p>
+            <img class="col-6 col-sm-7 col-md-4 col-xl-4" src="./images/bidbid.png" class="w-100 desktop-banner" alt="Bidding On Item On Phone" />
+          </div>
         </div>
       </section>
-      <section>
-        <h2>Ending Soon</h2>
-        <div id="ending-soon" class="row mb-3"></div>
+      <section class="my-4 py-2 rounded-5 bg-white slider-section">
+        <h2 class="px-4 pt-2"><i class="fa-regular fa-clock"></i> Ending Soon</h2>
+        <div id="ending-soon-slider" class="listings-slider-outer-container p-1 px-sm-2 px-md-3 px-lg-4">
+          <div class="previous-arrow"></div>
+          <div class="next-arrow"></div>
+          <div class="listing-slider-rails">
+            <div class="listing-slider">
+              <div class="loader">
+                <div class="outer-loader"></div>
+                <div class="inner-loader"></div>
+                <p>Getting Listings, please wait...</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-center p-3">
+          <a href="./pages/listings.html?sort=ends-soon" class="btn btn-sm btn-primary">View More</a>
+        </div>
       </section>
-      <section>
-        <h2>Newest Listings</h2>
-        <div id="newest" class="row mb-3"></div>
+      <section class="my-4 py-2 rounded-5 bg-white slider-section">
+        <h2 class="px-4 pt-2"><i class="fa-solid fa-fire"></i> Popular Listings</h2>
+        <div id="popular-slider" class="listings-slider-outer-container p-1 px-sm-2 px-md-3 px-lg-4">
+          <div class="previous-arrow"></div>
+          <div class="next-arrow"></div>
+          <div class="listing-slider-rails">
+            <div class="listing-slider">
+              <div class="loader">
+                <div class="outer-loader"></div>
+                <div class="inner-loader"></div>
+                <p>Getting Listings, please wait...</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-center p-3">
+          <a href="./pages/listings.html?sort=popular" class="btn btn-sm btn-primary">View More</a>
+        </div>
       </section>
-      <section>
-        <h2>Hot Listings</h2>
-        <div id="hot-stuff" class="row mb-3"></div>
-      </section>
-      <section class="hidden">
-        <h2>Favourites</h2>
-        <div id="favourites" class="row mb-3"></div>
+      <section class="my-4 py-2 rounded-5 bg-white slider-section">
+        <h2 class="px-4 pt-2"><i class="fa-regular fa-star"></i> Newest Listings</h2>
+        <div id="newest-slider" class="listings-slider-outer-container p-1 px-sm-2 px-md-3 px-lg-4">
+          <div class="previous-arrow"></div>
+          <div class="next-arrow"></div>
+          <div class="listing-slider-rails">
+            <div class="listing-slider">
+              <div class="loader">
+                <div class="outer-loader"></div>
+                <div class="inner-loader"></div>
+                <p>Getting Listings, please wait...</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-center p-3">
+          <a href="./pages/listings.html?sort=newest" class="btn btn-sm btn-primary">View More</a>
+        </div>
       </section>
     </main>
     <footer class="py-3 mt-auto bg-secondary d-flex justify-content-center">

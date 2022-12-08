@@ -1,25 +1,24 @@
 import { getAllListings } from "../api/listing/getAllListings.js";
-import { addLoader } from "../render/loader.js";
-import { renderActiveListings } from "../tools/renderActiveListing.js";
+import { setupListingSlider } from "../tools/listingSlider.js";
 
 export const homeSetup = async function () {
-  let offset = 0;
+  const endingSoonContainer = document.querySelector("#ending-soon-slider");
+  const popularContainer = document.querySelector("#popular-slider");
+  const newestContainer = document.querySelector("#newest-slider");
 
-  const newestContainer = document.querySelector("#newest");
-  addLoader(newestContainer);
-  const newestListings = await getAllListings();
-  newestContainer.innerHTML = "";
-  renderActiveListings(newestContainer, newestListings, 8);
+  try {
+    const endingSoonListings = await getAllListings("endsAt", "asc");
+    setupListingSlider(endingSoonListings, endingSoonContainer);
 
-  const popularContainer = document.querySelector("#hot-stuff");
-  addLoader(popularContainer);
-  const popular = newestListings.sort((a, b) => b.bids.length - a.bids.length);
-  popularContainer.innerHTML = "";
-  renderActiveListings(popularContainer, popular, 8);
+    const popular = endingSoonListings.sort(
+      (a, b) => b.bids.length - a.bids.length
+    );
+    setupListingSlider(popular, popularContainer);
 
-  const endingSoonContainer = document.querySelector("#ending-soon");
-  addLoader(endingSoonContainer);
-  const endingSoonListings = await getAllListings("endsAt", "asc", offset);
-  endingSoonContainer.innerHTML = "";
-  renderActiveListings(endingSoonContainer, endingSoonListings, 8);
+    const newestListings = await getAllListings();
+    setupListingSlider(newestListings, newestContainer);
+  } catch (error) {
+    console.log(error);
+    endingSoonContainer.innerHTML = `<p class="p-3 text-losing bg-secondary"> An error occurred please refresh and try again. If problems persist, contact the administrator.</p>`;
+  }
 };

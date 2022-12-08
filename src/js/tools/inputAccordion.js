@@ -6,18 +6,18 @@ import { getHiddenHeight } from "./getContainerHeight.js";
  */
 export function showInputContainer(input) {
   if (input.classList.contains("hidden")) {
+    input.removeAttribute("disabled");
     input.classList.toggle("hidden");
     setTimeout(function () {
       input.classList.toggle("open");
       input.style.height = `${getHiddenHeight(input)}px`;
-      input.removeAttribute("disabled");
     }, 20);
   } else {
+    input.setAttribute("disabled", "");
     input.classList.toggle("open");
     input.style.height = `0px`;
     setTimeout(function () {
       input.classList.toggle("hidden");
-      input.setAttribute("disabled", "");
     }, 500);
   }
 }

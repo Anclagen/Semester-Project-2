@@ -1,6 +1,7 @@
 {
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
+  "--html-whitespace-sensitivity": "strict",
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },

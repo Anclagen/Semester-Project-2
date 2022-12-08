@@ -1,5 +1,4 @@
 import { createListing } from "../../api/listing/createListing.js";
-//import { deleteListing } from "../../api/listing/deleteListing.js";
 import { updateListing } from "../../api/listing/updateListing.js";
 
 export const createUpdateFormListener = async function (event) {
@@ -20,13 +19,11 @@ export const createUpdateFormListener = async function (event) {
       .split(",")
       .map((tag) => tag.trim())
       .slice(0, 8),
-    media: mediaInputs.map((input) => input.value),
+    media: mediaInputs
+      .map((input) => input.value)
+      .filter((value) => value !== ""),
     endsAt: new Date(event.target.endingAt.value),
   };
-
-  if (id) {
-    delete bodyData.endsAt;
-  }
 
   try {
     let response = {};
@@ -36,11 +33,12 @@ export const createUpdateFormListener = async function (event) {
     } else {
       response = await updateListing(bodyData, id);
     }
-    console.log(response);
 
-    //const deleted = await deleteListing(response.id);
-    //console.log(deleted);
+    window.location.href = `./specific.html?id=${response.id}`;
   } catch (error) {
     console.log(error);
+    const errorContainer = document.querySelector("#error-reporting-container");
+    errorContainer.innerHTML = `<p class="p-3 text-losing bg-secondary"> An error occurred please refresh and try again </p>`;
+    location.hash = "#error-reporting-container";
   }
 };

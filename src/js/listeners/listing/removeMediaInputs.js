@@ -1,4 +1,5 @@
-import { showInputContainer } from "../tools/inputAccordion.js";
+import { showInputContainer } from "../../tools/inputAccordion.js";
+import { updatePreview } from "../../render/updateListingPreview.js";
 
 export const removeMediaInput = function (event) {
   const mediaInputContainer = document.querySelector("#media-inputs-container");
@@ -12,4 +13,6 @@ export const removeMediaInput = function (event) {
   }
   addMoreMediaBtn.classList.remove("hidden");
   showInputContainer(enabledMediaInputs[enabledMediaInputs.length - 1]);
+
+  updatePreview();
 };

@@ -18,7 +18,6 @@ export const deleteListing = async function (id) {
 
   const response = await fetch(url, requestOptions);
 
-  //maybe return true?
   if (response.ok) {
     return true;
   }

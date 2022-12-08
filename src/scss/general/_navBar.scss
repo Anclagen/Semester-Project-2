@@ -1,4 +1,8 @@
 nav {
+  .nav-logo {
+    height: 60px;
+  }
+
   .dropdown-menu[data-bs-popper] {
     left: auto;
     right: 0;
@@ -8,7 +12,18 @@ nav {
     max-width: 600px;
   }
 
-  @media only screen and (max-width: 720px) {
+  #nav-avatar {
+    margin-top: -10px;
+    width: 40px;
+    height: 40px;
+  }
+
+  @media only screen and (max-width: 719px) {
+    //max-height: 110px;
+    .nav-logo {
+      height: 50px;
+    }
+
     .hidden-mobile {
       display: none;
     }
@@ -26,5 +41,8 @@ nav {
         padding-left: 0;
       }
     }
+  }
+
+  @media only screen and (max-width: 800px) {
   }
 }

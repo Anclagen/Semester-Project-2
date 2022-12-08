@@ -49,11 +49,11 @@ export const createListingCard = function ({ id, title, endsAt, media, bids }) {
 
   const listingTitle = document.createElement("h3");
   listingTitle.innerText = title;
-  listingTitle.classList = "mt-2 d-block flex-fill px-1";
+  listingTitle.classList = "mt-2 flex-fill px-1";
   listingLink.append(listingTitle);
 
   const listingPrice = document.createElement("p");
-  listingPrice.classList = "d-block px-1";
+  listingPrice.classList = "px-1";
   listingPrice.innerText = `Winning Bid: ${bidAmount}`;
   listingLink.append(listingPrice);
 

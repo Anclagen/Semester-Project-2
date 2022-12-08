@@ -14,11 +14,9 @@
     <header class="bg-secondary">
       <nav class="navbar navbar-expand-md container-xxl">
         <div class="container-fluid">
-          <a class="navbar-brand" href="../index.html"
-            >Fancy<br />
-            Logo</a
-          >
-          <div></div>
+          <a class="navbar-brand" href="../index.html">
+            <img class="nav-logo" src="../images/full_forgotten_treasures_logo.jpg" alt="Forgotten Treasures Logo" />
+          </a>
           <button
             class="navbar-toggler"
             type="button"
@@ -39,19 +37,16 @@
                 </form>
               </li>
               <li class="nav-item ms-md-auto">
-                <a class="nav-link" href="../index.html"><i class="fa-solid fa-house px-1"></i> Home</a>
+                <a class="nav-link" href="../index.html"><i class="fa-solid fa-house pe-1"></i> Home</a>
               </li>
               <li class="nav-item" data-isLoggedVisibility="true">
-                <a class="nav-link active" href="create.html"><i class="fa-sharp fa-solid fa-gavel px-1"></i>Sell</a>
+                <a class="nav-link active" href="create.html"><i class="fa-sharp fa-solid fa-gavel pe-1"></i>Sell</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="listings.html"><i class="fa-solid fa-hand-holding-dollar px-1"></i>Buy</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="about.html"><i class="fa-sharp fa-solid fa-circle-info px-1"></i>About</a>
+                <a class="nav-link" href="listings.html"><i class="fa-solid fa-hand-holding-dollar pe-1"></i>Buy</a>
               </li>
               <li class="nav-item" data-isLoggedVisibility="true">
-                <a class="nav-link" href="contact.html"><i class="fa-solid fa-headphones px-1"></i>Contact</a>
+                <a class="nav-link" href="contact.html"><i class="fa-solid fa-headphones pe-1"></i>Contact</a>
               </li>
               <li class="nav-item ms-md-auto" data-isLoggedVisibility="false">
                 <a class="nav-link" href="authenticate.html?show=login"><i class="fa-sharp fa-solid fa-right-to-bracket px-1"></i>Login</a>
@@ -59,14 +54,10 @@
               <li class="nav-item" data-isLoggedVisibility="false">
                 <a class="nav-link" href="authenticate.html?show=register"><i class="fa-solid fa-user-plus pe-1"></i> Sign Up</a>
               </li>
-              <li class="ms-md-auto hidden-mobile" data-isLoggedVisibility="true">
-                <div>
-                  Your Bids! <br />
-                  W: 1 / L: 2
-                </div>
-              </li>
-              <li class="nav-item dropdown" data-isLoggedVisibility="true">
-                <a class="nav-link dropdown-toggle hidden-mobile" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Profile Avatar</a>
+              <li class="nav-item dropdown ms-md-auto" data-isLoggedVisibility="true">
+                <a class="nav-link dropdown-toggle hidden-mobile" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <img id="nav-avatar" class="rounded-circle" src="../images/default-avatar.png" alt="user avatar" /> Account
+                </a>
                 <ul class="dropdown-menu bg-secondary border-primary">
                   <li>
                     <a class="dropdown-item" href="profile.html" aria-current="page"><i class="fa-solid fa-circle-user px-1"></i>Profile</a>
@@ -76,9 +67,6 @@
                   </li>
                   <li>
                     <a class="dropdown-item" href="profile.html#your-listings"><i class="fa-solid fa-sign-hanging px-1"></i>Your Listings</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="profile.html#your-favourites"><i class="fa-solid fa-heart px-1"></i>Your Favourites</a>
                   </li>
                   <li class="border-top border-primary pt-2 mt-2">
                     <a class="dropdown-item" href="#" id="logout-btn"><i class="fa-solid fa-right-from-bracket px-1"></i>Sign Out</a>
@@ -93,24 +81,32 @@
     <main class="container-xxl">
       <section>
         <h1 class="text-center">{Inset Item Title Here}</h1>
+        <div id="error-reporting-container"class="text-center">
+        </div>
         <div class="row">
           <!-- Replace this with an image slider! -->
-          <div class="col-md-7 p-3 pt-1">
-            <div class="specific-image-container">
-              <div class="specific-image-container">
-                <img id="listing-image" class="w-100" src="" onerror="src='../images/empty_image.jpg'" alt="Item image" />
+          <div class="col-md-7 p-3 pt-1 mb-5">
+            <!-- The primary image slider-->
+            <div id="specific" class="carousel slide carousel-dark">
+              <div class="carousel-inner main-specific-slider">
+                <div class="carousel-item${index === 0 ? " active" : ""}">
+                  <div class="specific-outer-slider">
+                    <div class="specific-inner-slider">
+                      <img id="listing-image" src="../images/empty_image.jpg" onerror="src='../images/empty_image.jpg'" alt="Image Placeholder" />
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div id="image-thumbnails-container" class="row">
-              <div class="col">
-                <img class="w-100" src="" onerror="src='../images/empty_image.jpg'" alt="Item image" />
-              </div>
-              <div class="col">
-                <img class="w-100" src="" onerror="src='../images/empty_image.jpg'" alt="Item image" />
-              </div>
-              <div class="col">
-                <img class="w-100" src="" onerror="src='../images/empty_image.jpg'" alt="Item image" />
-              </div>
+              <button class="carousel-control-prev" type="button" data-bs-target="#specific" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#specific" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+              <!-- The primary image slider thumb controls-->
+              <div class="carousel-indicators thumbs-specific-slider"></div>
             </div>
           </div>
           <div class="col-md-5">
