@@ -58,11 +58,13 @@ export const updateSpecificListingDetails = function (
   }
 
   const listingSellerInfo = document.querySelector("#seller-info-content");
-  listingSellerInfo.innerHTML = `<div class="text-center">
-                                  <img class="seller-info-avatar rounded-circle" src="${seller.avatar}" alt="${seller.name} avatar" />
-                                 </div>
-                                  <p>Name: ${seller.name}</p>
-                                 <p>Contact: ${seller.email}</p>`;
+  listingSellerInfo.innerHTML = `<a href="./profile.html?user=${seller.name}">
+                                  <div class="text-center">
+                                    <img class="seller-info-avatar rounded-circle" src="${seller.avatar}" alt="${seller.name} avatar" />
+                                  </div>
+                                    <p>Name: ${seller.name}</p>
+                                    <p>Contact: ${seller.email}</p>
+                                  </a>`;
 
   if (media.length > 0) {
     renderImageSlider(media);
