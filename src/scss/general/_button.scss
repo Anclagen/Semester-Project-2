@@ -1,0 +1,22 @@
+.btn-primary:hover {
+  color: $primary;
+  background-color: transparent;
+  border-color: $primary;
+}
+
+.btn-primary[aria-expanded="false"] {
+  color: black;
+  background-color: $secondary;
+  border: none;
+}
+
+// this might need altering in the future if other radio button are required
+.btn-check:checked + .btn,
+:not(.btn-check) + .btn:active,
+.btn:first-child:active,
+.btn.active,
+.btn.show {
+  color: white;
+  background-color: $primary;
+  border-color: $primary;
+}

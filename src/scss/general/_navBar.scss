@@ -1,0 +1,48 @@
+nav {
+  .nav-logo {
+    height: 60px;
+  }
+
+  .dropdown-menu[data-bs-popper] {
+    left: auto;
+    right: 0;
+  }
+
+  form {
+    max-width: 600px;
+  }
+
+  #nav-avatar {
+    margin-top: -10px;
+    width: 40px;
+    height: 40px;
+  }
+
+  @media only screen and (max-width: 719px) {
+    //max-height: 110px;
+    .nav-logo {
+      height: 50px;
+    }
+
+    .hidden-mobile {
+      display: none;
+    }
+
+    //open drop menu and remove padding
+    .dropdown-menu {
+      margin: 0;
+      padding: 0;
+      display: block;
+      background: none;
+      border: none;
+
+      li a {
+        margin: 0;
+        padding-left: 0;
+      }
+    }
+  }
+
+  @media only screen and (max-width: 800px) {
+  }
+}

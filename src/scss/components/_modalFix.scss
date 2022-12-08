@@ -1,0 +1,10 @@
+//the modal was invisible but blocked clicking on cards inline with it
+.modal-dialog-centered {
+  display: none;
+}
+
+.modal-open {
+  .modal-dialog-centered {
+    display: flex;
+  }
+}

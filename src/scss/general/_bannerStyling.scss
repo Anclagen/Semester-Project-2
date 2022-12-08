@@ -1,0 +1,17 @@
+.h1-logo {
+  max-height: 100px;
+}
+
+.banner-text {
+  font-weight: 500;
+}
+
+.mobile-banner {
+  display: none;
+}
+
+@media only screen and (min-width: 720px) {
+  .mobile-banner {
+    display: flex;
+  }
+}
