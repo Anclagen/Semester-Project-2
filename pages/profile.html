@@ -87,19 +87,21 @@
         <div class="modal-dialog modal-dialog-centered hidden" data-isUsersProfile="true">
           <div class="modal fade" id="updateAvatarModal" tabindex="-1" aria-labelledby="exampleModalCenterTitle" style="display: block" aria-modal="true" role="dialog">
             <div class="modal-dialog modal-dialog-centered">
-              <div class="modal-content">
+              <div class="modal-content bg-background">
                 <form id="update-avatar-form">
                   <div class="modal-header">
                     <h3 class="modal-title fs-5" id="exampleModalCenterTitle">Update Avatar Image</h3>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
+                    <img id="avatar-preview" class="w-100 rounded-circle" src="../images/default-avatar.png" onerror="this.src='../images/default-avatar.png'" alt="avatar image" />
                     <label class="form-label" for="avatar">Avatar</label>
-                    <input type="url" class="form-control" name="avatar" id="avatar" placeholder="example.com/avatar.jpg" />
+                    <div id="avatar-error-reporting"></div>
+                    <input type="url" class="form-control" name="avatar" id="avatar" placeholder="example.com/avatar.jpg" required />
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Save change</button>
+                    <button type="button" id="close-modal-btn" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save change</button>
                   </div>
                 </form>
               </div>
