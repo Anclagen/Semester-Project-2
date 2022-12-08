@@ -1,6 +1,6 @@
 {
   "name": "de-clutter",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "An Auction site as part of a project assignment for Noroff",
   "main": "index.js",
   "devDependencies": {
