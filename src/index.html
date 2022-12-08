@@ -78,32 +78,73 @@
         </div>
       </nav>
     </header>
-    <main class="container-xxl">
+    <main class="container-xxl px-1 px-sm-4 my-4">
       <section class="banner mb-3">
-        <div class="position-relative">
-          <h1 class="position-absolute d-block banner-text">
-            Fancy Name,<br />
-            Find That Diamond In The Rough
-          </h1>
-          <img src="./images/banner_image_mobile.jpg" class="w-100 mobile-banner" alt="sparsely decorated room and assorted items" />
-          <img src="./images/banner_image_desktop.jpg" class="w-100 desktop-banner" alt="sparsely decorated room and assorted items" />
+        <div class="text-center">
+          <h1 class=""><img class="h1-logo" src="./images/compact_forgotten_treasures_logo-white.jpg" alt="Forgotten Treasures logo" /> <span class="text-primary">Forgotten</span> Treasures</h1>
+          <div class="row">
+            <img class="mobile-banner col-md-4 col-xl-4" src="./images/auction-online.png" class="w-100 desktop-banner" alt="Online Auction Image" />
+            <p class="col-6 col-sm-5 col-md-4 col-xl-4 px-xl-5 text-center display-4 py-4 align-self-center banner-text">Find That Diamond In The Rough.</p>
+            <img class="col-6 col-sm-7 col-md-4 col-xl-4" src="./images/bidbid.png" class="w-100 desktop-banner" alt="Bidding On Item On Phone" />
+          </div>
         </div>
       </section>
-      <section>
-        <h2>Ending Soon</h2>
-        <div id="ending-soon" class="row mb-3"></div>
+      <section class="my-4 py-2 rounded-5 bg-white slider-section">
+        <h2 class="px-4 pt-2"><i class="fa-regular fa-clock"></i> Ending Soon</h2>
+        <div id="ending-soon-slider" class="listings-slider-outer-container p-1 px-sm-2 px-md-3 px-lg-4">
+          <div class="previous-arrow"></div>
+          <div class="next-arrow"></div>
+          <div class="listing-slider-rails">
+            <div class="listing-slider">
+              <div class="loader">
+                <div class="outer-loader"></div>
+                <div class="inner-loader"></div>
+                <p>Getting Listings, please wait...</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-center p-3">
+          <a href="./pages/listings.html?sort=ends-soon" class="btn btn-sm btn-primary">View More</a>
+        </div>
       </section>
-      <section>
-        <h2>Newest Listings</h2>
-        <div id="newest" class="row mb-3"></div>
+      <section class="my-4 py-2 rounded-5 bg-white slider-section">
+        <h2 class="px-4 pt-2"><i class="fa-solid fa-fire"></i> Popular Listings</h2>
+        <div id="popular-slider" class="listings-slider-outer-container p-1 px-sm-2 px-md-3 px-lg-4">
+          <div class="previous-arrow"></div>
+          <div class="next-arrow"></div>
+          <div class="listing-slider-rails">
+            <div class="listing-slider">
+              <div class="loader">
+                <div class="outer-loader"></div>
+                <div class="inner-loader"></div>
+                <p>Getting Listings, please wait...</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-center p-3">
+          <a href="./pages/listings.html?sort=popular" class="btn btn-sm btn-primary">View More</a>
+        </div>
       </section>
-      <section>
-        <h2>Hot Listings</h2>
-        <div id="hot-stuff" class="row mb-3"></div>
-      </section>
-      <section class="hidden">
-        <h2>Favourites</h2>
-        <div id="favourites" class="row mb-3"></div>
+      <section class="my-4 py-2 rounded-5 bg-white slider-section">
+        <h2 class="px-4 pt-2"><i class="fa-regular fa-star"></i> Newest Listings</h2>
+        <div id="newest-slider" class="listings-slider-outer-container p-1 px-sm-2 px-md-3 px-lg-4">
+          <div class="previous-arrow"></div>
+          <div class="next-arrow"></div>
+          <div class="listing-slider-rails">
+            <div class="listing-slider">
+              <div class="loader">
+                <div class="outer-loader"></div>
+                <div class="inner-loader"></div>
+                <p>Getting Listings, please wait...</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-center p-3">
+          <a href="./pages/listings.html?sort=newest" class="btn btn-sm btn-primary">View More</a>
+        </div>
       </section>
     </main>
     <footer class="py-3 mt-auto bg-secondary d-flex justify-content-center">

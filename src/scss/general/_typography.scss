@@ -13,6 +13,15 @@ h1 {
     font-size: 1.75rem;
     font-weight: 600;
   }
+
+  span {
+    font-size: 3rem;
+    font-weight: 500;
+    @media only screen and (max-width: 720px) {
+      font-size: 1.75rem;
+      font-weight: 600;
+    }
+  }
 }
 
 h2 {
