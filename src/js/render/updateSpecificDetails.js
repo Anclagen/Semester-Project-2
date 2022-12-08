@@ -47,13 +47,14 @@ export const updateSpecificListingDetails = function (
   if (bids.length > 0) {
     listingBidHistory.innerHTML = "";
     sortedBids.forEach((bid) => {
-      listingBidHistory.innerHTML += `<li>
-                                        <strong>${bid.bidderName}:</strong> £${
-        bid.amount
-      }.00, <strong class="ms-3">Placed: </strong>${new Date(
-        bid.created
-      ).toLocaleDateString()}
-                                      </li>`;
+      listingBidHistory.innerHTML += `<tr>
+                                        <td><strong>${
+                                          bid.bidderName
+                                        }:</strong> £${bid.amount}.00,</td>
+                                        <td><strong class="ms-3">Placed: </strong> ${new Date(
+                                          bid.created
+                                        ).toLocaleDateString()}</td>
+                                      </tr>`;
     });
   }
 
