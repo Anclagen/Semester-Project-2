@@ -18,12 +18,12 @@ if (currentPage.match("authenticate.html")) {
   authenticate();
 } else if (currentPage.match("profile.html")) {
   profileSetup();
-} else if (currentPage.match("index.html") || currentPage.match("./")) {
-  homeSetup();
 } else if (currentPage.match("create.html")) {
   createUpdatePageSetup();
 } else if (currentPage.match("specific.html")) {
   specificPageSetup();
 } else if (currentPage.match("listings.html")) {
   listingPageSetup();
+} else if (currentPage.match("index.html") || currentPage.match("./")) {
+  homeSetup();
 }
