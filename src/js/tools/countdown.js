@@ -7,10 +7,10 @@ export const countdown = function (totalSeconds) {
     const secondsLeft = ("0" + Math.floor(totalSeconds % 60)).slice(-2);
     const minutesLeft = ("0" + Math.floor((totalSeconds / 60) % 60)).slice(-2);
 
-    countdownTimer.innerHTML = `Ends In: ${minutesLeft}:${secondsLeft}`;
+    countdownTimer.innerHTML = `<i class="fa-regular fa-clock"></i> ${minutesLeft}:${secondsLeft}`;
 
     if (totalSeconds <= 0) {
-      countdownTimer.innerHTML = "Ends In: Bidding Is Over";
+      countdownTimer.innerHTML = "Bidding Is Over";
       clearInterval(countdown);
     }
   }, 1000);
