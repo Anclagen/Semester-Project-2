@@ -18,7 +18,7 @@ if (currentPage.match("authenticate.html")) {
   authenticate();
 } else if (currentPage.match("profile.html")) {
   profileSetup();
-} else if (currentPage.match("index.html")) {
+} else if (currentPage.match("index.html") || currentPage.match("./")) {
   homeSetup();
 } else if (currentPage.match("create.html")) {
   createUpdatePageSetup();
