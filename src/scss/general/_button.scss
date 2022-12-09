@@ -20,3 +20,10 @@
   background-color: $primary;
   border-color: $primary;
 }
+
+#show-register,
+#show-login {
+  border: none;
+  background: transparent;
+  text-decoration: underline;
+}

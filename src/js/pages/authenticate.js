@@ -23,6 +23,8 @@ export const authenticate = () => {
   showLoginBtn.addEventListener("click", () => {
     registerForm.classList.toggle("hidden");
     loginForm.classList.toggle("hidden");
+    //shift focus for keyboard users
+    loginForm.email.focus();
   });
 
   showRegisterBtn.addEventListener("click", () => {

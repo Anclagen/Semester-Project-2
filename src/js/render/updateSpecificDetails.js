@@ -47,22 +47,25 @@ export const updateSpecificListingDetails = function (
   if (bids.length > 0) {
     listingBidHistory.innerHTML = "";
     sortedBids.forEach((bid) => {
-      listingBidHistory.innerHTML += `<li>
-                                        <strong>${bid.bidderName}:</strong> £${
-        bid.amount
-      }.00, <strong class="ms-3">Placed: </strong>${new Date(
-        bid.created
-      ).toLocaleDateString()}
-                                      </li>`;
+      listingBidHistory.innerHTML += `<tr>
+                                        <td><strong>${
+                                          bid.bidderName
+                                        }:</strong> £${bid.amount}.00,</td>
+                                        <td><strong class="ms-3">Placed: </strong> ${new Date(
+                                          bid.created
+                                        ).toLocaleDateString()}</td>
+                                      </tr>`;
     });
   }
 
   const listingSellerInfo = document.querySelector("#seller-info-content");
-  listingSellerInfo.innerHTML = `<div class="text-center">
-                                  <img class="seller-info-avatar rounded-circle" src="${seller.avatar}" alt="${seller.name} avatar" />
-                                 </div>
-                                  <p>Name: ${seller.name}</p>
-                                 <p>Contact: ${seller.email}</p>`;
+  listingSellerInfo.innerHTML = `<a href="./profile.html?user=${seller.name}">
+                                  <div class="text-center">
+                                    <img class="seller-info-avatar rounded-circle" src="${seller.avatar}" alt="${seller.name} avatar" />
+                                  </div>
+                                    <p>Name: ${seller.name}</p>
+                                    <p>Contact: ${seller.email}</p>
+                                  </a>`;
 
   if (media.length > 0) {
     renderImageSlider(media);

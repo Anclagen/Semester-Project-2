@@ -9,6 +9,8 @@
     <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/e4f6b5cf1a.js" crossorigin="anonymous"></script>
     <title>Specific Listing</title>
+    <meta name="description" content="Forgotten Treasures, check out this ....." />
+    <link rel="icon" href="../images/compact_forgotten_treasures_logo.jpg" />
   </head>
   <body class="bg-background d-flex flex-column min-vh-100">
     <header class="bg-secondary">
@@ -80,16 +82,15 @@
     </header>
     <main class="container-xxl">
       <section>
-        <h1 class="text-center">{Inset Item Title Here}</h1>
-        <div id="error-reporting-container"class="text-center">
-        </div>
+        <h1 class="text-center my-4">{Inset Item Title Here}</h1>
+        <div id="error-reporting-container" class="text-center"></div>
         <div class="row">
           <!-- Replace this with an image slider! -->
           <div class="col-md-7 p-3 pt-1 mb-5">
             <!-- The primary image slider-->
             <div id="specific" class="carousel slide carousel-dark">
               <div class="carousel-inner main-specific-slider">
-                <div class="carousel-item${index === 0 ? " active" : ""}">
+                <div class="carousel-item">
                   <div class="specific-outer-slider">
                     <div class="specific-inner-slider">
                       <img id="listing-image" src="../images/empty_image.jpg" onerror="src='../images/empty_image.jpg'" alt="Image Placeholder" />
@@ -143,7 +144,7 @@
                 </table>
                 <div class="d-flex justify-content-around">
                   <a data-isLoggedVisibility="false" href="authenticate.html?show=login" class="btn btn-primary my-3">Login</a>
-                  <a data-isLoggedVisibility="false" href="authenticate.html?show=register" class="btn btn-primary my-3">Sign</a>
+                  <a data-isLoggedVisibility="false" href="authenticate.html?show=register" class="btn btn-primary my-3">Signup</a>
                 </div>
                 <div class="d-flex justify-content-around">
                   <button id="delete-listing-btn" data-isLoggedVisibility="true" data-isNotSeller="true" type="button" class="btn btn-danger my-3">Delete Listing</button>
@@ -165,9 +166,11 @@
               </div> -->
               <div class="mb-2 multi-collapse collapse show" id="bid-history">
                 <div class="card card-body">
-                  <ul class="m-0" id="bid-history-content">
-                    <li>No Bids Yet!</li>
-                  </ul>
+                  <table class="m-0 w-100 fs-6" id="bid-history-content">
+                    <tr>
+                      <td colspan="2">No Bids Yet!</td>
+                    </tr>
+                  </table>
                 </div>
               </div>
               <div class="mb-2 multi-collapse collapse" id="seller-info">

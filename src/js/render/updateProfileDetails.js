@@ -13,8 +13,12 @@ export const updateProfileDetails = function ({
   //const bids = document.querySelector("#bids");
   const numberOfListings = document.querySelector("#active-listings");
   username.innerHTML = name;
-  avatarImage.src = avatar;
   contactInfo.innerHTML = email;
   balance.innerHTML = "£" + credits;
   numberOfListings.innerHTML = listings.length;
+  avatarImage.src = avatar;
+  avatarImage.alt = `${name}'s avatar`;
+  if (avatar === "") {
+    avatarImage.src = "../images/default-avatar.png";
+  }
 };

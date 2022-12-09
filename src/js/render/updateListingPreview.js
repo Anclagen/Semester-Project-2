@@ -17,5 +17,8 @@ export const updatePreview = function (media = false) {
       .map((input) => input.value)
       .filter((value) => value !== "");
   }
-  renderImageSlider(media);
+
+  if (media.length > 0) {
+    renderImageSlider(media);
+  }
 };

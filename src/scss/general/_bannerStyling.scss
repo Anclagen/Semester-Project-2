@@ -1,5 +1,5 @@
 .h1-logo {
-  max-height: 100px;
+  max-height: 60px;
 }
 
 .banner-text {
@@ -13,5 +13,9 @@
 @media only screen and (min-width: 720px) {
   .mobile-banner {
     display: flex;
+  }
+
+  .h1-logo {
+    max-height: 100px;
   }
 }

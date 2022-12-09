@@ -8,8 +8,8 @@
     <script src="../src/js/index.js" type="module"></script>
     <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/e4f6b5cf1a.js" crossorigin="anonymous"></script>
-    <title>Profile</title>
-    <meta name="description" content="Forgotten Treasures, View your profile, to get info on your balance, bid history and listing progress." />
+    <title>Contact | Forgotten Treasures</title>
+    <meta name="description" content="Forgotten Treasures, need to ask us a question, fill out a query form and one of are customer care specialists will get back to you as soon as possible." />
     <link rel="icon" href="../images/compact_forgotten_treasures_logo.jpg" />
   </head>
   <body class="bg-background d-flex flex-column min-vh-100">
@@ -48,7 +48,7 @@
                 <a class="nav-link" href="listings.html"><i class="fa-solid fa-hand-holding-dollar pe-1"></i>Buy</a>
               </li>
               <li class="nav-item" data-isLoggedVisibility="true">
-                <a class="nav-link" href="contact.html"><i class="fa-solid fa-headphones pe-1"></i>Contact</a>
+                <a class="nav-link active" href="contact.html"><i class="fa-solid fa-headphones pe-1"></i>Contact</a>
               </li>
               <li class="nav-item ms-md-auto" data-isLoggedVisibility="false">
                 <a class="nav-link" href="authenticate.html?show=login"><i class="fa-sharp fa-solid fa-right-to-bracket px-1"></i>Login</a>
@@ -62,7 +62,7 @@
                 </a>
                 <ul class="dropdown-menu bg-secondary border-primary">
                   <li>
-                    <a class="dropdown-item nav-link active text-white" href="profile.html" aria-current="page"><i class="fa-solid fa-circle-user px-1"></i>Profile</a>
+                    <a class="dropdown-item" href="profile.html" aria-current="page"><i class="fa-solid fa-circle-user px-1"></i>Profile</a>
                   </li>
                   <li>
                     <a class="dropdown-item" href="profile.html#your-bids"><i class="fa-solid fa-hand-holding-dollar px-1"></i>Your Bids</a>
@@ -81,72 +81,13 @@
       </nav>
     </header>
     <main class="container-xxl">
-      <section class="bg-secondary rounded-3 p-2 p-md-4 mt-3">
-        <h1 class="text-center">{Insert Username Here!}</h1>
-        <!-- Update avatar form modal -->
-        <div class="modal-dialog modal-dialog-centered hidden" data-isUsersProfile="true">
-          <div class="modal fade" id="updateAvatarModal" tabindex="-1" aria-labelledby="exampleModalCenterTitle" style="display: block" aria-modal="true" role="dialog">
-            <div class="modal-dialog modal-dialog-centered">
-              <div class="modal-content bg-background">
-                <form id="update-avatar-form">
-                  <div class="modal-header">
-                    <h3 class="modal-title fs-5" id="exampleModalCenterTitle">Update Avatar Image</h3>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                    <img id="avatar-preview" class="w-100 rounded-circle" src="../images/default-avatar.png" onerror="this.src='../images/default-avatar.png'" alt="avatar image" />
-                    <label class="form-label" for="avatar">Avatar</label>
-                    <div id="avatar-error-reporting"></div>
-                    <input type="url" class="form-control" name="avatar" id="avatar" placeholder="example.com/avatar.jpg" required />
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" id="close-modal-btn" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save change</button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Profile Details -->
+      <section>
+        <h1 class="text-center">Contact Us</h1>
+        <div id="error-reporting-container" class="text-center"></div>
         <div class="row">
-          <div class="col-md-3 text-center">
-            <img class="rounded-circle w-100 profile-page-avatar" id="userAvatarImage" src="../images/default-avatar.png" onerror="this.src='../images/default-avatar.png'" alt="User's Avatar" />
-            <button type="button" class="btn btn-primary mt-2 hidden" data-bs-toggle="modal" data-isUsersProfile="true" data-bs-target="#updateAvatarModal">Update Avatar</button>
-          </div>
-          <div class="col">
-            <table class="w-100 ms-md-3">
-              <tr>
-                <td>Contact Info:</td>
-                <td id="contact-info">{insert info}</td>
-              </tr>
-              <tr data-isUsersProfile="true" class="hidden">
-                <td>Balance:</td>
-                <td id="balance">{insert name}</td>
-              </tr>
-              <tr data-isUsersProfile="true" class="hidden">
-                <td>Bids Ongoing:</td>
-                <td id="bids">{insert winning/losing stats}</td>
-              </tr>
-              <tr>
-                <td>Active Listings:</td>
-                <td id="active-listings">{insert number}</td>
-              </tr>
-            </table>
-          </div>
+          <div class="col-md-7 p-3 pt-1 mb-5"></div>
+          <div class="col-md-5"></div>
         </div>
-      </section>
-      <section id="your-bids">
-        <h2>Your Bids</h2>
-        <div id="ongoing-bids-container"></div>
-      </section>
-      <section id="your-listings">
-        <h2>Your Listings</h2>
-        <div class="row w-100" id="your-listings-container"></div>
-      </section>
-      <section id="your-favourites">
-        <h2>Your Favourites</h2>
-        <div id="ongoing-bids-container"></div>
       </section>
     </main>
     <footer class="py-3 mt-auto bg-secondary d-flex justify-content-center">
