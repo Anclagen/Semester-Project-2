@@ -115,7 +115,7 @@
               <label> <input type="checkbox" class="check-lg" value="remember-me" /> Remember me </label>
             </div>
             <button class="w-100 btn btn-lg btn-primary" id="submit-btn" type="submit">Login</button>
-            <div class="mt-3"><span id="toggle-text">Not a member?</span><button id="show-register" type="button">Sign Up Here</button></div>
+            <div class="mt-3"><span id="toggle-text">Not a member?</span><button id="show-register" class="text-primary" type="button">Sign Up Here</button></div>
           </form>
           <!-- Register Form -->
           <form id="register-form">
@@ -146,6 +146,7 @@
                 id="register-username"
                 placeholder="Example_User"
                 title="Must not contain punctuation symbols apart from underscore (_)."
+                pattern="^[\w]+$"
                 required
               />
             </div>
@@ -181,7 +182,7 @@
               <input type="url" name="avatar" class="form-control mb-3 p-2" id="register-avatar" placeholder="example.com/images/your_avatar.jpg" />
             </div>
             <button class="w-100 btn btn-lg btn-primary" id="submit-btn" type="submit">Register</button>
-            <div class="mt-3"><span id="toggle-text">Already a member?</span><button id="show-login" type="button">Login Here</button></div>
+            <div class="mt-3"><span id="toggle-text">Already a member?</span><button id="show-login" class="text-primary" type="button">Login Here</button></div>
           </form>
         </div>
         <div class="col-lg-7 col-xl-8 align-self-center entry-image text-center">
