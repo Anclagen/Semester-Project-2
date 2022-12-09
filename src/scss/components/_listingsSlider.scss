@@ -24,6 +24,12 @@
   grid-template-columns: repeat(20, 1fr);
   transition: transform 0.5s;
   width: 2000%;
+
+  .listing-card {
+    h3 {
+      word-wrap: anywhere;
+    }
+  }
 }
 
 .slider-listing-content {
