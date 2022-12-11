@@ -6,5 +6,12 @@ import { storage } from "../../storage/storage.js";
 export const logout = function () {
   storage.remove("token");
   storage.remove("profile");
-  location.href = "../index.html";
+
+  const currentPage = window.location.href;
+
+  if (currentPage.match("/pages/")) {
+    location.href = "../index.html";
+  } else {
+    location.href = "./index.html";
+  }
 };
