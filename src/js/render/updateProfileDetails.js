@@ -13,9 +13,9 @@ export const updateProfileDetails = function ({
   //const bids = document.querySelector("#bids");
   const numberOfListings = document.querySelector("#active-listings");
   username.innerHTML = name;
-  contactInfo.innerHTML = email;
-  balance.innerHTML = "£" + credits;
-  numberOfListings.innerHTML = listings.length;
+  contactInfo.innerHTML = `<p>${email}</p>`;
+  balance.innerHTML = `<p>£${credits}</p>`;
+  numberOfListings.innerHTML = `<p>Listings: ${listings.length}</p>`;
   avatarImage.src = avatar;
   avatarImage.alt = `${name}'s avatar`;
   if (avatar === "") {

@@ -1,39 +1,29 @@
 import { getAListings } from "../api/listing/getAListing.js";
-//import { getUserProfile } from "../api/profile/getProfile.js";
-import { deleteListingListener } from "../listeners/listing/deleteListing.js";
 import { placeBidFormListener } from "../listeners/listing/placeBid.js";
-import { updateSpecificListingDetails } from "../render/updateSpecificDetails.js";
+import { addListingOptions } from "../render/specific/addListingOptions.js";
+import { updateSpecificListingDetails } from "../render/specific/updateSpecificDetails.js";
 import { storage } from "../storage/storage.js";
+import { getParamURL } from "../tools/getParamsURL.js";
 
 export const specificPageSetup = async function () {
-  const queryString = window.location.search;
-  const params = new URLSearchParams(queryString);
-  let id = params.get("id");
+  const id = getParamURL("id");
   if (id) {
     try {
-      //const profile = await getUserProfile(n)
       const listingData = await getAListings(id);
-      console.log(listingData);
       //create profile check function to set max bid.
-      updateSpecificListingDetails(listingData, 1000);
+      updateSpecificListingDetails(listingData);
       // isLoggedVisibility takes care of unregistered users
       if (listingData.seller.name !== storage.get("profile").name) {
         //if not the seller then bidding enabled and delete/update buttons hidden
         const biddingForm = document.querySelector("#bidding-form");
         biddingForm.addEventListener("submit", placeBidFormListener);
-
         const NotSeller = document.querySelectorAll("[data-isNotSeller=true]");
         NotSeller.forEach((item) => item.classList.add("hidden"));
       } else if (listingData.seller.name === storage.get("profile").name) {
         // hides bidding button, enables update and delete buttons
         const seller = document.querySelectorAll("[data-isNotSeller=false]");
         seller.forEach((item) => item.classList.add("hidden"));
-
-        const deleteButton = document.querySelector("#delete-listing-btn");
-        deleteButton.addEventListener("click", deleteListingListener);
-
-        const updateButton = document.querySelector("#edit-listing-btn");
-        updateButton.href = `create.html?id=${listingData.id}`;
+        addListingOptions();
       }
     } catch (error) {
       console.log(error);

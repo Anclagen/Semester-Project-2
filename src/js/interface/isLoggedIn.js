@@ -1,7 +1,8 @@
 import { storage } from "../storage/storage.js";
 import { logout } from "../listeners/authenticate/logout.js";
+import { getUserProfile } from "../api/profile/getProfile.js";
 
-export const isUserLoggedIn = function () {
+export const isUserLoggedIn = async function () {
   document.querySelector("#logout-btn").addEventListener("click", logout);
 
   const loggedIn = document.querySelectorAll("[data-isLoggedVisibility=true]");
@@ -13,6 +14,10 @@ export const isUserLoggedIn = function () {
   // Hide links and buttons depending on if the user is logged or not.
   if (isLoggedIn) {
     loggedOut.forEach((item) => item.classList.add("hidden"));
+    loggedIn.forEach((item) => item.classList.remove("hidden"));
+    //update users credentials namely credits/avatar
+    const profile = await getUserProfile(storage.get("profile").name);
+    storage.set("profile", profile);
   } else {
     // redirect on profile and create when not logged in.
     const url = window.location.href.toString();
