@@ -22,7 +22,7 @@ export const createUpdatePageSetup = async function () {
   removeMediaBtn.addEventListener("click", removeMediaInput);
 
   form.addEventListener("submit", createUpdateFormListener);
-  form.addEventListener("change", updatePreview);
+  form.addEventListener("input", updatePreview);
 
   if (id) {
     H1.innerText = "Update Listing";

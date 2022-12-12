@@ -41,6 +41,7 @@ export const setupListingSlider = function (data, container) {
       sliderContentWrap.classList = "slider-listing-content";
 
       const listingCard = createListingCard(data[i]);
+      //overwrite grid classes
       listingCard.classList = "p-2 p-xl-3 listing-card h-100";
       sliderContentWrap.append(listingCard);
       sliderContentContainer.append(sliderContentWrap);

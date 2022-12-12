@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../dist/css/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet" />
     <script src="../src/js/index.js" type="module"></script>
     <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://kit.fontawesome.com/e4f6b5cf1a.js" crossorigin="anonymous"></script>
@@ -61,16 +64,18 @@
                   <img id="nav-avatar" class="rounded-circle" src="../images/default-avatar.png" alt="user avatar" /> Account
                 </a>
                 <ul class="dropdown-menu bg-secondary border-primary">
-                  <li>
+                  <li class="nav-item">
                     <a class="dropdown-item nav-link active text-white" href="profile.html" aria-current="page"><i class="fa-solid fa-circle-user px-1"></i>Profile</a>
                   </li>
-                  <li>
-                    <a class="dropdown-item" href="profile.html#your-bids"><i class="fa-solid fa-hand-holding-dollar px-1"></i>Your Bids</a>
+
+                  <li class="nav-item">
+                    <a class="nav-item dropdown-item" href="profile.html#your-bids"><i class="fa-solid fa-hand-holding-dollar px-1"></i>Your Bids</a>
                   </li>
-                  <li>
+                  <li class="nav-item">
                     <a class="dropdown-item" href="profile.html#your-listings"><i class="fa-solid fa-sign-hanging px-1"></i>Your Listings</a>
                   </li>
-                  <li class="border-top border-primary pt-2 mt-2">
+                  <li id="user-balance"></li>
+                  <li class="nav-item border-top border-primary pt-2 mt-2">
                     <a class="dropdown-item" href="#" id="logout-btn"><i class="fa-solid fa-right-from-bracket px-1"></i>Sign Out</a>
                   </li>
                 </ul>
@@ -81,8 +86,9 @@
       </nav>
     </header>
     <main class="container-xxl">
-      <section class="bg-secondary rounded-3 p-2 p-md-4 mt-3">
-        <h1 class="text-center">{Insert Username Here!}</h1>
+      <div id="delete-success"></div>
+      <section class="px-3">
+        <h1 class="text-center"><div class="skeleton skeleton-headings"></div></h1>
         <!-- Update avatar form modal -->
         <div class="modal-dialog modal-dialog-centered hidden" data-isUsersProfile="true">
           <div class="modal fade" id="updateAvatarModal" tabindex="-1" aria-labelledby="exampleModalCenterTitle" style="display: block" aria-modal="true" role="dialog">
@@ -109,44 +115,360 @@
           </div>
         </div>
         <!-- Profile Details -->
-        <div class="row">
-          <div class="col-md-3 text-center">
-            <img class="rounded-circle w-100 profile-page-avatar" id="userAvatarImage" src="../images/default-avatar.png" onerror="this.src='../images/default-avatar.png'" alt="User's Avatar" />
-            <button type="button" class="btn btn-primary mt-2 hidden" data-bs-toggle="modal" data-isUsersProfile="true" data-bs-target="#updateAvatarModal">Update Avatar</button>
+        <div class="row pb-3">
+          <div class="bg-secondary rounded-3 p-3 p-md-4 mt-3 col-md-5 col-lg-4 col-xl-3 slider-section h-fit-content">
+            <div class="text-center">
+              <img class="rounded-circle w-100 profile-page-avatar" id="userAvatarImage" src="../images/default-avatar.png" onerror="this.src='../images/default-avatar.png'" alt="User's Avatar" />
+              <button type="button" class="btn btn-primary my-2 hidden btn-sm" data-bs-toggle="modal" data-isUsersProfile="true" data-bs-target="#updateAvatarModal">Update Avatar</button>
+            </div>
+            <p class="m-0">Contact:</p>
+            <div id="contact-info"><div class="skeleton skeleton-text w-50"></div></div>
+            <div data-isUsersProfile="true" class="hidden">
+              <p class="m-0">Balance:</p>
+              <div id="balance">
+                <div class="skeleton skeleton-text w-25"></div>
+              </div>
+            </div>
+            <div id="active-listings">
+              <div class="skeleton skeleton-text w-25"></div>
+            </div>
           </div>
-          <div class="col">
-            <table class="w-100 ms-md-3">
-              <tr>
-                <td>Contact Info:</td>
-                <td id="contact-info">{insert info}</td>
-              </tr>
-              <tr data-isUsersProfile="true" class="hidden">
-                <td>Balance:</td>
-                <td id="balance">{insert name}</td>
-              </tr>
-              <tr data-isUsersProfile="true" class="hidden">
-                <td>Bids Ongoing:</td>
-                <td id="bids">{insert winning/losing stats}</td>
-              </tr>
-              <tr>
-                <td>Active Listings:</td>
-                <td id="active-listings">{insert number}</td>
-              </tr>
-            </table>
+          <div class="p-0 px-md-4 mt-3 col-md-7 col-lg-8 col-xl-9">
+            <div class="bg-background-secondary rounded-3 w-100 h-100 slider-section">
+              <div class="p-3">
+                <h2>Recent Win(s)</h2>
+                <div id="recent-wins-container" class="row">
+                  <div class="p-2 p-xl-3 col-lg-6 col-xl-4 listing-card">
+                    <div class="container-fluid h-100 p-2 bg-white rounded-2">
+                      <div class="h-100 d-flex flex-column align-content-around">
+                        <div class="listing-image-container">
+                          <div class="listing-image-container rounded">
+                            <div class="skeleton w-100 h-100"></div>
+                          </div>
+                        </div>
+                        <div class="mt-2 flex-fill px-1">
+                          <div class="skeleton skeleton-text w-100"></div>
+                          <div class="skeleton skeleton-text w-75"></div>
+                        </div>
+                        <div class="px-1 py-2"><div class="skeleton skeleton-text w-75"></div></div>
+                        <div class="px-1 pt-1"><div class="px-1 mb-2 skeleton skeleton-text w-100"></div></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="p-2 p-xl-3 col-lg-6 col-xl-4 listing-card d-none d-xl-flex d-lg-flex">
+                    <div class="container-fluid h-100 p-2 bg-white rounded-2">
+                      <div class="h-100 d-flex flex-column align-content-around">
+                        <div class="listing-image-container">
+                          <div class="listing-image-container rounded">
+                            <div class="skeleton w-100 h-100"></div>
+                          </div>
+                        </div>
+                        <div class="mt-2 flex-fill px-1">
+                          <div class="skeleton skeleton-text w-100"></div>
+                          <div class="skeleton skeleton-text w-75"></div>
+                        </div>
+                        <div class="px-1 py-2"><div class="skeleton skeleton-text w-75"></div></div>
+                        <div class="px-1 pt-1"><div class="px-1 mb-2 skeleton skeleton-text w-100"></div></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="p-2 p-xl-3 col-lg-6 col-xl-4 listing-card d-none d-xl-flex">
+                    <div class="container-fluid h-100 p-2 bg-white rounded-2">
+                      <div class="h-100 d-flex flex-column align-content-around">
+                        <div class="listing-image-container">
+                          <div class="listing-image-container rounded">
+                            <div class="skeleton w-100 h-100"></div>
+                          </div>
+                        </div>
+                        <div class="mt-2 flex-fill px-1">
+                          <div class="skeleton skeleton-text w-100"></div>
+                          <div class="skeleton skeleton-text w-75"></div>
+                        </div>
+                        <div class="px-1 py-2"><div class="skeleton skeleton-text w-75"></div></div>
+                        <div class="px-1 pt-1"><div class="px-1 mb-2 skeleton skeleton-text w-100"></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="p-3 pt-0">
+                <h2>Recent Listing(s)</h2>
+                <div id="newest-listings-container" class="row">
+                  <div class="p-2 p-xl-3 col-lg-6 col-xl-4 listing-card">
+                    <div class="container-fluid h-100 p-2 bg-white rounded-2">
+                      <div class="h-100 d-flex flex-column align-content-around">
+                        <div class="listing-image-container">
+                          <div class="listing-image-container rounded">
+                            <div class="skeleton w-100 h-100"></div>
+                          </div>
+                        </div>
+                        <div class="mt-2 flex-fill px-1">
+                          <div class="skeleton skeleton-text w-100"></div>
+                          <div class="skeleton skeleton-text w-75"></div>
+                        </div>
+                        <div class="px-1 py-2"><div class="skeleton skeleton-text w-75"></div></div>
+                        <div class="px-1 pt-1"><div class="px-1 mb-2 skeleton skeleton-text w-100"></div></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="p-2 p-xl-3 col-lg-6 col-xl-4 listing-card d-none d-xl-flex d-lg-flex">
+                    <div class="container-fluid h-100 p-2 bg-white rounded-2">
+                      <div class="h-100 d-flex flex-column align-content-around">
+                        <div class="listing-image-container">
+                          <div class="listing-image-container rounded">
+                            <div class="skeleton w-100 h-100"></div>
+                          </div>
+                        </div>
+                        <div class="mt-2 flex-fill px-1">
+                          <div class="skeleton skeleton-text w-100"></div>
+                          <div class="skeleton skeleton-text w-75"></div>
+                        </div>
+                        <div class="px-1 py-2"><div class="skeleton skeleton-text w-75"></div></div>
+                        <div class="px-1 pt-1"><div class="px-1 mb-2 skeleton skeleton-text w-100"></div></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="p-2 p-xl-3 col-lg-6 col-xl-4 listing-card d-none d-xl-flex">
+                    <div class="container-fluid h-100 p-2 bg-white rounded-2">
+                      <div class="h-100 d-flex flex-column align-content-around">
+                        <div class="listing-image-container">
+                          <div class="listing-image-container rounded">
+                            <div class="skeleton w-100 h-100"></div>
+                          </div>
+                        </div>
+                        <div class="mt-2 flex-fill px-1">
+                          <div class="skeleton skeleton-text w-100"></div>
+                          <div class="skeleton skeleton-text w-75"></div>
+                        </div>
+                        <div class="px-1 py-2"><div class="skeleton skeleton-text w-75"></div></div>
+                        <div class="px-1 pt-1"><div class="px-1 mb-2 skeleton skeleton-text w-100"></div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
       <section id="your-bids">
-        <h2>Your Bids</h2>
-        <div id="ongoing-bids-container"></div>
+        <h2 class="ps-3">All Active Bids</h2>
+        <div class="row w-100" id="ongoing-bids-container">
+          <div class="p-2 p-xl-3 col-sm-6 col-md-4 col-lg-3 listing-card">
+            <div class="container-fluid h-100 p-2 bg-white rounded-2">
+              <div class="h-100 d-flex flex-column align-content-around">
+                <div class="listing-image-container">
+                  <div class="listing-image-container rounded">
+                    <div class="skeleton w-100 h-100"></div>
+                  </div>
+                </div>
+                <div class="mt-2 flex-fill px-1">
+                  <div class="skeleton skeleton-text w-100"></div>
+                  <div class="skeleton skeleton-text w-75"></div>
+                </div>
+                <div class="px-1 py-2"><div class="skeleton skeleton-text w-75"></div></div>
+                <div class="px-1 pt-1"><div class="px-1 mb-2 skeleton skeleton-text w-100"></div></div>
+              </div>
+            </div>
+          </div>
+          <div class="p-2 p-xl-3 col-sm-6 col-md-4 col-lg-3 listing-card">
+            <div class="container-fluid h-100 p-2 bg-white rounded-2">
+              <div class="h-100 d-flex flex-column align-content-around">
+                <div class="listing-image-container">
+                  <div class="listing-image-container rounded">
+                    <div class="skeleton w-100 h-100"></div>
+                  </div>
+                </div>
+                <div class="mt-2 flex-fill px-1">
+                  <div class="skeleton skeleton-text w-100"></div>
+                  <div class="skeleton skeleton-text w-75"></div>
+                </div>
+                <div class="px-1 py-2"><div class="skeleton skeleton-text w-75"></div></div>
+                <div class="px-1 pt-1"><div class="px-1 mb-2 skeleton skeleton-text w-100"></div></div>
+              </div>
+            </div>
+          </div>
+          <div class="p-2 p-xl-3 col-sm-6 col-md-4 col-lg-3 listing-card">
+            <div class="container-fluid h-100 p-2 bg-white rounded-2">
+              <div class="h-100 d-flex flex-column align-content-around">
+                <div class="listing-image-container">
+                  <div class="listing-image-container rounded">
+                    <div class="skeleton w-100 h-100"></div>
+                  </div>
+                </div>
+                <div class="mt-2 flex-fill px-1">
+                  <div class="skeleton skeleton-text w-100"></div>
+                  <div class="skeleton skeleton-text w-75"></div>
+                </div>
+                <div class="px-1 py-2"><div class="skeleton skeleton-text w-75"></div></div>
+                <div class="px-1 pt-1"><div class="px-1 mb-2 skeleton skeleton-text w-100"></div></div>
+              </div>
+            </div>
+          </div>
+          <div class="p-2 p-xl-3 col-sm-6 col-md-4 col-lg-3 listing-card">
+            <div class="container-fluid h-100 p-2 bg-white rounded-2">
+              <div class="h-100 d-flex flex-column align-content-around">
+                <div class="listing-image-container">
+                  <div class="listing-image-container rounded">
+                    <div class="skeleton w-100 h-100"></div>
+                  </div>
+                </div>
+                <div class="mt-2 flex-fill px-1">
+                  <div class="skeleton skeleton-text w-100"></div>
+                  <div class="skeleton skeleton-text w-75"></div>
+                </div>
+                <div class="px-1 py-2"><div class="skeleton skeleton-text w-75"></div></div>
+                <div class="px-1 pt-1"><div class="px-1 mb-2 skeleton skeleton-text w-100"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
       <section id="your-listings">
-        <h2>Your Listings</h2>
-        <div class="row w-100" id="your-listings-container"></div>
+        <h2 class="ps-3">All User's Listings</h2>
+        <div class="row w-100" id="your-listings-container">
+          <div class="p-2 p-xl-3 col-sm-6 col-md-4 col-lg-3 listing-card">
+            <div class="container-fluid h-100 p-2 bg-white rounded-2">
+              <div class="h-100 d-flex flex-column align-content-around">
+                <div class="listing-image-container">
+                  <div class="listing-image-container rounded">
+                    <div class="skeleton w-100 h-100"></div>
+                  </div>
+                </div>
+                <div class="mt-2 flex-fill px-1">
+                  <div class="skeleton skeleton-text w-100"></div>
+                  <div class="skeleton skeleton-text w-75"></div>
+                </div>
+                <div class="px-1 py-2"><div class="skeleton skeleton-text w-75"></div></div>
+                <div class="px-1 pt-1"><div class="px-1 mb-2 skeleton skeleton-text w-100"></div></div>
+              </div>
+            </div>
+          </div>
+          <div class="p-2 p-xl-3 col-sm-6 col-md-4 col-lg-3 listing-card">
+            <div class="container-fluid h-100 p-2 bg-white rounded-2">
+              <div class="h-100 d-flex flex-column align-content-around">
+                <div class="listing-image-container">
+                  <div class="listing-image-container rounded">
+                    <div class="skeleton w-100 h-100"></div>
+                  </div>
+                </div>
+                <div class="mt-2 flex-fill px-1">
+                  <div class="skeleton skeleton-text w-100"></div>
+                  <div class="skeleton skeleton-text w-75"></div>
+                </div>
+                <div class="px-1 py-2"><div class="skeleton skeleton-text w-75"></div></div>
+                <div class="px-1 pt-1"><div class="px-1 mb-2 skeleton skeleton-text w-100"></div></div>
+              </div>
+            </div>
+          </div>
+          <div class="p-2 p-xl-3 col-sm-6 col-md-4 col-lg-3 listing-card">
+            <div class="container-fluid h-100 p-2 bg-white rounded-2">
+              <div class="h-100 d-flex flex-column align-content-around">
+                <div class="listing-image-container">
+                  <div class="listing-image-container rounded">
+                    <div class="skeleton w-100 h-100"></div>
+                  </div>
+                </div>
+                <div class="mt-2 flex-fill px-1">
+                  <div class="skeleton skeleton-text w-100"></div>
+                  <div class="skeleton skeleton-text w-75"></div>
+                </div>
+                <div class="px-1 py-2"><div class="skeleton skeleton-text w-75"></div></div>
+                <div class="px-1 pt-1"><div class="px-1 mb-2 skeleton skeleton-text w-100"></div></div>
+              </div>
+            </div>
+          </div>
+          <div class="p-2 p-xl-3 col-sm-6 col-md-4 col-lg-3 listing-card">
+            <div class="container-fluid h-100 p-2 bg-white rounded-2">
+              <div class="h-100 d-flex flex-column align-content-around">
+                <div class="listing-image-container">
+                  <div class="listing-image-container rounded">
+                    <div class="skeleton w-100 h-100"></div>
+                  </div>
+                </div>
+                <div class="mt-2 flex-fill px-1">
+                  <div class="skeleton skeleton-text w-100"></div>
+                  <div class="skeleton skeleton-text w-75"></div>
+                </div>
+                <div class="px-1 py-2"><div class="skeleton skeleton-text w-75"></div></div>
+                <div class="px-1 pt-1"><div class="px-1 mb-2 skeleton skeleton-text w-100"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
-      <section id="your-favourites">
-        <h2>Your Favourites</h2>
-        <div id="ongoing-bids-container"></div>
+      <section id="your-wins">
+        <h2 class="ps-3">All User's Wins</h2>
+        <div class="row w-100 mb-3" id="wins-container">
+          <div class="p-2 p-xl-3 col-sm-6 col-md-4 col-lg-3 listing-card">
+            <div class="container-fluid h-100 p-2 bg-white rounded-2">
+              <div class="h-100 d-flex flex-column align-content-around">
+                <div class="listing-image-container">
+                  <div class="listing-image-container rounded">
+                    <div class="skeleton w-100 h-100"></div>
+                  </div>
+                </div>
+                <div class="mt-2 flex-fill px-1">
+                  <div class="skeleton skeleton-text w-100"></div>
+                  <div class="skeleton skeleton-text w-75"></div>
+                </div>
+                <div class="px-1 py-2"><div class="skeleton skeleton-text w-75"></div></div>
+                <div class="px-1 pt-1"><div class="px-1 mb-2 skeleton skeleton-text w-100"></div></div>
+              </div>
+            </div>
+          </div>
+          <div class="p-2 p-xl-3 col-sm-6 col-md-4 col-lg-3 listing-card">
+            <div class="container-fluid h-100 p-2 bg-white rounded-2">
+              <div class="h-100 d-flex flex-column align-content-around">
+                <div class="listing-image-container">
+                  <div class="listing-image-container rounded">
+                    <div class="skeleton w-100 h-100"></div>
+                  </div>
+                </div>
+                <div class="mt-2 flex-fill px-1">
+                  <div class="skeleton skeleton-text w-100"></div>
+                  <div class="skeleton skeleton-text w-75"></div>
+                </div>
+                <div class="px-1 py-2"><div class="skeleton skeleton-text w-75"></div></div>
+                <div class="px-1 pt-1"><div class="px-1 mb-2 skeleton skeleton-text w-100"></div></div>
+              </div>
+            </div>
+          </div>
+          <div class="p-2 p-xl-3 col-sm-6 col-md-4 col-lg-3 listing-card">
+            <div class="container-fluid h-100 p-2 bg-white rounded-2">
+              <div class="h-100 d-flex flex-column align-content-around">
+                <div class="listing-image-container">
+                  <div class="listing-image-container rounded">
+                    <div class="skeleton w-100 h-100"></div>
+                  </div>
+                </div>
+                <div class="mt-2 flex-fill px-1">
+                  <div class="skeleton skeleton-text w-100"></div>
+                  <div class="skeleton skeleton-text w-75"></div>
+                </div>
+                <div class="px-1 py-2"><div class="skeleton skeleton-text w-75"></div></div>
+                <div class="px-1 pt-1"><div class="px-1 mb-2 skeleton skeleton-text w-100"></div></div>
+              </div>
+            </div>
+          </div>
+          <div class="p-2 p-xl-3 col-sm-6 col-md-4 col-lg-3 listing-card">
+            <div class="container-fluid h-100 p-2 bg-white rounded-2">
+              <div class="h-100 d-flex flex-column align-content-around">
+                <div class="listing-image-container">
+                  <div class="listing-image-container rounded">
+                    <div class="skeleton w-100 h-100"></div>
+                  </div>
+                </div>
+                <div class="mt-2 flex-fill px-1">
+                  <div class="skeleton skeleton-text w-100"></div>
+                  <div class="skeleton skeleton-text w-75"></div>
+                </div>
+                <div class="px-1 py-2"><div class="skeleton skeleton-text w-75"></div></div>
+                <div class="px-1 pt-1"><div class="px-1 mb-2 skeleton skeleton-text w-100"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
     </main>
     <footer class="py-3 mt-auto bg-secondary d-flex justify-content-center">

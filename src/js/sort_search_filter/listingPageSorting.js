@@ -1,5 +1,5 @@
 import { getAllListings } from "../api/listing/getAllListings.js";
-import { addLoader } from "../render/loader.js";
+import { skeletonLoaderListingCards } from "../render/loader.js";
 import { renderActiveListings } from "../tools/renderActiveListing.js";
 import { getParamURL } from "../tools/getParamsURL.js";
 import { searchListings } from "./search.js";
@@ -26,7 +26,7 @@ export const showSortedListings = async function (
     const inputs = document.querySelectorAll("input[type=radio]");
     const listingsContainer = document.querySelector("#listing-results");
     listingsContainer.innerHTML = "";
-    addLoader(listingsContainer);
+    skeletonLoaderListingCards(listingsContainer);
 
     // filter results for search if querystring present
     const search = getParamURL("search");

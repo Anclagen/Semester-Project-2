@@ -1,10 +1,15 @@
-import { timeLeft } from "../tools/timeLeft.js";
-import { renderImageSlider } from "./createImageSlider.js";
+import { timeLeft } from "../../tools/timeLeft.js";
+import { renderImageSlider } from "../createImageSlider.js";
+import { storage } from "../../storage/storage.js";
 
-export const updateSpecificListingDetails = function (
-  { title, bids, endsAt, description, media, seller },
-  { credits }
-) {
+export const updateSpecificListingDetails = function ({
+  title,
+  bids,
+  endsAt,
+  description,
+  media,
+  seller,
+}) {
   let winningBidAmount = 0;
   let winningUser = "No Bidders";
   const sortedBids = bids.sort((a, b) => b.amount - a.amount);
@@ -15,32 +20,38 @@ export const updateSpecificListingDetails = function (
   }
 
   const listingTitle = document.querySelector("h1");
+  listingTitle.innerHTML = "";
   listingTitle.innerText = title;
 
-  const listingTimeLeft = document.querySelector("#time-left");
-  listingTimeLeft.append(timeLeft(endsAt));
+  const listingTimeBids = document.querySelector("#time-bids");
+  listingTimeBids.innerHTML = "";
+  listingTimeBids.append(timeLeft(endsAt));
+  listingTimeBids.innerHTML += `<span class="ms-3" id="number-bids">Totals Bids: ${bids.length}<span>`;
 
-  const listingNumberBids = document.querySelector("#number-bids");
-  listingNumberBids.innerText = `Totals Bids: ${bids.length}`;
-
-  console.log(bids.length);
   const listingWinningBid = document.querySelector("#winning-bid-amount");
-  listingWinningBid.innerText = `£${winningBidAmount}.00`;
+  listingWinningBid.innerHTML = `£${winningBidAmount}.00`;
 
   const listingWinner = document.querySelector("#winning-user");
-  listingWinner.innerText = `${winningUser}`;
+  listingWinner.innerHTML = `${winningUser}`;
 
   const listingMinimumBid = document.querySelector("#minimum-amount");
-  listingMinimumBid.innerText = `£${winningBidAmount + 1}.00`;
+  listingMinimumBid.innerHTML = `£${winningBidAmount + 1}.00`;
 
   const listingYourBid = document.querySelector("#bid-amount");
   listingYourBid.min = winningBidAmount + 1;
   listingYourBid.value = winningBidAmount + 1;
-  listingYourBid.max = credits;
+  //if user is profile present gets credit to set max bid
+  if (storage.get("profile")) {
+    listingYourBid.max = storage.get("profile").credits;
+  }
 
   const listingDescription = document.querySelector(
     "#listing-description-content"
   );
+  listingDescription.innerHTML = "";
+  if (!description) {
+    description = "No description provided";
+  }
   listingDescription.innerText = description;
 
   const listingBidHistory = document.querySelector("#bid-history-content");
@@ -61,7 +72,7 @@ export const updateSpecificListingDetails = function (
   const listingSellerInfo = document.querySelector("#seller-info-content");
   listingSellerInfo.innerHTML = `<a href="./profile.html?user=${seller.name}">
                                   <div class="text-center">
-                                    <img class="seller-info-avatar rounded-circle" src="${seller.avatar}" alt="${seller.name} avatar" />
+                                    <img class="seller-info-avatar rounded-circle" src="${seller.avatar}" alt="${seller.name} onerror='../images/default-avatar.png' avatar" />
                                   </div>
                                     <p>Name: ${seller.name}</p>
                                     <p>Contact: ${seller.email}</p>
@@ -69,5 +80,7 @@ export const updateSpecificListingDetails = function (
 
   if (media.length > 0) {
     renderImageSlider(media);
+  } else {
+    renderImageSlider(["../images/empty_image.jpg"]);
   }
 };
