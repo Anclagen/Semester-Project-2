@@ -7,7 +7,7 @@ export const deleteListingListener = async function () {
     let id = params.get("id");
     const response = await deleteListing(id);
     if (response === true) {
-      location.href = "./profile.html";
+      location.href = "./profile.html?deleted=true";
     }
   } catch (error) {
     console.log(error);
