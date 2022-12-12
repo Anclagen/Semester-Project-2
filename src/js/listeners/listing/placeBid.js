@@ -1,11 +1,10 @@
 import { placeABid } from "../../api/listing/placeBid.js";
+import { getParamURL } from "../../tools/getParamsURL.js";
 
 export const placeBidFormListener = async function (event) {
   try {
     event.preventDefault();
-    const queryString = window.location.search;
-    const params = new URLSearchParams(queryString);
-    let id = params.get("id");
+    let id = getParamURL("id");
     await placeABid(id, Number(event.target.amount.value));
     location.reload();
   } catch (error) {
