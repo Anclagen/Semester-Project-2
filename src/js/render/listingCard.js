@@ -53,7 +53,7 @@ export const createListingCard = function ({ id, title, endsAt, media, bids }) {
   listingLink.append(listingTitle);
 
   const listingPrice = document.createElement("p");
-  listingPrice.classList = "px-1";
+  listingPrice.classList = "px-1 listing-price";
   listingPrice.innerText = `Winning Bid: ${bidAmount}`;
   listingLink.append(listingPrice);
 
