@@ -62,7 +62,6 @@ export const setupListingSlider = function (data, container) {
    */
   function addTabIndex(numberOfSlides) {
     const listingsCards = container.querySelectorAll("a");
-    console.log(listingsCards);
     listingsCards.forEach((card) => card.setAttribute("tabindex", "-1"));
     const startIndex = transform / 5;
     const finishIndex = startIndex + numberOfSlides - 1;
