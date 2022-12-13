@@ -1,33 +1,42 @@
 import { createListing } from "../../api/listing/createListing.js";
 import { updateListing } from "../../api/listing/updateListing.js";
+import { generateErrorMessage } from "../../render/errorMessages.js";
+import { getParamURL } from "../../tools/getParamsURL.js";
+import { isFutureDate } from "../../tools/validation/validateDate.js";
+import { validateTags } from "../../tools/validation/validateTags.js";
 
+/**
+ * Function for create/update form listener
+ * @param {Submit} event submit event
+ * @returns
+ */
 export const createUpdateFormListener = async function (event) {
   event.preventDefault();
-
   const mediaInputs = Array.from(
     event.target.querySelectorAll("input[type=url]:enabled")
   );
-
-  const queryString = window.location.search;
-  const params = new URLSearchParams(queryString);
-  let id = params.get("id");
+  let id = getParamURL("id");
 
   const bodyData = {
     title: event.target.title.value,
     description: event.target.description.value,
-    tags: event.target.tags.value
-      .split(",")
-      .map((tag) => tag.trim())
-      .slice(0, 8),
+    tags: event.target.tags.value.split(",").map((tag) => tag.trim()),
     media: mediaInputs
       .map((input) => input.value)
       .filter((value) => value !== ""),
     endsAt: new Date(event.target.endingAt.value),
   };
 
+  if (!validateTags(bodyData.tags, event.target.tags)) {
+    return;
+  }
+
+  if (!isFutureDate(event.target.endingAt)) {
+    return;
+  }
+
   try {
     let response = {};
-
     if (id === null) {
       response = await createListing(bodyData);
     } else {
@@ -36,9 +45,28 @@ export const createUpdateFormListener = async function (event) {
 
     window.location.href = `./specific.html?id=${response.id}`;
   } catch (error) {
-    console.log(error);
     const errorContainer = document.querySelector("#error-reporting-container");
-    errorContainer.innerHTML = `<p class="p-3 text-losing bg-secondary"> An error occurred please refresh and try again </p>`;
-    location.hash = "#error-reporting-container";
+    const mediaErrorContainer = document.querySelector("#image-error");
+    //check for image errors
+    if (error.toString().includes("Image is not accessible")) {
+      generateErrorMessage(mediaErrorContainer, error);
+      mediaInputs.forEach((input) => {
+        if (error.toString().includes(input.value)) {
+          input.focus();
+        }
+      });
+      // server errors usually
+    } else if (error.toString().includes("Internal Server Error")) {
+      generateErrorMessage(
+        errorContainer,
+        "Error, your login credentials may have expired, please logout and in again."
+      );
+      // Other errors returns the error as well in case it has useful additional info for user.
+    } else {
+      generateErrorMessage(
+        errorContainer,
+        `An unknown error occurred please refresh and try again. (${error})`
+      );
+    }
   }
 };
