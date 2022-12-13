@@ -7,7 +7,7 @@ describe("Authentication", () => {
   });
 
   //login
-  it("Can login", () => {
+  it("Can login and logout", () => {
     cy.get("#login-form")
       .should("exist")
       .within(() => {
@@ -25,6 +25,11 @@ describe("Authentication", () => {
       () => expect(window.localStorage.getItem("profile")).to.not.be.null
     );
     cy.url().should("include", "profile.html");
+    cy.get(".dropdown-toggle").click().wait(200);
+    cy.get("#logout-btn").click().wait(2000);
+    cy.url().should("include", "index.html");
+    cy.then(() => expect(window.localStorage.getItem("token")).to.be.null);
+    cy.then(() => expect(window.localStorage.getItem("profile")).to.be.null);
   });
 
   it("Return message for login failure", () => {
