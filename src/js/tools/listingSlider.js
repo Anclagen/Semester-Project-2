@@ -61,7 +61,7 @@ export const setupListingSlider = function (data, container) {
    * @param {Number} numberOfSlides number of slider on display
    */
   function addTabIndex(numberOfSlides) {
-    const listingsCards = container.querySelectorAll("a");
+    const listingsCards = container.querySelectorAll(".listing-slider a");
     listingsCards.forEach((card) => card.setAttribute("tabindex", "-1"));
     const startIndex = transform / 5;
     const finishIndex = startIndex + numberOfSlides - 1;
@@ -77,36 +77,25 @@ export const setupListingSlider = function (data, container) {
    * @param {Number} num use 0 to resize, 1 for next, and -1 for previous page changes
    */
   function calculateTransform(num) {
-    if (window.innerWidth < 500) {
-      transform += 5 * num;
-      transformMax = (sliderLengthMax - 1) * slidePercentage;
-      addTabIndex(1);
-    } else if (window.innerWidth >= 1100) {
-      transform += 20 * num;
-      transformMax = (sliderLengthMax - 4) * slidePercentage;
-      if (transform > transformMax) {
-        transform = (sliderLengthMax - 4) * slidePercentage;
-      }
-      addTabIndex(4);
+    let slides = 1;
+    if (window.innerWidth >= 1100) {
+      slides = 4;
     } else if (window.innerWidth >= 900) {
-      transform += 20 * num;
-      transformMax = (sliderLengthMax - 3) * slidePercentage;
-      if (transform > transformMax) {
-        transform = (sliderLengthMax - 3) * slidePercentage;
-      }
-      addTabIndex(3);
+      slides = 3;
     } else if (window.innerWidth >= 500) {
-      transform += 10 * num;
-      transformMax = (sliderLengthMax - 2) * slidePercentage;
-      if (transform > transformMax) {
-        transform = (sliderLengthMax - 2) * slidePercentage;
-      }
-      addTabIndex(2);
+      slides = 2;
     }
 
+    transform += slides * 5 * num;
+    transformMax = (sliderLengthMax - slides) * slidePercentage;
+
+    if (transform > transformMax) {
+      transform = (sliderLengthMax - slides) * slidePercentage;
+    }
     if (transform < 0) {
       transform = 0;
     }
+    addTabIndex(slides);
   }
 
   /**
