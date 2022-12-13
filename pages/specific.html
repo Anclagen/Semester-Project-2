@@ -46,33 +46,33 @@
                 <a class="nav-link" href="../index.html"><i class="fa-solid fa-house pe-1"></i> Home</a>
               </li>
               <li class="nav-item" data-isLoggedVisibility="true">
-                <a class="nav-link active" href="create.html"><i class="fa-sharp fa-solid fa-gavel pe-1"></i>Sell</a>
+                <a class="nav-link active" href="./create.html"><i class="fa-sharp fa-solid fa-gavel pe-1"></i>Sell</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="listings.html"><i class="fa-solid fa-hand-holding-dollar pe-1"></i>Buy</a>
+                <a class="nav-link" href="./listings.html"><i class="fa-solid fa-hand-holding-dollar pe-1"></i>Buy</a>
               </li>
               <li class="nav-item" data-isLoggedVisibility="true">
-                <a class="nav-link" href="contact.html"><i class="fa-solid fa-headphones pe-1"></i>Contact</a>
+                <a class="nav-link" href="./contact.html"><i class="fa-solid fa-headphones pe-1"></i>Contact</a>
               </li>
               <li class="nav-item ms-md-auto" data-isLoggedVisibility="false">
-                <a class="nav-link" href="authenticate.html?show=login"><i class="fa-sharp fa-solid fa-right-to-bracket px-1"></i>Login</a>
+                <a class="nav-link" href="./authenticate.html?show=login"><i class="fa-sharp fa-solid fa-right-to-bracket px-1"></i>Login</a>
               </li>
               <li class="nav-item" data-isLoggedVisibility="false">
-                <a class="nav-link" href="authenticate.html?show=register"><i class="fa-solid fa-user-plus pe-1"></i> Sign Up</a>
+                <a class="nav-link" href="./authenticate.html?show=register"><i class="fa-solid fa-user-plus pe-1"></i> Sign Up</a>
               </li>
               <li class="nav-item dropdown ms-md-auto" data-isLoggedVisibility="true">
                 <a class="nav-link dropdown-toggle hidden-mobile" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  <img id="nav-avatar" class="rounded-circle" src="../images/default-avatar.png" alt="user avatar" /> Account
+                  <img id="nav-avatar" class="rounded-circle" src="../images/default-avatar.png" onerror="this.src='../images/default-avatar.png'" alt="user avatar" /> Account
                 </a>
                 <ul class="dropdown-menu bg-secondary border-primary">
                   <li>
-                    <a class="dropdown-item" href="profile.html" aria-current="page"><i class="fa-solid fa-circle-user px-1"></i>Profile</a>
+                    <a class="dropdown-item" href="./profile.html" aria-current="page"><i class="fa-solid fa-circle-user px-1"></i>Profile</a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="profile.html#your-bids"><i class="fa-solid fa-hand-holding-dollar px-1"></i>Your Bids</a>
+                    <a class="dropdown-item" href="./profile.html#your-bids"><i class="fa-solid fa-hand-holding-dollar px-1"></i>Your Bids</a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="profile.html#your-listings"><i class="fa-solid fa-sign-hanging px-1"></i>Your Listings</a>
+                    <a class="dropdown-item" href="./profile.html#your-listings"><i class="fa-solid fa-sign-hanging px-1"></i>Your Listings</a>
                   </li>
                   <li id="user-balance"></li>
                   <li class="border-top border-primary pt-2 mt-2">
@@ -158,18 +158,14 @@
             </form>
             <div>
               <div class="border-bottom border-top border-primary py-3 mb-3 d-flex justify-content-around">
-                <!-- <button class="btn btn-primary collapsed" data-bs-toggle="collapse" href="#description" role="button" aria-expanded="true" aria-controls="description">Description</button> -->
                 <button class="btn btn-primary collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#bid-history" aria-expanded="true" aria-controls="bid-history">Bid History</button>
-                <button class="btn btn-primary collapsed" data-bs-toggle="collapse" href="#seller-info" role="button" aria-expanded="false" aria-controls="seller-info">Seller</button>
+                <button class="btn btn-primary collapsed" data-bs-toggle="collapse" data-bs-target="#seller-info" role="button" aria-expanded="false" aria-controls="seller-info">Seller</button>
               </div>
-              <!-- <div class="mb-2 multi-collapse collapse show" id="description">
-                <div id="listing-description-content" class="card card-body">{Description Here}</div>
-              </div> -->
               <div class="mb-2 multi-collapse collapse show" id="bid-history">
                 <div class="card card-body">
                   <table class="m-0 w-100 fs-6" id="bid-history-content">
                     <tr>
-                      <td colspan="2">No Bids Yet!</td>
+                      <td>No Bids Yet!</td>
                     </tr>
                   </table>
                 </div>
