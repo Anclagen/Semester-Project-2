@@ -88,10 +88,39 @@
     <main id="main" class="container-xxl">
       <section>
         <h1 class="text-center">Contact Us</h1>
-        <div id="error-reporting-container" class="text-center"></div>
-        <div class="row">
-          <div class="col-md-7 p-3 pt-1 mb-5"></div>
-          <div class="col-md-5"></div>
+        <div class="row p-3">
+          <div class="col-md-5 p-3 pt-1 mb-5">
+            <h2>Need to get in touch?</h2>
+            <p>Fill in a contact form and one of are dedicated customer service reps with get back to you as soon as humanly possible.</p>
+            <form id="contact-form" class="">
+              <div id="contact-form-response" class="text-winning text-center"></div>
+              <div>
+                <label for="form-subject" class="form-label">Subject</label>
+                <input type="text" name="subject" id="form-subject" class="form-control mb-3 p-2" minlength="3" maxlength="150" placeholder="Your Subject" title="A subject is required" required />
+              </div>
+              <div>
+                <label for="form-content" class="form-description">Content</label>
+                <textarea name="form-content" id="form-content" class="form-control mb-3 p-2" maxlength="280" placeholder="Details of query." required></textarea>
+              </div>
+              <div>
+                <label for="contact-email" class="form-label">Email address</label>
+                <input
+                  type="email"
+                  class="form-control mb-3 p-2"
+                  name="email"
+                  id="contact-email"
+                  placeholder="name@stud.noroff.no"
+                  pattern="[\w\-.]+@stud.noroff.no$"
+                  title="Only valid 'stud.noroff.no' student emails are accepted."
+                  required
+                />
+              </div>
+              <button class="w-100 btn btn-lg btn-primary" id="submit-btn" type="submit">Submit Query</button>
+            </form>
+          </div>
+          <div class="col-md-7">
+            <img class="w-100 d-none d-md-block" src="../images/contact.jpg" />
+          </div>
         </div>
       </section>
     </main>
