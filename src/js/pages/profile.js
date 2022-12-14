@@ -32,10 +32,8 @@ export const profileSetup = async function () {
     updateProfileDetails(profile);
     const profileBids = await getUserProfileBids(user);
     const uniqueListings = sortFilterBidOn(profileBids);
+    const yourBidsContainer = document.querySelector("#ongoing-bids-container");
     if (uniqueListings.length > 0) {
-      const yourBidsContainer = document.querySelector(
-        "#ongoing-bids-container"
-      );
       yourBidsContainer.innerHTML = "";
       uniqueListings.map((listing) => {
         const card = createListingCard(listing.card);
@@ -44,6 +42,8 @@ export const profileSetup = async function () {
         ).innerHTML = `Your Bid: £${listing.card.bids.amount}.00`;
         yourBidsContainer.append(card);
       });
+    } else {
+      yourBidsContainer.innerHTML = `<p class="ps-4 py-4">Not currently bidding on anything.</p>`;
     }
     // most recent and all listings
     const profileListings = await getUserProfileListings(user);

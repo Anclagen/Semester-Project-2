@@ -23,7 +23,7 @@ export const recentProfileCardsSetup = function (
       }
     });
   } else {
-    all.innerHTML = ` <p class="ps-4">${message}</p>`;
-    recent.innerHTML = ` <p class="ps-4">${message}</p>`;
+    all.innerHTML = ` <p class="ps-4 py-4">${message}</p>`;
+    recent.innerHTML = ` <p class="ps-4 py-4">${message}</p>`;
   }
 };
