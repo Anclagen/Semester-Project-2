@@ -17,6 +17,7 @@
   </head>
   <body class="bg-background d-flex flex-column min-vh-100">
     <header class="bg-secondary">
+      <div id="skip"><a href="#main">Skip to Main Content</a></div>
       <nav class="navbar navbar-expand-md container-xxl">
         <div class="container-fluid">
           <a class="navbar-brand" href="../index.html">
@@ -45,36 +46,36 @@
                 <a class="nav-link" href="../index.html"><i class="fa-solid fa-house pe-1"></i> Home</a>
               </li>
               <li class="nav-item" data-isLoggedVisibility="true">
-                <a class="nav-link active" href="create.html"><i class="fa-sharp fa-solid fa-gavel pe-1"></i>Sell</a>
+                <a class="nav-link active" href="./create.html"><i class="fa-sharp fa-solid fa-gavel pe-1"></i>Sell</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="listings.html"><i class="fa-solid fa-hand-holding-dollar pe-1"></i>Buy</a>
+                <a class="nav-link" href="./listings.html"><i class="fa-solid fa-hand-holding-dollar pe-1"></i>Buy</a>
               </li>
               <li class="nav-item" data-isLoggedVisibility="true">
-                <a class="nav-link" href="contact.html"><i class="fa-solid fa-headphones pe-1"></i>Contact</a>
+                <a class="nav-link" href="./contact.html"><i class="fa-solid fa-headphones pe-1"></i>Contact</a>
               </li>
               <li class="nav-item ms-md-auto" data-isLoggedVisibility="false">
-                <a class="nav-link" href="authenticate.html?show=login"><i class="fa-sharp fa-solid fa-right-to-bracket px-1"></i>Login</a>
+                <a class="nav-link" href="./authenticate.html?show=login"><i class="fa-sharp fa-solid fa-right-to-bracket px-1"></i>Login</a>
               </li>
               <li class="nav-item" data-isLoggedVisibility="false">
-                <a class="nav-link" href="authenticate.html?show=register"><i class="fa-solid fa-user-plus pe-1"></i> Sign Up</a>
+                <a class="nav-link" href="./authenticate.html?show=register"><i class="fa-solid fa-user-plus pe-1"></i> Sign Up</a>
               </li>
               <li class="nav-item dropdown ms-md-auto" data-isLoggedVisibility="true">
                 <a class="nav-link dropdown-toggle hidden-mobile" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  <img id="nav-avatar" class="rounded-circle" src="../images/default-avatar.png" alt="user avatar" /> Account
+                  <img id="nav-avatar" class="rounded-circle" src="../images/default-avatar.png" onerror="this.src='../images/default-avatar.png'" alt="user avatar" /> Account
                 </a>
                 <ul class="dropdown-menu bg-secondary border-primary">
                   <li>
-                    <a class="dropdown-item" href="profile.html" aria-current="page"><i class="fa-solid fa-circle-user px-1"></i>Profile</a>
+                    <a class="dropdown-item" href="./profile.html" aria-current="page"><i class="fa-solid fa-circle-user px-1"></i>Profile</a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="profile.html#your-bids"><i class="fa-solid fa-hand-holding-dollar px-1"></i>Your Bids</a>
+                    <a class="dropdown-item" href="./profile.html#your-bids"><i class="fa-solid fa-hand-holding-dollar px-1"></i>Your Bids</a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="profile.html#your-listings"><i class="fa-solid fa-sign-hanging px-1"></i>Your Listings</a>
+                    <a class="dropdown-item" href="./profile.html#your-listings"><i class="fa-solid fa-sign-hanging px-1"></i>Your Listings</a>
                   </li>
                   <li id="user-balance"></li>
-<li class="border-top border-primary pt-2 mt-2">
+                  <li class="border-top border-primary pt-2 mt-2">
                     <a class="dropdown-item" href="#" id="logout-btn"><i class="fa-solid fa-right-from-bracket px-1"></i>Sign Out</a>
                   </li>
                 </ul>
@@ -84,14 +85,14 @@
         </div>
       </nav>
     </header>
-    <main class="container-xxl">
+    <main id="main" class="container-xxl">
       <section>
-        <h1 class="text-center">{Inset Create/Update Listing Here}</h1>
-        <div id="error-reporting-container"class="text-center">
-        </div>
+        <h1 class="text-center">Create Listing</h1>
+
         <div class="row px-2">
           <div class="col-md-5 p-3">
             <form id="create-form">
+              <div id="error-reporting-container" class="text-center"></div>
               <div>
                 <label for="form-title" class="form-label">Title</label>
                 <input type="text" name="title" id="form-title" class="form-control mb-3 p-2" minlength="3" maxlength="150" placeholder="Your Item Title" title="A title is required" required />
@@ -100,35 +101,37 @@
                 <label for="form-description" class="form-description">Description</label>
                 <textarea name="description" class="form-control mb-3 p-2" maxlength="280" id="form-description" placeholder="Additional item info, condition" required></textarea>
               </div>
+
               <div>
                 <label for="form-tags" class="form-label">Tags (8 max, separate with ",")</label>
-                <input type="text" name="tags" id="form-tags" class="form-control mb-3 p-2" placeholder="Tag 1, Tag 2, Tag 3, ..etc" required />
+                <input type="text" name="tags" id="form-tags" class="form-control p-2" placeholder="Tag 1, Tag 2, Tag 3, ..etc" />
+                <div id="tags-error"></div>
               </div>
               <div id="media-inputs-container">
-                <label for="form-media" class="form-label">Images (8 images max)</label>
+                <label for="form-media" class="form-label mt-3">Images (8 images max)</label>
                 <input type="url" name="media" id="form-media" class="form-control mb-2 p-2 media-input" placeholder="example.com/your-item.jpg" title="At least 1 image URL is required." required />
 
                 <label for="form-media-image1" class="form-label closing hidden">Image 2</label>
-                <input type="url" name="media" id="form-media-image1" class="form-control mb-2 p-2 media-input closing hidden" placeholder="example.com/your-item.jpg" disabled />
+                <input type="url" name="media" id="form-media-image1" class="form-control mb-2 p-2 media-input closing hidden" placeholder="https://www.example.com/your-item.jpg" disabled />
 
                 <label for="form-media-image2" class="form-label closing hidden">Image 3</label>
-                <input type="url" name="media" id="form-media-image2" class="form-control mb-2 p-2 media-input closing hidden" placeholder="example.com/your-item.jpg" disabled />
+                <input type="url" name="media" id="form-media-image2" class="form-control mb-2 p-2 media-input closing hidden" placeholder="https://www.example.com/your-item.jpg" disabled />
 
                 <label for="form-media-image3" class="form-label closing hidden">Image 4</label>
-                <input type="url" name="media" id="form-media-image3" class="form-control mb-2 p-2 media-input closing hidden" placeholder="example.com/your-item.jpg" disabled />
+                <input type="url" name="media" id="form-media-image3" class="form-control mb-2 p-2 media-input closing hidden" placeholder="https://www.example.com/your-item.jpg" disabled />
 
                 <label for="form-media-image4" class="form-label closing hidden">Image 5</label>
-                <input type="url" name="media" id="form-media-image4" class="form-control mb-2 p-2 media-input closing hidden" placeholder="example.com/your-item.jpg" disabled />
+                <input type="url" name="media" id="form-media-image4" class="form-control mb-2 p-2 media-input closing hidden" placeholder="https://www.example.com/your-item.jpg" disabled />
 
                 <label for="form-media-image5" class="form-label closing hidden">Image 6</label>
-                <input type="url" name="media" id="form-media-image5" class="form-control mb-2 p-2 media-input closing hidden" placeholder="example.com/your-item.jpg" disabled />
+                <input type="url" name="media" id="form-media-image5" class="form-control mb-2 p-2 media-input closing hidden" placeholder="https://www.example.com/your-item.jpg" disabled />
 
                 <label for="form-media-image6" class="form-label closing hidden">Image 7</label>
-                <input type="url" name="media" id="form-media-image6" class="form-control mb-2 p-2 media-input closing hidden" placeholder="example.com/your-item.jpg" disabled />
+                <input type="url" name="media" id="form-media-image6" class="form-control mb-2 p-2 media-input closing hidden" placeholder="https://www.example.com/your-item.jpg" disabled />
 
                 <label for="form-media-image7" class="form-label closing hidden">Image 8</label>
-                <input type="url" name="media" id="form-media-image7" class="form-control mb-2 p-2 media-input closing hidden" placeholder="example.com/your-item.jpg" disabled />
-
+                <input type="url" name="media" id="form-media-image7" class="form-control mb-2 p-2 media-input closing hidden" placeholder="https://www.example.com/your-item.jpg" disabled />
+                <div id="image-error"></div>
                 <div class="mb-3">
                   <button type="button" class="btn btn-sm btn-primary" id="add-more-media-btn">Add Image</button>
                   <button type="button" class="btn btn-sm btn-primary hidden" id="remove-media-btn">Remove Image</button>
@@ -136,9 +139,10 @@
               </div>
               <div>
                 <label for="form-ending-at" class="form-label">Ending Date</label>
-                <input type="datetime-local" class="form-control mb-3 p-2 display-inline" name="endingAt" id="form-ending-at" title="Ending date is required" required />
+                <input type="datetime-local" class="form-control p-2 display-inline" name="endingAt" id="form-ending-at" title="Ending date is required" required />
+                <div id="date-error"></div>
               </div>
-              <div class="text-center mb-3">
+              <div class="text-center my-3">
                 <button type="submit" class="btn btn-primary mx-auto" id="form-submit">Create Listing</button>
               </div>
             </form>
@@ -147,7 +151,7 @@
             <h2 id="preview-title"></h2>
             <div id="specific" class="carousel slide carousel-dark mb-5">
               <div class="carousel-inner main-specific-slider">
-                <div class="carousel-item${index === 0 ? " active" : ""}">
+                <div class="carousel-item-1">
                   <div class="specific-outer-slider">
                     <div class="specific-inner-slider">
                       <img id="listing-image" src="../images/empty_image.jpg" onerror="src='../images/empty_image.jpg'" alt="Image Placeholder" />

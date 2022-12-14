@@ -22,5 +22,6 @@ export async function updateAvatarListener(event) {
       "#avatar-error-reporting"
     );
     avatarErrorContainer.innerHTML = `<p class="p-3 text-losing bg-secondary"> This was unsuccessful, please try another link, if this problem persists please contact the administrator. </p>`;
+    event.target.avatar.focus();
   }
 }

@@ -17,6 +17,7 @@
   </head>
   <body class="bg-background d-flex flex-column min-vh-100">
     <header class="bg-secondary">
+      <div id="skip"><a href="#main">Skip to Main Content</a></div>
       <nav class="navbar navbar-expand-md container-xxl">
         <div class="container-fluid">
           <a class="navbar-brand" href="../index.html">
@@ -45,33 +46,33 @@
                 <a class="nav-link" href="../index.html"><i class="fa-solid fa-house pe-1"></i> Home</a>
               </li>
               <li class="nav-item" data-isLoggedVisibility="true">
-                <a class="nav-link" href="create.html"><i class="fa-sharp fa-solid fa-gavel pe-1"></i>Sell</a>
+                <a class="nav-link" href="./create.html"><i class="fa-sharp fa-solid fa-gavel pe-1"></i>Sell</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="listings.html"><i class="fa-solid fa-hand-holding-dollar pe-1"></i>Buy</a>
+                <a class="nav-link" href="./listings.html"><i class="fa-solid fa-hand-holding-dollar pe-1"></i>Buy</a>
               </li>
               <li class="nav-item" data-isLoggedVisibility="true">
-                <a class="nav-link active" href="contact.html"><i class="fa-solid fa-headphones pe-1"></i>Contact</a>
+                <a class="nav-link active" href="./contact.html"><i class="fa-solid fa-headphones pe-1"></i>Contact</a>
               </li>
               <li class="nav-item ms-md-auto" data-isLoggedVisibility="false">
-                <a class="nav-link" href="authenticate.html?show=login"><i class="fa-sharp fa-solid fa-right-to-bracket px-1"></i>Login</a>
+                <a class="nav-link" href="./authenticate.html?show=login"><i class="fa-sharp fa-solid fa-right-to-bracket px-1"></i>Login</a>
               </li>
               <li class="nav-item" data-isLoggedVisibility="false">
-                <a class="nav-link" href="authenticate.html?show=register"><i class="fa-solid fa-user-plus pe-1"></i> Sign Up</a>
+                <a class="nav-link" href="./authenticate.html?show=register"><i class="fa-solid fa-user-plus pe-1"></i> Sign Up</a>
               </li>
               <li class="nav-item dropdown ms-md-auto" data-isLoggedVisibility="true">
                 <a class="nav-link dropdown-toggle hidden-mobile" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  <img id="nav-avatar" class="rounded-circle" src="../images/default-avatar.png" alt="user avatar" /> Account
+                  <img id="nav-avatar" class="rounded-circle" src="../images/default-avatar.png" onerror="this.src='../images/default-avatar.png'" alt="user avatar" /> Account
                 </a>
                 <ul class="dropdown-menu bg-secondary border-primary">
                   <li>
-                    <a class="dropdown-item" href="profile.html" aria-current="page"><i class="fa-solid fa-circle-user px-1"></i>Profile</a>
+                    <a class="dropdown-item" href="./profile.html" aria-current="page"><i class="fa-solid fa-circle-user px-1"></i>Profile</a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="profile.html#your-bids"><i class="fa-solid fa-hand-holding-dollar px-1"></i>Your Bids</a>
+                    <a class="dropdown-item" href="./profile.html#your-bids"><i class="fa-solid fa-hand-holding-dollar px-1"></i>Your Bids</a>
                   </li>
                   <li>
-                    <a class="dropdown-item" href="profile.html#your-listings"><i class="fa-solid fa-sign-hanging px-1"></i>Your Listings</a>
+                    <a class="dropdown-item" href="./profile.html#your-listings"><i class="fa-solid fa-sign-hanging px-1"></i>Your Listings</a>
                   </li>
                   <li id="user-balance"></li>
                   <li class="border-top border-primary pt-2 mt-2">
@@ -84,13 +85,42 @@
         </div>
       </nav>
     </header>
-    <main class="container-xxl">
+    <main id="main" class="container-xxl">
       <section>
         <h1 class="text-center">Contact Us</h1>
-        <div id="error-reporting-container" class="text-center"></div>
-        <div class="row">
-          <div class="col-md-7 p-3 pt-1 mb-5"></div>
-          <div class="col-md-5"></div>
+        <div class="row p-3">
+          <div class="col-md-5 p-3 pt-1 mb-5">
+            <h2>Need to get in touch?</h2>
+            <p>Fill in a contact form and one of are dedicated customer service reps with get back to you as soon as humanly possible.</p>
+            <form id="contact-form" class="">
+              <div id="contact-form-response" class="text-winning text-center"></div>
+              <div>
+                <label for="form-subject" class="form-label">Subject</label>
+                <input type="text" name="subject" id="form-subject" class="form-control mb-3 p-2" minlength="3" maxlength="150" placeholder="Your Subject" title="A subject is required" required />
+              </div>
+              <div>
+                <label for="form-content" class="form-description">Content</label>
+                <textarea name="form-content" id="form-content" class="form-control mb-3 p-2" maxlength="280" placeholder="Details of query." required></textarea>
+              </div>
+              <div>
+                <label for="contact-email" class="form-label">Email address</label>
+                <input
+                  type="email"
+                  class="form-control mb-3 p-2"
+                  name="email"
+                  id="contact-email"
+                  placeholder="name@stud.noroff.no"
+                  pattern="[\w\-.]+@stud.noroff.no$"
+                  title="Only valid 'stud.noroff.no' student emails are accepted."
+                  required
+                />
+              </div>
+              <button class="w-100 btn btn-lg btn-primary" id="submit-btn" type="submit">Submit Query</button>
+            </form>
+          </div>
+          <div class="col-md-7">
+            <img class="w-100 d-none d-md-block" src="../images/contact.jpg" />
+          </div>
         </div>
       </section>
     </main>

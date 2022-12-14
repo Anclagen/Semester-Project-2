@@ -7,6 +7,7 @@ import { specificPageSetup } from "./pages/specific.js";
 import { listingPageSetup } from "./pages/listing.js";
 import { searchBarListener } from "./listeners/search.js";
 import { updateNavAvatar } from "./interface/navAvatar.js";
+import { ContactPageSetup } from "./pages/contact.js";
 
 isUserLoggedIn();
 searchBarListener();
@@ -24,6 +25,8 @@ if (currentPage.match("authenticate.html")) {
   specificPageSetup();
 } else if (currentPage.match("listings.html")) {
   listingPageSetup();
+} else if (currentPage.match("contact.html")) {
+  ContactPageSetup();
 } else if (currentPage.match("index.html") || currentPage.match("./")) {
   homeSetup();
 }

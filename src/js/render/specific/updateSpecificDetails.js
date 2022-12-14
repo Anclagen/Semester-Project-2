@@ -72,7 +72,7 @@ export const updateSpecificListingDetails = function ({
   const listingSellerInfo = document.querySelector("#seller-info-content");
   listingSellerInfo.innerHTML = `<a href="./profile.html?user=${seller.name}">
                                   <div class="text-center">
-                                    <img class="seller-info-avatar rounded-circle" src="${seller.avatar}" alt="${seller.name} onerror='../images/default-avatar.png' avatar" />
+                                    <img class="seller-info-avatar rounded-circle" src="${seller.avatar}" alt="${seller.name}'s avatar" onerror='this.src../images/default-avatar.png' />
                                   </div>
                                     <p>Name: ${seller.name}</p>
                                     <p>Contact: ${seller.email}</p>

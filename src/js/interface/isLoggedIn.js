@@ -17,6 +17,8 @@ export const isUserLoggedIn = async function () {
     loggedIn.forEach((item) => item.classList.remove("hidden"));
     //update users credentials namely credits/avatar
     const profile = await getUserProfile(storage.get("profile").name);
+    delete profile.listings;
+    delete profile.wins;
     storage.set("profile", profile);
   } else {
     // redirect on profile and create when not logged in.

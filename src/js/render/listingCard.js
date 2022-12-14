@@ -39,12 +39,12 @@ export const createListingCard = function ({ id, title, endsAt, media, bids }) {
   listingImage.alt = title;
   imageInnerContainer.append(listingImage);
 
-  if (currentPage.match("index.html")) {
-    listingLink.href = `pages/specific.html?id=${id}`;
-    listingImage.setAttribute("onerror", "this.src='./images/404_image.jpg'");
-  } else {
-    listingLink.href = `specific.html?id=${id}`;
+  if (currentPage.match("pages")) {
+    listingLink.href = `./specific.html?id=${id}`;
     listingImage.setAttribute("onerror", "this.src='../images/404_image.jpg'");
+  } else {
+    listingLink.href = `./pages/specific.html?id=${id}`;
+    listingImage.setAttribute("onerror", "this.src='./images/404_image.jpg'");
   }
 
   const listingTitle = document.createElement("h3");

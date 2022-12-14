@@ -17,6 +17,7 @@
   </head>
   <body class="bg-background d-flex flex-column min-vh-100">
     <header class="bg-secondary">
+      <div id="skip"><a href="#main">Skip to Main Content</a></div>
       <nav class="navbar navbar-expand-md container-xxl">
         <div class="container-fluid">
           <a class="navbar-brand" href="../index.html">
@@ -45,34 +46,34 @@
                 <a class="nav-link" href="../index.html"><i class="fa-solid fa-house pe-1"></i> Home</a>
               </li>
               <li class="nav-item" data-isLoggedVisibility="true">
-                <a class="nav-link" href="create.html"><i class="fa-sharp fa-solid fa-gavel pe-1"></i>Sell</a>
+                <a class="nav-link" href="./create.html"><i class="fa-sharp fa-solid fa-gavel pe-1"></i>Sell</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="listings.html"><i class="fa-solid fa-hand-holding-dollar pe-1"></i>Buy</a>
+                <a class="nav-link" href="./listings.html"><i class="fa-solid fa-hand-holding-dollar pe-1"></i>Buy</a>
               </li>
               <li class="nav-item" data-isLoggedVisibility="true">
-                <a class="nav-link" href="contact.html"><i class="fa-solid fa-headphones pe-1"></i>Contact</a>
+                <a class="nav-link" href="./contact.html"><i class="fa-solid fa-headphones pe-1"></i>Contact</a>
               </li>
               <li class="nav-item ms-md-auto" data-isLoggedVisibility="false">
-                <a class="nav-link" href="authenticate.html?show=login"><i class="fa-sharp fa-solid fa-right-to-bracket px-1"></i>Login</a>
+                <a class="nav-link" href="./authenticate.html?show=login"><i class="fa-sharp fa-solid fa-right-to-bracket px-1"></i>Login</a>
               </li>
               <li class="nav-item" data-isLoggedVisibility="false">
-                <a class="nav-link" href="authenticate.html?show=register"><i class="fa-solid fa-user-plus pe-1"></i> Sign Up</a>
+                <a class="nav-link" href="./authenticate.html?show=register"><i class="fa-solid fa-user-plus pe-1"></i> Sign Up</a>
               </li>
               <li class="nav-item dropdown ms-md-auto" data-isLoggedVisibility="true">
                 <a class="nav-link dropdown-toggle hidden-mobile" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  <img id="nav-avatar" class="rounded-circle" src="../images/default-avatar.png" alt="user avatar" /> Account
+                  <img id="nav-avatar" class="rounded-circle" src="../images/default-avatar.png" onerror="this.src='../images/default-avatar.png'" alt="user avatar" /> Account
                 </a>
                 <ul class="dropdown-menu bg-secondary border-primary">
                   <li class="nav-item">
-                    <a class="dropdown-item nav-link active text-white" href="profile.html" aria-current="page"><i class="fa-solid fa-circle-user px-1"></i>Profile</a>
+                    <a class="dropdown-item nav-link active text-white" href="./profile.html" aria-current="page"><i class="fa-solid fa-circle-user px-1"></i>Profile</a>
                   </li>
 
                   <li class="nav-item">
-                    <a class="nav-item dropdown-item" href="profile.html#your-bids"><i class="fa-solid fa-hand-holding-dollar px-1"></i>Your Bids</a>
+                    <a class="nav-item dropdown-item" href="./profile.html#your-bids"><i class="fa-solid fa-hand-holding-dollar px-1"></i>Your Bids</a>
                   </li>
                   <li class="nav-item">
-                    <a class="dropdown-item" href="profile.html#your-listings"><i class="fa-solid fa-sign-hanging px-1"></i>Your Listings</a>
+                    <a class="dropdown-item" href="./profile.html#your-listings"><i class="fa-solid fa-sign-hanging px-1"></i>Your Listings</a>
                   </li>
                   <li id="user-balance"></li>
                   <li class="nav-item border-top border-primary pt-2 mt-2">
@@ -85,7 +86,7 @@
         </div>
       </nav>
     </header>
-    <main class="container-xxl">
+    <main id="main" class="container-xxl">
       <div id="delete-success"></div>
       <section class="px-3">
         <h1 class="text-center"><div class="skeleton skeleton-headings"></div></h1>
@@ -102,8 +103,8 @@
                   <div class="modal-body">
                     <img id="avatar-preview" class="w-100 rounded-circle" src="../images/default-avatar.png" onerror="this.src='../images/default-avatar.png'" alt="avatar image" />
                     <label class="form-label" for="avatar">Avatar</label>
-                    <div id="avatar-error-reporting"></div>
                     <input type="url" class="form-control" name="avatar" id="avatar" placeholder="example.com/avatar.jpg" required />
+                    <div id="avatar-error-reporting"></div>
                   </div>
                   <div class="modal-footer">
                     <button type="button" id="close-modal-btn" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -129,8 +130,13 @@
                 <div class="skeleton skeleton-text w-25"></div>
               </div>
             </div>
-            <div id="active-listings">
+            <div id="active-listings" class="pb-2 border-primary border-bottom">
               <div class="skeleton skeleton-text w-25"></div>
+            </div>
+            <div class="">
+              <a class="d-block py-2" href="#your-bids"><i class="fa-solid fa-hand-holding-dollar px-1"></i>All User's Bids</a>
+              <a class="d-block py-2" href="#your-listings"><i class="fa-solid fa-sign-hanging px-1"></i>All User's Listings</a>
+              <a class="d-block py-2" href="#your-wins"><i class="fa-solid fa-trophy px-1"></i>All User's Wins</a>
             </div>
           </div>
           <div class="p-0 px-md-4 mt-3 col-md-7 col-lg-8 col-xl-9">
