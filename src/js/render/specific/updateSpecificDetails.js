@@ -26,7 +26,12 @@ export const updateSpecificListingDetails = function ({
   const listingTimeBids = document.querySelector("#time-bids");
   listingTimeBids.innerHTML = "";
   listingTimeBids.append(timeLeft(endsAt));
-  listingTimeBids.innerHTML += `<span class="ms-3" id="number-bids">Totals Bids: ${bids.length}<span>`;
+
+  const totalBids = document.createElement("span");
+  totalBids.classList = "ms-3";
+  totalBids.setAttribute("id", "number-bids");
+  totalBids.innerHTML += `Totals Bids: ${bids.length}`;
+  listingTimeBids.append(totalBids);
 
   const listingWinningBid = document.querySelector("#winning-bid-amount");
   listingWinningBid.innerHTML = `£${winningBidAmount}.00`;
