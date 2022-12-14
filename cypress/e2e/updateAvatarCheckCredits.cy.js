@@ -19,7 +19,7 @@ describe("update avatar, check balance", () => {
     cy.url().should("include", "profile.html");
   });
 
-  it("Can update avatar", () => {
+  it("Can view balance", () => {
     cy.get("#balance > p")
       .should("exist")
       .invoke("text")
