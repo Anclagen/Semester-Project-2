@@ -2,10 +2,12 @@ import { countdown } from "./countdown.js";
 
 export const timeLeft = function (endsAt) {
   const totalSeconds = (new Date(endsAt) - new Date()) / 1000;
-  const countdownTime = document.createElement("span");
+  let countdownTime = document.createElement("span");
 
   if (totalSeconds < 0) {
-    return "Listing has finished!";
+    countdownTime.innerHTML = "Listing has finished!";
+    countdownTime.classList = "col-6";
+    return countdownTime;
   }
 
   // const secondsLeft = Math.floor(totalSeconds % 60);
@@ -16,19 +18,15 @@ export const timeLeft = function (endsAt) {
 
   if (monthsLeft > 0) {
     countdownTime.innerHTML = `<i class="fa-regular fa-clock"></i> ${monthsLeft} Months, ${daysLeft} Days`;
-    return countdownTime;
-  }
-
-  if (daysLeft > 0) {
+  } else if (daysLeft > 0) {
     countdownTime.innerHTML = `<i class="fa-regular fa-clock"></i> ${daysLeft} Days, ${hoursLeft} Hours`;
-    return countdownTime;
-  }
-
-  if (hoursLeft > 0) {
+  } else if (hoursLeft > 0) {
     countdownTime.innerHTML = `<i class="fa-regular fa-clock"></i> ${hoursLeft} Hours, ${minutesLeft} Minutes`;
-    return countdownTime;
+  } else {
+    countdownTime = countdown(totalSeconds);
   }
 
+  countdownTime.classList = "col-6";
   //countdown timer? need to build listing with document create element.
-  return countdown(totalSeconds);
+  return countdownTime;
 };

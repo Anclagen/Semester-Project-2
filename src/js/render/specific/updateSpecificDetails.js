@@ -28,7 +28,7 @@ export const updateSpecificListingDetails = function ({
   listingTimeBids.append(timeLeft(endsAt));
 
   const totalBids = document.createElement("span");
-  totalBids.classList = "ms-3";
+  totalBids.classList = "ps-3 col-6";
   totalBids.setAttribute("id", "number-bids");
   totalBids.innerHTML += `Totals Bids: ${bids.length}`;
   listingTimeBids.append(totalBids);
