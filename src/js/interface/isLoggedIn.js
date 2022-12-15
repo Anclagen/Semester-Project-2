@@ -29,5 +29,6 @@ export const isUserLoggedIn = async function () {
     }
 
     loggedIn.forEach((item) => item.classList.add("hidden"));
+    loggedOut.forEach((item) => item.classList.remove("hidden"));
   }
 };
