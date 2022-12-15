@@ -1,6 +1,10 @@
 import { placeABid } from "../../api/listing/placeBid.js";
 import { getParamURL } from "../../tools/getParamsURL.js";
 
+/**
+ * places a bid on a listing on the specific page.
+ * @param {Submit} event bidding form submission
+ */
 export const placeBidFormListener = async function (event) {
   try {
     event.preventDefault();

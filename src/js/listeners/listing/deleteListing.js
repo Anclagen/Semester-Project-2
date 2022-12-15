@@ -1,10 +1,12 @@
 import { deleteListing } from "../../api/listing/deleteListing.js";
+import { getParamURL } from "../../tools/getParamsURL.js";
 
+/**
+ * Deletes a listing on the specific page, getting the id from the query string
+ */
 export const deleteListingListener = async function () {
   try {
-    const queryString = window.location.search;
-    const params = new URLSearchParams(queryString);
-    let id = params.get("id");
+    let id = getParamURL("id");
     const response = await deleteListing(id);
     if (response === true) {
       location.href = "./profile.html?deleted=true";

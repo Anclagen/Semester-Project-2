@@ -1,3 +1,8 @@
+/**
+ * Filters listing data for active listings
+ * @param {Array} listingData
+ * @returns Array of filtered listings
+ */
 export const filterActiveListings = function (listingData) {
   const newArray = [...listingData];
   const filteredData = newArray.filter(

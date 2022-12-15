@@ -5,6 +5,9 @@ import { updateSpecificListingDetails } from "../render/specific/updateSpecificD
 import { storage } from "../storage/storage.js";
 import { getParamURL } from "../tools/getParamsURL.js";
 
+/**
+ * Setup for specific page.
+ */
 export const specificPageSetup = async function () {
   const id = getParamURL("id");
   if (id) {

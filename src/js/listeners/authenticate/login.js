@@ -1,6 +1,10 @@
 import { login } from "../../api/authenticate/login.js";
 import { storage } from "../../storage/storage.js";
 
+/**
+ * Login listener function, directs user to profile page if successful
+ * @param {Submit} event submission of form
+ */
 export async function loginListener(event) {
   event.preventDefault();
   const errorReporting = document.querySelector("#login-form-error");

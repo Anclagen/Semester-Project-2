@@ -1,5 +1,9 @@
 import { renderImageSlider } from "./createImageSlider.js";
 
+/**
+ * Listener function to update listing preview when create/updating a listing.
+ * @param {*} media
+ */
 export const updatePreview = function (media = false) {
   const form = document.querySelector("#create-form");
   const title = document.querySelector("#preview-title");

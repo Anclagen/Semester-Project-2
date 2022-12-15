@@ -2,6 +2,10 @@ import { timeLeft } from "../../tools/timeLeft.js";
 import { renderImageSlider } from "../createImageSlider.js";
 import { storage } from "../../storage/storage.js";
 
+/**
+ * Fills in the specific pages details
+ * @param {Object} Listing an individual listings data
+ */
 export const updateSpecificListingDetails = function ({
   title,
   bids,

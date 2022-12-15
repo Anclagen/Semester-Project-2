@@ -2,6 +2,9 @@ import { storage } from "../storage/storage.js";
 import { logout } from "../listeners/authenticate/logout.js";
 import { getUserProfile } from "../api/profile/getProfile.js";
 
+/**
+ * Updates elements visibility base on logged in or out users.
+ */
 export const isUserLoggedIn = async function () {
   document.querySelector("#logout-btn").addEventListener("click", logout);
 

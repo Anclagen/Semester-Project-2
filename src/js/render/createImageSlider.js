@@ -1,3 +1,7 @@
+/**
+ * Takes the media array and fills in the image slider
+ * @param {Array} media array of media urls
+ */
 export const renderImageSlider = function (media) {
   const listingMainSlider = document.querySelector(".main-specific-slider");
   const listingThumbSlider = document.querySelector(".thumbs-specific-slider");

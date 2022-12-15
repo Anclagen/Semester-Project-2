@@ -1,3 +1,6 @@
+/**
+ * Contact page setup
+ */
 export const ContactPageSetup = function () {
   const form = document.querySelector("#contact-form");
   const response = document.querySelector("#contact-form-response");

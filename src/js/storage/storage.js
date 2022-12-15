@@ -17,10 +17,14 @@ class localStorageHandler {
    * @returns {any} returns parsed value from storage
    */
   get = (key) => {
-    if (!JSON.parse(localStorage.getItem(key))) {
+    try {
+      if (!JSON.parse(localStorage.getItem(key))) {
+        return false;
+      }
+      return JSON.parse(localStorage.getItem(key));
+    } catch {
       return false;
     }
-    return JSON.parse(localStorage.getItem(key));
   };
 
   /**

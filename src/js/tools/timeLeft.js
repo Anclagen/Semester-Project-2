@@ -1,5 +1,10 @@
 import { countdown } from "./countdown.js";
 
+/**
+ * Returns the time left for a listing to end.
+ * @param {String} endsAt date format string
+ * @returns
+ */
 export const timeLeft = function (endsAt) {
   const totalSeconds = (new Date(endsAt) - new Date()) / 1000;
   let countdownTime = document.createElement("span");

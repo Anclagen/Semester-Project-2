@@ -5,6 +5,9 @@ import { updatePreview } from "../render/updateListingPreview.js";
 import { addMoreMedia } from "../listeners/listing/showMoreMediaInputs.js";
 import { removeMediaInput } from "../listeners/listing/removeMediaInputs.js";
 
+/**
+ * Create page setup function
+ */
 export const createUpdatePageSetup = async function () {
   const queryString = window.location.search;
   const params = new URLSearchParams(queryString);

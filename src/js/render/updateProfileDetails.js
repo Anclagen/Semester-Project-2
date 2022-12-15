@@ -1,3 +1,7 @@
+/**
+ * Updates profile pages user information
+ * @param {Object} UserData
+ */
 export const updateProfileDetails = function ({
   name,
   email,

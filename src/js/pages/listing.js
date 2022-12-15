@@ -1,6 +1,9 @@
 import { getParamURL } from "../tools/getParamsURL.js";
 import { showSortedListings } from "../sort_search_filter/listingPageSorting.js";
 
+/**
+ * Listings page setup function
+ */
 export const listingPageSetup = async function () {
   let sort = getParamURL("sort");
   const inputs = document.querySelectorAll("input[type=radio]");

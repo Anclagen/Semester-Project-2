@@ -12,6 +12,9 @@ import { storage } from "../storage/storage.js";
 import { recentProfileCardsSetup } from "../tools/fillRecentProfileCards.js";
 import { getParamURL } from "../tools/getParamsURL.js";
 
+/**
+ * Profile page setup function
+ */
 export const profileSetup = async function () {
   let user = getParamURL("user");
 

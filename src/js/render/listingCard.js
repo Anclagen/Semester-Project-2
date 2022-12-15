@@ -1,5 +1,10 @@
 import { timeLeft } from "../tools/timeLeft.js";
 
+/**
+ * Creates a card for a listing
+ * @param {Object} Listing listing object
+ * @returns Element to be appended to page.
+ */
 export const createListingCard = function ({ id, title, endsAt, media, bids }) {
   let bidAmount = `No Bids!`;
   if (bids.length > 0) {
