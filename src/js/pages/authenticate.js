@@ -1,6 +1,11 @@
 import { registerListener } from "../listeners/authenticate/register.js";
 import { loginListener } from "../listeners/authenticate/login.js";
 
+/**
+ * Authentication page setup, with query string check for form state,
+ * toggle button to switch between forms,
+ * and listeners for login and register form.
+ */
 export const authenticate = () => {
   const loginForm = document.querySelector("#login-form");
   const registerForm = document.querySelector("#register-form");
@@ -30,5 +35,7 @@ export const authenticate = () => {
   showRegisterBtn.addEventListener("click", () => {
     registerForm.classList.toggle("hidden");
     loginForm.classList.toggle("hidden");
+    //shift focus for keyboard users
+    registerForm.email.focus();
   });
 };
