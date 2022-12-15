@@ -21,9 +21,11 @@ export async function getAllListings(
   };
 
   const response = await fetch(url, requestOptions);
+  const json = await response.json();
+
   if (response.ok) {
-    return await response.json();
+    return json;
   }
 
-  throw new Error(response);
+  throw new Error(response.statusText);
 }
