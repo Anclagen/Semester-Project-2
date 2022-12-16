@@ -2,6 +2,10 @@ import { timeLeft } from "../../tools/timeLeft.js";
 import { renderImageSlider } from "../createImageSlider.js";
 import { storage } from "../../storage/storage.js";
 
+/**
+ * Fills in the specific pages details
+ * @param {Object} Listing an individual listings data
+ */
 export const updateSpecificListingDetails = function ({
   title,
   bids,
@@ -9,6 +13,7 @@ export const updateSpecificListingDetails = function ({
   description,
   media,
   seller,
+  tags,
 }) {
   let winningBidAmount = 0;
   let winningUser = "No Bidders";
@@ -26,7 +31,12 @@ export const updateSpecificListingDetails = function ({
   const listingTimeBids = document.querySelector("#time-bids");
   listingTimeBids.innerHTML = "";
   listingTimeBids.append(timeLeft(endsAt));
-  listingTimeBids.innerHTML += `<span class="ms-3" id="number-bids">Totals Bids: ${bids.length}<span>`;
+
+  const totalBids = document.createElement("span");
+  totalBids.classList = "ps-3 col-6";
+  totalBids.setAttribute("id", "number-bids");
+  totalBids.innerHTML += `Totals Bids: ${bids.length}`;
+  listingTimeBids.append(totalBids);
 
   const listingWinningBid = document.querySelector("#winning-bid-amount");
   listingWinningBid.innerHTML = `£${winningBidAmount}.00`;
@@ -54,6 +64,11 @@ export const updateSpecificListingDetails = function ({
   }
   listingDescription.innerText = description;
 
+  if (tags.length > 0) {
+    const tagsContainer = document.querySelector("#listing-tags");
+    tagsContainer.innerText = tags.join(", ");
+  }
+
   const listingBidHistory = document.querySelector("#bid-history-content");
   if (bids.length > 0) {
     listingBidHistory.innerHTML = "";
@@ -71,8 +86,8 @@ export const updateSpecificListingDetails = function ({
 
   const listingSellerInfo = document.querySelector("#seller-info-content");
   listingSellerInfo.innerHTML = `<a href="./profile.html?user=${seller.name}">
-                                  <div class="text-center">
-                                    <img class="seller-info-avatar rounded-circle" src="${seller.avatar}" alt="${seller.name}'s avatar" onerror="this.src='../images/default-avatar.png'" />
+                                  <div class="text-center mb-2">
+                                    <img class="seller-info-avatar rounded-circle w-100" src="${seller.avatar}" alt="${seller.name}'s avatar" onerror="this.src='../images/default-avatar.png'" />
                                   </div>
                                     <p>Name: ${seller.name}</p>
                                     <p>Contact: ${seller.email}</p>

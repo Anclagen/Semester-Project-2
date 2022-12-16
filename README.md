@@ -18,20 +18,20 @@ User Stories
 Best Practices
 
 - [ ] Application JS code uses best practices
-- [ ] Application CSS code uses best practices
+- [x] Application CSS code uses best practices
 - [ ] Application HTML code uses best practices
 
 User Experience
 
 - [ ] Errors are handled appropriately with useful alerts to the user
-- [ ] All form inputs are appropriately validated and accessible
+- [x] All form inputs are appropriately validated and accessible
 - [ ] Navigation UI is efficient, functional and accessible
 
 Design Appeal
 
-- [ ] Theme is appealing to the target audience
+- [x] Theme is appealing to the target audience
 - [x] Theme palette is WCAG colour compliant
-- [ ] Content is arranged into an appealing responsive layout
+- [x] Content is arranged into an appealing responsive layout
 
 Configuration
 
@@ -53,8 +53,8 @@ Configuration
     </tr>
     <tr>
       <th>Design Prototype</th>
-      <td><a href="https://xd.adobe.com/view/f07ca203-09ac-4cda-b808-8d35e7f94ef0-a52f/">Desktop Prototype</a> </br>
-      <a href="https://xd.adobe.com/view/7a90c2e2-12b2-4135-bdda-00d2514d612b-2fc3/">Mobile Prototype</a></td>
+      <td><a href="https://xd.adobe.com/view/a6dadd77-9ac4-4eb6-8244-130bfa0a4ade-f389/">Desktop Prototype</a> </br>
+      <a href="https://xd.adobe.com/view/1672b6ba-0ca5-42ce-8288-6eb261c44223-4321/">Mobile Prototype</a></td>
     </tr>
     <tr>
       <th>Style Guide</th>
@@ -70,7 +70,7 @@ Configuration
     </tr>
     <tr>
       <th>Hosted Demo</th>
-      <td></td>
+      <td><a href="https://anclagen.github.io/Semester-Project-2/">Live Site</a></td>
     </tr>
   </tbody>
 </table>

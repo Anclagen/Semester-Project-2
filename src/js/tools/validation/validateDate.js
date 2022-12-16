@@ -1,3 +1,8 @@
+/**
+ * Takes date inputs and checks date is a future date.
+ * @param {Element} input Date input element
+ * @returns {Boolean} true or false.
+ */
 export const isFutureDate = function (input) {
   const dateError = document.querySelector("#date-error");
   if (new Date(input.value) - new Date() <= 0) {

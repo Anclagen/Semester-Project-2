@@ -6,6 +6,7 @@ import { searchListings } from "./search.js";
 import { sortListings } from "./sort.js";
 import { addListingPageControls } from "../listeners/addListingPageControls.js";
 import { updateListingPageDetails } from "../render/updateListingPageDetails.js";
+import { generateErrorMessage } from "../render/errorMessages.js";
 
 let listings = [];
 let sortedActiveListings = [];
@@ -22,9 +23,9 @@ export const showSortedListings = async function (
   numberPages,
   offset = 0
 ) {
+  const listingsContainer = document.querySelector("#listing-results");
   try {
     const inputs = document.querySelectorAll("input[type=radio]");
-    const listingsContainer = document.querySelector("#listing-results");
     listingsContainer.innerHTML = "";
     skeletonLoaderListingCards(listingsContainer);
 
@@ -101,10 +102,17 @@ export const showSortedListings = async function (
     updateListingPageDetails();
     addListingPageControls(page, numberPages, offset, listings);
   } catch (error) {
-    console.log(error);
-    const listingsContainer = document.querySelector("#listing-results");
-    listingsContainer.innerHTML = `<div class="text-danger text-center py-3">
-                                      <p>Oops!?, an error occurred. Please refresh the page and try again. </p>
-                                    <div>`;
+    listingsContainer.classList.add("text-center");
+    if (error.toString().includes("Too Many Requests")) {
+      generateErrorMessage(
+        listingsContainer,
+        "Too many requests, wait 1 minute and refresh the page."
+      );
+    } else {
+      generateErrorMessage(
+        listingsContainer,
+        `An error occurred please refresh and try again. (${error})`
+      );
+    }
   }
 };

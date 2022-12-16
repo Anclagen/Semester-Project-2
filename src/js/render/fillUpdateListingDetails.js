@@ -1,5 +1,5 @@
 /**
- *
+ * Fills update forms inputs with current listing details
  * @param {Object} ListingData Listing data to update
  */
 export const fillUpdateListingDetails = function ({

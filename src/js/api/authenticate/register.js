@@ -23,5 +23,12 @@ export async function register(bodyData) {
     return await response.json();
   }
 
-  throw new Error(response);
+  const json = await response.json();
+
+  // throws error message if present or statusText
+  if (json.errors[0].message) {
+    throw new Error(json.errors[0].message);
+  }
+
+  throw new Error(response.statusText);
 }

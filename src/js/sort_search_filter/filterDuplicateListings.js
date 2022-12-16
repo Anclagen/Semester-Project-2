@@ -1,3 +1,8 @@
+/**
+ * Filters out finished bid on listings, removes duplicates and return array of active bid on listings.
+ * @param {Array} profileBids Array of bid on listings.
+ * @returns {Array} array of unique active listings user has bid on.
+ */
 export const sortFilterBidOn = function (profileBids) {
   let activeBids = [];
   let duplicatesIds = [];

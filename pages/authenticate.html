@@ -19,7 +19,7 @@
     <link rel="icon" href="../images/compact_forgotten_treasures_logo.jpg" />
   </head>
   <body class="bg-background d-flex flex-column min-vh-100">
-    <header class="bg-secondary">
+    <header class="bg-secondary sticky-top">
       <div id="skip"><a href="#main">Skip to Main Content</a></div>
       <nav class="navbar navbar-expand-md container-xxl">
         <div class="container-fluid">
@@ -90,8 +90,8 @@
     </header>
     <main id="main" class="container-xxl">
       <section class="mx-2 row">
-        <!-- Login Form -->
         <div class="mx-auto my-4 p-4 bg-secondary rounded-3 col-lg-5 col-xl-4 entry-form-container align-self-center">
+          <!-- Login Form -->
           <form id="login-form">
             <div class="login-header">
               <img class="mb-4 px-4 rounded-circle login-logo border-primary border" src="../images/compact_forgotten_treasures_logo.jpg" alt="Logo" />
@@ -118,7 +118,7 @@
             <div class="checkbox mb-3">
               <label> <input type="checkbox" class="check-lg" value="remember-me" /> Remember me </label>
             </div>
-            <button class="w-100 btn btn-lg btn-primary" id="submit-btn" type="submit">Login</button>
+            <button class="w-100 btn btn-lg btn-primary" id="login-submit-btn" type="submit">Login</button>
             <div class="mt-3"><span id="toggle-text">Not a member?</span><button id="show-register" class="text-primary" type="button">Sign Up Here</button></div>
           </form>
           <!-- Register Form -->
@@ -155,7 +155,6 @@
               />
             </div>
             <div>
-              <div class="text-center text-danger" id="password-error"></div>
               <label for="register-password" class="form-label">Password</label>
               <input
                 type="password"
@@ -168,12 +167,13 @@
                 required
               />
             </div>
+            <div class="text-center text-danger" id="password-error"></div>
             <div>
               <label for="confirm-password" class="form-label">Confirm Password</label>
               <input
                 type="password"
                 class="form-control mb-3 p-2"
-                id="register-password"
+                id="confirm-register-password"
                 name="confirmPassword"
                 placeholder="Password"
                 title="Password must be at least 8 characters."
@@ -181,14 +181,17 @@
                 required
               />
             </div>
+
             <div>
               <label for="register-avatar" class="form-label">Avatar Image</label>
               <input type="url" name="avatar" class="form-control mb-3 p-2" id="register-avatar" placeholder="example.com/images/your_avatar.jpg" />
             </div>
-            <button class="w-100 btn btn-lg btn-primary" id="submit-btn" type="submit">Register</button>
+            <div class="text-center text-danger" id="avatar-error"></div>
+            <button class="w-100 btn btn-lg btn-primary" id="register-submit-btn" type="submit">Register</button>
             <div class="mt-3"><span id="toggle-text">Already a member?</span><button id="show-login" class="text-primary" type="button">Login Here</button></div>
           </form>
         </div>
+        <!-- Login/Register Image hidden on mobile -->
         <div class="col-lg-7 col-xl-8 align-self-center entry-image text-center">
           <img src="../images/login_register.jpg" alt="login-image" />
         </div>
@@ -199,7 +202,7 @@
         <div class="display-4 pe-2">©</div>
         <div class="d-flex flex-column align-self-center">
           <span>Copyright 2022</span>
-          <span>Fancy Name</span>
+          <span>Forgotten Treasures</span>
         </div>
       </div>
     </footer>

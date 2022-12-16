@@ -1,3 +1,9 @@
+/**
+ * Checks tags character lengths and array length, then return error message to tags input
+ * @param {Array} tagsArray
+ * @param {Element} tagsInput
+ * @returns {Boolean} true or false for if check.
+ */
 export const validateTags = function (tagsArray, tagsInput) {
   const tagsErrorContainer = document.querySelector("#tags-error");
   if (tagsArray.length > 8) {

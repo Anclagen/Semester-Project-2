@@ -9,12 +9,13 @@ import { searchBarListener } from "./listeners/search.js";
 import { updateNavAvatar } from "./interface/navAvatar.js";
 import { ContactPageSetup } from "./pages/contact.js";
 
+//interface functions
 isUserLoggedIn();
 searchBarListener();
 updateNavAvatar();
 
+//pages router
 const currentPage = window.location.href;
-
 if (currentPage.match("authenticate.html")) {
   authenticate();
 } else if (currentPage.match("profile.html")) {

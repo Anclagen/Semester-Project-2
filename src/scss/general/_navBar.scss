@@ -1,3 +1,18 @@
+.navbar a {
+  color: rgb(0, 0, 0, 0.65);
+  font-weight: 500;
+}
+
+.navbar a:hover {
+  color: rgb(0, 0, 0, 0.9);
+  font-weight: 500;
+}
+
+.navbar .active {
+  color: rgb(0, 0, 0, 0);
+  font-weight: 500;
+}
+
 nav {
   .nav-logo {
     height: 60px;

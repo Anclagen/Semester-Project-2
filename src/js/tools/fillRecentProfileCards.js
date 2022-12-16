@@ -1,5 +1,12 @@
 import { createListingCard } from "../render/listingCard.js";
 
+/**
+ * Function to take listing data on the profile page and fill Most recent and all sections.
+ * @param {Array} data Listing data
+ * @param {Element} recent most recent listings container, puts 3 on page
+ * @param {Element} all All listing container, places all in container.
+ * @param {String} message Message for no listings.
+ */
 export const recentProfileCardsSetup = function (
   data,
   recent,
@@ -9,10 +16,6 @@ export const recentProfileCardsSetup = function (
   if (data.length > 0) {
     all.innerHTML = "";
     recent.innerHTML = "";
-    data.map((listing) => {
-      all.append(createListingCard(listing));
-    });
-
     data.forEach((listing, index) => {
       if (index < 3) {
         const card = createListingCard(listing);
@@ -21,9 +24,10 @@ export const recentProfileCardsSetup = function (
         } ${index === 1 ? "d-lg-flex" : ""}`;
         recent.append(card);
       }
+      all.append(createListingCard(listing));
     });
   } else {
-    all.innerHTML = ` <p class="ps-4">${message}</p>`;
-    recent.innerHTML = ` <p class="ps-4">${message}</p>`;
+    all.innerHTML = ` <p class="ps-4 py-4">${message}</p>`;
+    recent.innerHTML = ` <p class="ps-4 py-4">${message}</p>`;
   }
 };

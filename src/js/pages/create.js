@@ -4,7 +4,12 @@ import { fillUpdateListingDetails } from "../render/fillUpdateListingDetails.js"
 import { updatePreview } from "../render/updateListingPreview.js";
 import { addMoreMedia } from "../listeners/listing/showMoreMediaInputs.js";
 import { removeMediaInput } from "../listeners/listing/removeMediaInputs.js";
+import { generateErrorMessage } from "../render/errorMessages.js";
+import { storage } from "../storage/storage.js";
 
+/**
+ * Create page setup function
+ */
 export const createUpdatePageSetup = async function () {
   const queryString = window.location.search;
   const params = new URLSearchParams(queryString);
@@ -12,8 +17,6 @@ export const createUpdatePageSetup = async function () {
 
   const form = document.querySelector("#create-form");
   const H1 = document.querySelector("h1");
-
-  H1.innerText = "Create A Listing";
 
   const addMoreMediaBtn = document.querySelector("#add-more-media-btn");
   addMoreMediaBtn.addEventListener("click", addMoreMedia);
@@ -24,20 +27,39 @@ export const createUpdatePageSetup = async function () {
   form.addEventListener("submit", createUpdateFormListener);
   form.addEventListener("input", updatePreview);
 
+  const errorContainer = document.querySelector("#error-reporting-container");
   if (id) {
     H1.innerText = "Update Listing";
     try {
       const listingData = await getAListings(id);
-      fillUpdateListingDetails(listingData);
-      form.endingAt.setAttribute("disabled", "");
-      updatePreview(listingData.media);
+      //
+      if (listingData.seller.name === storage.get("profile").name) {
+        fillUpdateListingDetails(listingData);
+        form.endingAt.setAttribute("disabled", "");
+        updatePreview(listingData.media);
+      } else {
+        generateErrorMessage(
+          errorContainer,
+          "This isn't your listing to update."
+        );
+        form.removeEventListener("submit", createUpdateFormListener);
+      }
     } catch (error) {
-      console.log(error);
-      const errorContainer = document.querySelector(
-        "#error-reporting-container"
-      );
-      errorContainer.innerHTML = `<p class="p-3 text-losing bg-secondary"> An error occurred please refresh and try again. If problems persist, check the listing still exists.</p>`;
-      location.hash = "#error-reporting-container";
+      const stringError = error.toString();
+      if (
+        stringError.includes("Invalid uuid") ||
+        stringError.includes("No listing with such ID")
+      ) {
+        generateErrorMessage(
+          errorContainer,
+          "An error occurred, this listing doesn't exist."
+        );
+      } else {
+        generateErrorMessage(
+          errorContainer,
+          `An error occurred please refresh and try again. (${stringError})`
+        );
+      }
     }
   }
 };

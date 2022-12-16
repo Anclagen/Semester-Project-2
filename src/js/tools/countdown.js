@@ -1,3 +1,8 @@
+/**
+ * Takes the total seconds and turns it into a count down timer for minutes and seconds.
+ * @param {Number} totalSeconds preferably less than an hours worth.
+ * @returns {Element} returns an element with a counting down timer.
+ */
 export const countdown = function (totalSeconds) {
   const countdownTimer = document.createElement("span");
 

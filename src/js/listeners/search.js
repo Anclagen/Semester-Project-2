@@ -5,10 +5,10 @@ export const searchBarListener = function () {
     event.preventDefault();
     const query = event.target.search.value;
     const currentPage = window.location.href;
-    if (currentPage.match("index.html")) {
-      window.location.href = `./pages/listings.html?search=${query}`;
-    } else {
+    if (currentPage.match("/pages/")) {
       window.location.href = `./listings.html?search=${query}`;
+    } else {
+      window.location.href = `./pages/listings.html?search=${query}`;
     }
   });
 };

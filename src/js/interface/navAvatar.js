@@ -1,5 +1,8 @@
 import { storage } from "../storage/storage.js";
 
+/**
+ * Updates user avatar if link is present.
+ */
 export const updateNavAvatar = function () {
   const profile = storage.get("profile");
   const navAvatar = document.querySelector("#nav-avatar");

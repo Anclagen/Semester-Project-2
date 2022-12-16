@@ -4,6 +4,7 @@ import { getUserProfileListings } from "../api/profile/getProfileListings.js";
 import { showSensitiveDetails } from "../interface/isUserProfile.js";
 import { setupAvatarPreview } from "../listeners/profile/avatar-preview.js";
 import { updateAvatarListener } from "../listeners/profile/updateAvatar.js";
+import { generateErrorMessage } from "../render/errorMessages.js";
 import { createListingCard } from "../render/listingCard.js";
 import { updateProfileDetails } from "../render/updateProfileDetails.js";
 import { sortFilterBidOn } from "../sort_search_filter/filterDuplicateListings.js";
@@ -12,9 +13,13 @@ import { storage } from "../storage/storage.js";
 import { recentProfileCardsSetup } from "../tools/fillRecentProfileCards.js";
 import { getParamURL } from "../tools/getParamsURL.js";
 
+/**
+ * Profile page setup function
+ */
 export const profileSetup = async function () {
   let user = getParamURL("user");
 
+  //checks if this is logged in users profile page.
   if (user === null || user === storage.get("profile").name) {
     user = storage.get("profile").name;
     showSensitiveDetails();
@@ -23,19 +28,19 @@ export const profileSetup = async function () {
     setupAvatarPreview();
   }
 
+  //success message for deleted listing.
   if (getParamURL("deleted")) {
     const deleteSuccessContainer = document.querySelector("#delete-success");
     deleteSuccessContainer.innerHTML = `<p class=" text-center p-2 my-2 rounded-2 text-winning bg-secondary">Listing Was Deleted.</p>`;
   }
+
   try {
     const profile = await getUserProfile(user);
     updateProfileDetails(profile);
     const profileBids = await getUserProfileBids(user);
     const uniqueListings = sortFilterBidOn(profileBids);
+    const yourBidsContainer = document.querySelector("#ongoing-bids-container");
     if (uniqueListings.length > 0) {
-      const yourBidsContainer = document.querySelector(
-        "#ongoing-bids-container"
-      );
       yourBidsContainer.innerHTML = "";
       uniqueListings.map((listing) => {
         const card = createListingCard(listing.card);
@@ -44,6 +49,8 @@ export const profileSetup = async function () {
         ).innerHTML = `Your Bid: £${listing.card.bids.amount}.00`;
         yourBidsContainer.append(card);
       });
+    } else {
+      yourBidsContainer.innerHTML = `<p class="ps-4 py-4">Not currently bidding on anything.</p>`;
     }
     // most recent and all listings
     const profileListings = await getUserProfileListings(user);
@@ -73,6 +80,7 @@ export const profileSetup = async function () {
       "No wins yet."
     );
   } catch (error) {
-    console.log(error);
+    const errorContainer = document.querySelector("#error-reporting-container");
+    generateErrorMessage(errorContainer, error);
   }
 };

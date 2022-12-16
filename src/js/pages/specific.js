@@ -1,10 +1,14 @@
 import { getAListings } from "../api/listing/getAListing.js";
 import { placeBidFormListener } from "../listeners/listing/placeBid.js";
+import { generateErrorMessage } from "../render/errorMessages.js";
 import { addListingOptions } from "../render/specific/addListingOptions.js";
 import { updateSpecificListingDetails } from "../render/specific/updateSpecificDetails.js";
 import { storage } from "../storage/storage.js";
 import { getParamURL } from "../tools/getParamsURL.js";
 
+/**
+ * Setup for specific page.
+ */
 export const specificPageSetup = async function () {
   const id = getParamURL("id");
   if (id) {
@@ -26,12 +30,17 @@ export const specificPageSetup = async function () {
         addListingOptions();
       }
     } catch (error) {
-      console.log(error);
       const errorContainer = document.querySelector(
         "#error-reporting-container"
       );
-      errorContainer.innerHTML = `<p class="p-3 text-losing bg-secondary">An error occurred please refresh and try again. Check listing still exists. </p>`;
-      location.hash = "#error-reporting-container";
+      if (
+        error.toString().includes("No listing") ||
+        error.toString().includes("Invalid uuid")
+      ) {
+        generateErrorMessage(errorContainer, "This listing no longer exists.");
+      } else {
+        generateErrorMessage(errorContainer, error);
+      }
     }
   } else {
     location.href = "../index.html";
