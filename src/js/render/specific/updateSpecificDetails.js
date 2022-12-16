@@ -13,6 +13,7 @@ export const updateSpecificListingDetails = function ({
   description,
   media,
   seller,
+  tags,
 }) {
   let winningBidAmount = 0;
   let winningUser = "No Bidders";
@@ -63,6 +64,11 @@ export const updateSpecificListingDetails = function ({
   }
   listingDescription.innerText = description;
 
+  if (tags.length > 0) {
+    const tagsContainer = document.querySelector("#listing-tags");
+    tagsContainer.innerText = tags.join(", ");
+  }
+
   const listingBidHistory = document.querySelector("#bid-history-content");
   if (bids.length > 0) {
     listingBidHistory.innerHTML = "";
@@ -80,8 +86,8 @@ export const updateSpecificListingDetails = function ({
 
   const listingSellerInfo = document.querySelector("#seller-info-content");
   listingSellerInfo.innerHTML = `<a href="./profile.html?user=${seller.name}">
-                                  <div class="text-center">
-                                    <img class="seller-info-avatar rounded-circle" src="${seller.avatar}" alt="${seller.name}'s avatar" onerror="this.src='../images/default-avatar.png'" />
+                                  <div class="text-center mb-2">
+                                    <img class="seller-info-avatar rounded-circle w-100" src="${seller.avatar}" alt="${seller.name}'s avatar" onerror="this.src='../images/default-avatar.png'" />
                                   </div>
                                     <p>Name: ${seller.name}</p>
                                     <p>Contact: ${seller.email}</p>
