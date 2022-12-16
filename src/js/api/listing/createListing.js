@@ -24,7 +24,7 @@ export const createListing = async function (bodyData) {
   }
 
   const json = await response.json();
-  console.log(json);
+
   if (json.errors[0].message) {
     throw new Error(json.errors[0].message);
   }

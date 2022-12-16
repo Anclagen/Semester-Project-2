@@ -17,7 +17,6 @@ export async function updateAvatarListener(event) {
     const closeBtn = document.querySelector("#close-modal-btn");
     closeBtn.click();
   } catch (error) {
-    console.log(error);
     const avatarErrorContainer = document.querySelector(
       "#avatar-error-reporting"
     );

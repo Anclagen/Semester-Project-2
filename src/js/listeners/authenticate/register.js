@@ -34,7 +34,6 @@ export async function registerListener(event) {
   try {
     await register(registerBody);
   } catch (error) {
-    console.log(error);
     //check for avatar rejection to focus input and provide localised error.
     if (error.toString().includes("Image is not accessible")) {
       form.avatar.focus();

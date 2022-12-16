@@ -23,8 +23,9 @@ export const updateListing = async function (bodyData, id) {
   if (response.ok) {
     return await response.json();
   }
+
   const json = await response.json();
-  console.log(json);
+
   if (json.errors[0].message) {
     throw new Error(json.errors[0].message);
   }

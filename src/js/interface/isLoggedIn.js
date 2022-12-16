@@ -25,19 +25,16 @@ export const isUserLoggedIn = async function () {
       delete profile.wins;
       storage.set("profile", profile);
     } catch (error) {
-      console.log(error);
       alert(
-        "An error occurred updating updating your profile details, please login again."
+        `An error occurred updating updating your profile details. (${error})`
       );
     }
   } else {
     // redirect on profile and create when not logged in.
     const url = window.location.href.toString();
     if (url.includes("create.html") || url.includes("profile.html")) {
-      console.log();
       location.href = "../index.html";
     }
-
     loggedIn.forEach((item) => item.classList.add("hidden"));
     loggedOut.forEach((item) => item.classList.remove("hidden"));
   }
