@@ -20,6 +20,11 @@ export async function getUserProfileBids(username) {
   if (response.ok) {
     return await response.json();
   }
+  const json = await response.json();
+  console.log(json);
+  if (json.errors[0].message) {
+    throw new Error(json.errors[0].message);
+  }
 
-  throw new Error(response);
+  throw new Error(response.statusText);
 }

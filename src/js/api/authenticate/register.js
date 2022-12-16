@@ -27,8 +27,8 @@ export async function register(bodyData) {
 
   // throws error message if present or statusText
   if (json.errors[0].message) {
-    throw json.errors[0].message;
+    throw new Error(json.errors[0].message);
   }
 
-  throw response.statusText;
+  throw new Error(response.statusText);
 }
