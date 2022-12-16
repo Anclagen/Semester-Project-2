@@ -19,10 +19,17 @@ export const isUserLoggedIn = async function () {
     loggedOut.forEach((item) => item.classList.add("hidden"));
     loggedIn.forEach((item) => item.classList.remove("hidden"));
     //update users credentials namely credits/avatar
-    const profile = await getUserProfile(storage.get("profile").name);
-    delete profile.listings;
-    delete profile.wins;
-    storage.set("profile", profile);
+    try {
+      const profile = await getUserProfile(storage.get("profile").name);
+      delete profile.listings;
+      delete profile.wins;
+      storage.set("profile", profile);
+    } catch (error) {
+      console.log(error);
+      alert(
+        "An error occurred updating updating your profile details, please login again."
+      );
+    }
   } else {
     // redirect on profile and create when not logged in.
     const url = window.location.href.toString();
