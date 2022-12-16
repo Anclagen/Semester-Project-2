@@ -1,4 +1,5 @@
 import { getAllListings } from "../api/listing/getAllListings.js";
+import { generateErrorMessage } from "../render/errorMessages.js";
 import { setupListingSlider } from "../tools/listingSlider.js";
 /**
  * Sets up home page sliders
@@ -20,10 +21,16 @@ export const homeSetup = async function () {
     const newestListings = await getAllListings();
     setupListingSlider(newestListings, newestContainer);
   } catch (error) {
-    console.log(error);
-    endingSoonContainer.innerHTML = `<p class="p-3 text-losing bg-secondary"> An error occurred please refresh and try again. If problems persist, contact the administrator.</p>`;
     if (error.toString().includes("Too Many Requests")) {
-      alert("Too many requests, wait 1 minute and refresh the page.");
+      generateErrorMessage(
+        endingSoonContainer,
+        "Too many requests, wait 1 minute and refresh the page."
+      );
+    } else {
+      generateErrorMessage(
+        endingSoonContainer,
+        "An error occurred please refresh and try again. If problems persist, contact the administrator."
+      );
     }
   }
 };
