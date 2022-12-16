@@ -87,8 +87,8 @@
     </header>
     <main id="main" class="container-xxl">
       <section>
+        <div id="error-reporting-container" class="text-center mt-1"></div>
         <h1 class="text-center my-4"><div class="skeleton skeleton-headings"></div></h1>
-        <div id="error-reporting-container" class="text-center"></div>
         <div class="row">
           <!-- image slider! -->
           <div class="col-md-7 p-3 pt-1 mb-5">
@@ -152,7 +152,8 @@
                 </div>
                 <div id="edit-delete-btns" class="d-flex justify-content-around"></div>
                 <div data-isLoggedVisibility="true" data-isNotSeller="false">
-                  <button type="submit" class="btn btn-primary w-100 my-3">Place Bid</button>
+                  <div id="bid-error-reporting" class="text-center mt-3 mb-1"></div>
+                  <button type="submit" class="btn btn-primary w-100 mb-3">Place Bid</button>
                 </div>
               </div>
             </form>
