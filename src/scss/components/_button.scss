@@ -1,13 +1,7 @@
 .btn-primary:hover {
   color: $primary;
-  background-color: transparent;
-  border-color: $primary;
-}
-
-.btn-primary[aria-expanded="false"] {
-  color: black;
   background-color: $secondary;
-  border: none;
+  border-color: $primary;
 }
 
 // this might need altering in the future if other radio button are required
