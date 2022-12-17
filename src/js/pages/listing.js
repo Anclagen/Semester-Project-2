@@ -26,6 +26,7 @@ export const listingPageSetup = async function () {
 
   fieldset.addEventListener("change", () => {
     page = 1;
+    offset = 0;
     showSortedListings(page, numberPages, offset);
   });
 };
