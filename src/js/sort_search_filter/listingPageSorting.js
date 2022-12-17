@@ -48,8 +48,9 @@ export const showSortedListings = async function (
       const filteredListings = searchListings([...listings]);
       sortedActiveListings = sortListings(filteredListings);
     } else if (inputs[2].checked) {
-      //checks if popular radio option checked fetches listings based on that.
-      if (page === 1 && listings.length === 0) {
+      // radio option; popular, checks listings to see if fetching unnecessary, as data can be sorted and reused.
+      if (page === 1 && listings.length < 200) {
+        listings = [];
         listings = [
           ...(await getAllListings()),
           ...(await getAllListings("created", "desc", 100)),
@@ -57,7 +58,7 @@ export const showSortedListings = async function (
       }
       sortedActiveListings = sortListings(listings);
     } else if (inputs[1].checked) {
-      // popular radio option; ending soon
+      // radio option; ending soon
       listings = sortedActiveListings = await fetchMoreResult(
         page,
         numberPages,
@@ -67,7 +68,7 @@ export const showSortedListings = async function (
         "asc"
       );
     } else if (inputs[0].checked) {
-      // popular radio option; newest
+      // radio option; newest
       listings = sortedActiveListings = await fetchMoreResult(
         page,
         numberPages,
