@@ -22,6 +22,44 @@ The project covers these user stories;
 - [x] A registered user may use credit to make a Bid on another user’s Listing
 - [x] An unregistered user may search through Listings
 
+### Required Project Links
+
+<table>
+  <thead>
+    <tr>
+      <th>Resource</th>
+      <td>URL</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Gantt Chart</th>
+      <td><a href="https://raw.githubusercontent.com/Anclagen/Semester-Project-2/main/planning_and_design/Gantt%20Chart%20Images/TeamGanttChart.jpg">Gantt Chart Image</a></td>
+    </tr>
+    <tr>
+      <th>Design Prototype</th>
+      <td><a href="https://xd.adobe.com/view/a6dadd77-9ac4-4eb6-8244-130bfa0a4ade-f389/">Desktop Prototype</a> </br>
+      <a href="https://xd.adobe.com/view/1672b6ba-0ca5-42ce-8288-6eb261c44223-4321/">Mobile Prototype</a></td>
+    </tr>
+    <tr>
+      <th>Style Guide</th>
+      <td><a href="https://xd.adobe.com/view/666988e0-4582-49ce-b57f-dae078f5507c-333a/">Style Guide</a></td>
+    </tr>
+    <tr>
+      <th>Kanban Board</th>
+      <td><a href="https://github.com/users/Anclagen/projects/2/views/6?layout=board">Project Board Link</a></td>
+    </tr>
+    <tr>
+      <th>Repository</th>
+      <td><a href="https://github.com/Anclagen/Semester-Project-2">Project Repository</a></td>
+    </tr>
+    <tr>
+      <th>Hosted Demo</th>
+      <td><a href="https://anclagen.github.io/Semester-Project-2/">Live Site</a></td>
+    </tr>
+  </tbody>
+</table>
+
 ## Built With
 
 <img src="https://skillicons.dev/icons?i=html,sass,js,bootstrap"/>
@@ -109,41 +147,3 @@ If you experience any errors feel free to add issues, or open up a pull request 
 ## License
 
 This project is licensed under a Creative Commons license. It is open for contributions, but please credit the project if you use the code in your own projects.
-
-## Required Links
-
-<table>
-  <thead>
-    <tr>
-      <th>Resource</th>
-      <td>URL</td>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>Gantt Chart</th>
-      <td><a href="https://raw.githubusercontent.com/Anclagen/Semester-Project-2/main/planning_and_design/Gantt%20Chart%20Images/TeamGanttChart.jpg">Gantt Chart Image</a></td>
-    </tr>
-    <tr>
-      <th>Design Prototype</th>
-      <td><a href="https://xd.adobe.com/view/a6dadd77-9ac4-4eb6-8244-130bfa0a4ade-f389/">Desktop Prototype</a> </br>
-      <a href="https://xd.adobe.com/view/1672b6ba-0ca5-42ce-8288-6eb261c44223-4321/">Mobile Prototype</a></td>
-    </tr>
-    <tr>
-      <th>Style Guide</th>
-      <td><a href="https://xd.adobe.com/view/666988e0-4582-49ce-b57f-dae078f5507c-333a/">Style Guide</a></td>
-    </tr>
-    <tr>
-      <th>Kanban Board</th>
-      <td><a href="https://github.com/users/Anclagen/projects/2/views/6?layout=board">Project Board Link</a></td>
-    </tr>
-    <tr>
-      <th>Repository</th>
-      <td><a href="https://github.com/Anclagen/Semester-Project-2">Project Repository</a></td>
-    </tr>
-    <tr>
-      <th>Hosted Demo</th>
-      <td><a href="https://anclagen.github.io/Semester-Project-2/">Live Site</a></td>
-    </tr>
-  </tbody>
-</table>
