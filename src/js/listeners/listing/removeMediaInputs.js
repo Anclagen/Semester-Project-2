@@ -1,5 +1,5 @@
 import { showInputContainer } from "../../tools/inputAccordion.js";
-import { updatePreview } from "../../render/updateListingPreview.js";
+import { updatePreview } from "../../render/createUpdate/updateListingPreview.js";
 
 /**
  * Removed media inputs from the create form.

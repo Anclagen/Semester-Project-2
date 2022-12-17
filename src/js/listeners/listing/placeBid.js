@@ -19,7 +19,7 @@ export const placeBidFormListener = async function (event) {
       //I could refresh for them I guess
       generateErrorMessage(
         errorContainer,
-        "Your bid must be higher than the current bid, please refresh the page to update."
+        "Your bid must be higher than the current bid, please refresh the page to update the listing."
       );
     } else if (stringError.includes("No listing with such ID")) {
       generateErrorMessage(

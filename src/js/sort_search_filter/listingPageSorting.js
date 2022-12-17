@@ -1,11 +1,11 @@
 import { getAllListings } from "../api/listing/getAllListings.js";
 import { skeletonLoaderListingCards } from "../render/loader.js";
-import { renderActiveListings } from "../tools/renderActiveListing.js";
+import { renderActiveListings } from "../render/renderActiveListing.js";
 import { getParamURL } from "../tools/getParamsURL.js";
 import { searchListings } from "./search.js";
 import { sortListings } from "./sort.js";
 import { addListingPageControls } from "../listeners/addListingPageControls.js";
-import { updateListingPageDetails } from "../render/updateListingPageDetails.js";
+import { updateListingPageDetails } from "../render/listings/updateListingPageDetails.js";
 import { generateErrorMessage } from "../render/errorMessages.js";
 
 let listings = [];

@@ -1,4 +1,4 @@
-import { createListingCard } from "../render/listingCard.js";
+import { createListingCard } from "./listingCard.js";
 
 /**
  * Fills a container with desired amount of active listings.

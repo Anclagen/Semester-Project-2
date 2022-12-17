@@ -1,7 +1,7 @@
 import { getAListings } from "../api/listing/getAListing.js";
 import { createUpdateFormListener } from "../listeners/listing/createUpdate.js";
-import { fillUpdateListingDetails } from "../render/fillUpdateListingDetails.js";
-import { updatePreview } from "../render/updateListingPreview.js";
+import { fillUpdateListingDetails } from "../render/createUpdate/fillUpdateListingDetails.js";
+import { updatePreview } from "../render/createUpdate/updateListingPreview.js";
 import { addMoreMedia } from "../listeners/listing/showMoreMediaInputs.js";
 import { removeMediaInput } from "../listeners/listing/removeMediaInputs.js";
 import { generateErrorMessage } from "../render/errorMessages.js";
