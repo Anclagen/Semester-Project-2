@@ -6,8 +6,12 @@ import { getParamURL } from "../tools/getParamsURL.js";
  * @returns {Array} returns an array with matching listings.
  */
 export function searchListings(activeListing) {
-  const search = getParamURL("search");
-
+  let search = getParamURL("search");
+  //checking for search results search bar.
+  let listingPageSearch = document.querySelector("#listing-search");
+  if (listingPageSearch) {
+    search = listingPageSearch.value;
+  }
   const searchTerm = search.toLowerCase();
   const filteredListings = activeListing.filter((listing) => {
     const seller = listing.seller.name.toLowerCase();
