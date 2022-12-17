@@ -2,12 +2,24 @@
 
 ![Homepage Preview](/planning_and_design/images/site_readme_image.jpg)
 
+## Table Of Content
+
+1. [Project Brief](#project-brief)
+2. [User Stories](#user-stories)
+3. [Required Project Links](#required-project-links)
+4. [Built With](#built-with)
+5. [Getting Started](#getting-started)
+6. [Testing](#testing)
+7. [Contributions](#contributing)
+8. [Contact](#contact)
+9. [Licence](#license)
+
 ## Project Brief
 
 Forgotten Treasures is an online auction website, where users can bid on and setup auctions. Unregistered users are able to browse and view listings. Register users are able to bid on, create and update listings, view their profile and update their avatar image.
 An auction site is looking to launch a website where users can add items to be bid on and bid on items other users have put up for auction.
 
-### User Stories
+## User Stories
 
 The project covers these user stories;
 
@@ -22,7 +34,7 @@ The project covers these user stories;
 - [x] A registered user may use credit to make a Bid on another user’s Listing
 - [x] An unregistered user may search through Listings
 
-### Required Project Links
+## Required Project Links
 
 <table>
   <thead>
@@ -75,6 +87,30 @@ The project covers these user stories;
 
 - Adobe XD
 
+### Dependencies
+
+```json
+"bootstrap": "^5.2.2"
+```
+
+### Development Dependencies
+
+```json
+"@babel/core": "^7.19.3",
+"@babel/preset-env": "^7.19.4",
+"cypress": "^11.2.0",
+"dotenv": "^16.0.3",
+"eslint": "^8.28.0",
+"eslint-plugin-cypress": "^2.12.1",
+"eslint-plugin-jest": "^27.1.5",
+"husky": "^8.0.2",
+"jest": "^29.3.1",
+"lint-staged": "^13.0.3",
+"live-server": "^1.2.2",
+"prettier": "^2.7.1",
+"sass": "^1.55.0"
+```
+
 ## Getting Started
 
 Download and extract the zip file or clone the project in the command line from your preferred editor.
@@ -83,13 +119,13 @@ Download and extract the zip file or clone the project in the command line from 
 git clone https://github.com/Anclagen/Semester-Project-2.git
 ```
 
-Then install the projects dependencies with;
+Install the projects dependencies.
 
 ```
 npm i
 ```
 
-and compile the css using;
+Then compile the css and open live server using
 
 ```
 npm run start
@@ -99,15 +135,31 @@ npm run start
 
 The project is configured to run on GitHub pages using the provided workflow. For hosting else where further configuration will be require to import the Bootstrap JS either through a bundler, or by replacing the bootstrap node modules script link with the CDN link.
 
-## Automated Testing Cypress
+## Testing
 
-Before you begin testing you will need to register an account, and use those details to fill out the .env file following the example template.
+### Cypress Testing
+
+Before you begin testing you will need to register an account, and use those details to fill out the .env file following the example template. Base URL can be your hosted version of the project or live server running on `http://127.0.0.1:5500/` or `http://127.0.0.1:8080/`
+
+```
+PASSWORD=
+EMAIL=
+USERNAME=
+BASEURL=
+```
 
 To run these tests you can use this command to open Cypress,
 
 ```
 npm run test-e2e
 ```
+
+From here;
+
+1. Select E2E testing.
+2. Choose your browser to test in.
+3. Press Start.
+4. Select a test spec to run from the cypress/e2e folder.
 
 Due to rate limiting on the API it is advisable to avoid using the `npm run test-e2e-cli` command line testing as this will attempt to run through all the tests and result in a server time out of 1 minute.
 
@@ -131,6 +183,10 @@ There are currently 4 test files for cypress, all tests passing on v0.7.0, furth
   - Tests user can bid and view winning user.
   - Tests unregistered user can't bid.
   - Tests error handling.
+
+### Jest Testing
+
+The project is configured for Jest testing but no tests have been added at this time.
 
 ## Contributing
 
