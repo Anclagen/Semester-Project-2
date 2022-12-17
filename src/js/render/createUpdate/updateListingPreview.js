@@ -1,4 +1,4 @@
-import { renderImageSlider } from "./createImageSlider.js";
+import { renderImageSlider } from "../createImageSlider.js";
 
 /**
  * Listener function to update listing preview when create/updating a listing.

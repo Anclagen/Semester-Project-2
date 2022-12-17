@@ -1,4 +1,4 @@
-import { getParamURL } from "../tools/getParamsURL.js";
+import { getParamURL } from "../../tools/getParamsURL.js";
 
 /**
  * Updates titles/headings based on selected filters
@@ -22,7 +22,7 @@ export const updateListingPageDetails = function () {
 
   if (search !== null) {
     searchDetailsContainer.innerHTML = `<div class="text-center py-2 bg-secondary">
-    <p class="m-0">Searching for: ${search} </p>
+    <p class="m-0">Searching for: ${search} </p><a href="./listings.html">Clear search</a>
   <div>`;
     title.innerText = `Searching for: ${search} | Forgotten Treasures`;
   }

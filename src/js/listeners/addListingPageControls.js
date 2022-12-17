@@ -30,12 +30,10 @@ export const addListingPageControls = async function (
   nextBtn.addEventListener("click", async () => {
     page++;
     showSortedListings(page, numberPages, offset);
-    window.scroll(0, 0);
   });
 
   previousBtn.addEventListener("click", async () => {
     page--;
     showSortedListings(page, numberPages, offset, offset);
-    window.scroll(0, 0);
   });
 };

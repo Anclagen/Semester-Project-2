@@ -12,6 +12,11 @@ import { validateTags } from "../../tools/validation/validateTags.js";
  */
 export const createUpdateFormListener = async function (event) {
   event.preventDefault();
+  const errorContainer = document.querySelector("#error-reporting-container");
+  const mediaErrorContainer = document.querySelector("#image-error");
+  errorContainer.innerHTML = "";
+  mediaErrorContainer.innerHTML = "";
+
   const mediaInputs = Array.from(
     event.target.querySelectorAll("input[type=url]:enabled")
   );
@@ -45,8 +50,6 @@ export const createUpdateFormListener = async function (event) {
 
     window.location.href = `./specific.html?id=${response.id}`;
   } catch (error) {
-    const errorContainer = document.querySelector("#error-reporting-container");
-    const mediaErrorContainer = document.querySelector("#image-error");
     //check for image errors
     if (error.toString().includes("Image is not accessible")) {
       generateErrorMessage(mediaErrorContainer, error);

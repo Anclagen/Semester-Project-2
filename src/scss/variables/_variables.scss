@@ -5,12 +5,6 @@ $secondary: #e2e1fb;
 $success: #3bcf18;
 $danger: #b50000;
 
-//unused for the moment
-$light: #f7f7f7;
-$dark: #343a40;
-$info: #0098b6;
-$warning: #dbba00;
-
 //navigation variables
 $navbar-brand-padding-y: 0;
 
@@ -47,11 +41,3 @@ $extra-theme-colors: (
 );
 
 $theme-colors: map-merge($extra-theme-colors, $theme-colors);
-
-//needed to change input box colours
-@each $name, $colour in $theme-colors {
-  .place-text-#{$name}::placeholder {
-    color: $colour !important;
-    font-style: italic;
-  }
-}

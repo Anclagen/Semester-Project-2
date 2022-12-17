@@ -1,5 +1,5 @@
 import { showInputContainer } from "../../tools/inputAccordion.js";
-import { updatePreview } from "../../render/updateListingPreview.js";
+import { updatePreview } from "../../render/createUpdate/updateListingPreview.js";
 
 /**
  * Shows an extra media input field on create/update form

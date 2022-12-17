@@ -6,11 +6,11 @@ import { setupAvatarPreview } from "../listeners/profile/avatar-preview.js";
 import { updateAvatarListener } from "../listeners/profile/updateAvatar.js";
 import { generateErrorMessage } from "../render/errorMessages.js";
 import { createListingCard } from "../render/listingCard.js";
-import { updateProfileDetails } from "../render/updateProfileDetails.js";
+import { updateProfileDetails } from "../render/profile/updateProfileDetails.js";
 import { sortFilterBidOn } from "../sort_search_filter/filterDuplicateListings.js";
 import { filterWonListings } from "../sort_search_filter/filterWins.js";
 import { storage } from "../storage/storage.js";
-import { recentProfileCardsSetup } from "../tools/fillRecentProfileCards.js";
+import { recentProfileCardsSetup } from "../render/profile/fillRecentProfileCards.js";
 import { getParamURL } from "../tools/getParamsURL.js";
 
 /**

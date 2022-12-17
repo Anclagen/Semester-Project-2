@@ -1,4 +1,4 @@
-import { createListingCard } from "../render/listingCard.js";
+import { createListingCard } from "../listingCard.js";
 
 /**
  * Function to take listing data on the profile page and fill Most recent and all sections.
