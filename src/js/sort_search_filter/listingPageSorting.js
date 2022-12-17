@@ -31,6 +31,7 @@ export const showSortedListings = async function (
 
     // filter results for search if querystring present
     const search = getParamURL("search");
+
     if (search !== null) {
       if (page === 1) {
         listings = [
@@ -83,11 +84,14 @@ export const showSortedListings = async function (
     }
 
     listingsContainer.innerHTML = "";
-    renderActiveListings(
-      listingsContainer,
-      [...sortedActiveListings].slice((page - 1) * 20),
-      20
-    );
+    setTimeout(function () {
+      renderActiveListings(
+        listingsContainer,
+        [...sortedActiveListings].slice((page - 1) * 20),
+        20
+      ),
+        200;
+    });
 
     if (page === 1 && search === null) {
       numberPages = Math.ceil(listings.length / 20);
