@@ -5,7 +5,7 @@ import { storage } from "../../storage/storage.js";
 /**
  *  Updates avatar url for user
  * @param {Object} media {avatar: "url.com/abc.jpg"}
- * @returns {Object} profile object
+ * @returns {Promise<Object>} profile object
  */
 export async function updateAvatar(media) {
   const profile = storage.get("profile");
