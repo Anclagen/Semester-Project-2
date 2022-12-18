@@ -1,4 +1,5 @@
 import { updateAvatar } from "../../api/profile/updateProfile.js";
+import { storage } from "../../storage/storage.js";
 
 /**
  * lister to update users avatar
@@ -15,7 +16,9 @@ export async function updateAvatarListener(event) {
   try {
     const profile = await updateAvatar(requestBody);
     const avatar = document.querySelector("#userAvatarImage");
-    avatar.src = await profile.avatar;
+    const avatarNav = document.querySelector("#nav-avatar");
+    avatarNav.src = avatar.src = await profile.avatar;
+    storage.set("profile", await profile);
     avatarErrorContainer.innerHTML = "";
     const closeBtn = document.querySelector("#close-modal-btn");
     closeBtn.click();
