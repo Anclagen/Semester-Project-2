@@ -10,7 +10,6 @@ import { generateErrorMessage } from "../render/errorMessages.js";
 
 let listings = [];
 let sortedActiveListings = [];
-let filteredListings = [];
 
 /**
  * Fetches depending sort/search query and generates content for page
@@ -24,27 +23,34 @@ export const showSortedListings = async function (
   offset = 0
 ) {
   const listingsContainer = document.querySelector("#listing-results");
+  const inputs = document.querySelectorAll("input[type=radio]");
+
   try {
-    const inputs = document.querySelectorAll("input[type=radio]");
+    //clears old results and adds loading
     listingsContainer.innerHTML = "";
     skeletonLoaderListingCards(listingsContainer);
 
-    // filter results for search if querystring present
-    const search = getParamURL("search");
+    // filter results for search if querystring present, checks for updated
+    let search = getParamURL("search");
+    const listingPageSearch = document.querySelector("#listing-search");
+    if (listingPageSearch) {
+      search = listingPageSearch.value;
+    }
 
+    //sorting out the fetches, based on search and checked radio button
     if (search !== null) {
-      if (page === 1) {
+      if (page === 1 && !listingPageSearch) {
         listings = [
           ...(await getAllListings()),
           ...(await getAllListings("created", "desc", 100)),
         ];
-        filteredListings = searchListings([...listings]);
-        sortedActiveListings = sortListings(filteredListings);
-        numberPages = Math.ceil(filteredListings.length / 20);
       }
+      const filteredListings = searchListings([...listings]);
+      sortedActiveListings = sortListings(filteredListings);
     } else if (inputs[2].checked) {
-      //checks if popular radio option checked fetches listings based on that.
-      if (page === 1) {
+      // radio option; popular, checks listings to see if fetching unnecessary, as data can be sorted and reused.
+      if (page === 1 && listings.length < 200) {
+        listings = [];
         listings = [
           ...(await getAllListings()),
           ...(await getAllListings("created", "desc", 100)),
@@ -52,60 +58,49 @@ export const showSortedListings = async function (
       }
       sortedActiveListings = sortListings(listings);
     } else if (inputs[1].checked) {
-      //checks if ending soon radio option checked fetches listings based on that.
-      if (page === 1) {
-        listings = await getAllListings("endsAt", "asc");
-      }
-
-      if (page === numberPages - 1 && listings.length % 100 === 0) {
-        offset += 100;
-        listings = [
-          ...listings,
-          ...(await getAllListings("endsAt", "asc", offset)),
-        ];
-
-        numberPages = Math.ceil(listings.length / 20);
-      }
-      sortedActiveListings = listings;
+      // radio option; ending soon
+      listings = sortedActiveListings = await fetchMoreResult(
+        page,
+        numberPages,
+        listings,
+        offset,
+        "endsAt",
+        "asc"
+      );
     } else if (inputs[0].checked) {
-      //checks if newest radio option checked fetches listings based on that.
-      if (page === 1) {
-        listings = await getAllListings("created", "desc", offset);
-      }
-      if (page === numberPages - 1 && listings.length % 100 === 0) {
-        offset += 100;
-        listings = [
-          ...listings,
-          ...(await getAllListings("created", "desc", offset)),
-        ];
-        numberPages = Math.ceil(listings.length / 20);
-      }
-      sortedActiveListings = listings;
+      // radio option; newest
+      listings = sortedActiveListings = await fetchMoreResult(
+        page,
+        numberPages,
+        listings,
+        offset,
+        "created",
+        "desc"
+      );
     }
 
+    // updating page number as more fetches are done this updates.
+    numberPages = Math.ceil(sortedActiveListings.length / 20);
+
+    // clear and fill container for relevant listings.
     listingsContainer.innerHTML = "";
-    setTimeout(function () {
-      renderActiveListings(
-        listingsContainer,
-        [...sortedActiveListings].slice((page - 1) * 20),
-        20
-      ),
-        200;
-    });
-
-    if (page === 1 && search === null) {
-      numberPages = Math.ceil(listings.length / 20);
-    }
-
-    if (sortedActiveListings.length === 0 && listings.length === 0) {
-      listingsContainer.innerHTML = `<div class="bg-secondary text-center p-3 mt-2">
-                                        <p>No listings found.</p>
+    renderActiveListings(
+      listingsContainer,
+      [...sortedActiveListings].slice((page - 1) * 20),
+      20
+    );
+    // if no results display message
+    if (sortedActiveListings.length === 0) {
+      listingsContainer.innerHTML = `<div class="bg-secondary text-center p-3 mt-3">
+                                        <p class="m-0">No listings found.</p>
                                     <div>`;
     }
 
-    updateListingPageDetails();
-    addListingPageControls(page, numberPages, offset, listings);
+    //updates the page.
+    updateListingPageDetails(page, numberPages, offset);
+    addListingPageControls(page, numberPages, offset);
   } catch (error) {
+    console.log(error);
     listingsContainer.classList.add("text-center");
     if (error.toString().includes("Too Many Requests")) {
       generateErrorMessage(
@@ -119,4 +114,34 @@ export const showSortedListings = async function (
       );
     }
   }
+};
+
+/**
+ * Checks if more listings are needed and fetched them.
+ * @param {Number} page current page
+ * @param {Number} numberPages total pages so far
+ * @param {Array} listings current array of listings
+ * @param {Number} offset current offset
+ * @param {String} sort how listings are to be sorted
+ * @param {String} order asc or desc
+ * @returns {Promise<Array>} returns updated listings
+ */
+const fetchMoreResult = async function (
+  page,
+  numberPages,
+  listings,
+  offset,
+  sort,
+  order
+) {
+  if (page === 1) {
+    listings = await getAllListings(sort, order);
+  }
+
+  if (page === numberPages - 1 && listings.length % 100 === 0) {
+    offset += 100;
+    listings = [...listings, ...(await getAllListings(sort, order, offset))];
+  }
+
+  return listings;
 };
