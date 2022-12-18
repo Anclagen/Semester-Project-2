@@ -1,6 +1,6 @@
 {
   "name": "forgotten-treasures",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "An Auction site as part of a project assignment for Noroff",
   "main": "index.js",
   "devDependencies": {
