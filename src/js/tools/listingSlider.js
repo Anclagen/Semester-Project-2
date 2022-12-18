@@ -10,7 +10,7 @@ export const setupListingSlider = function (data, container) {
   const nextArrow = container.querySelector(".next-arrow");
   const previousArrow = container.querySelector(".previous-arrow");
 
-  /*-------------- Responsive Latest content slider -----------------*/
+  /*-------------- Responsive listing slider -----------------*/
   // variables for slider functionality.
   let sliderLengthMax = 20;
   let slidePercentage = 5;
@@ -18,7 +18,7 @@ export const setupListingSlider = function (data, container) {
   let transform = 0;
 
   /*-------------- Event listeners For Slider -----------------*/
-  /* Limited to 20 posts max, resizes from 1 to 2 to 4 posts at a time 
+  /* Limited to 20 listings, resizes from 1/2/3/4 listings at a time 
    depending on the screen size*/
 
   /**

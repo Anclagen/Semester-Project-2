@@ -1,5 +1,8 @@
 const searchBar = document.querySelector("form[role=search]");
 
+/**
+ * Nav bar search listener to redirect users to listing page
+ */
 export const searchBarListener = function () {
   searchBar.addEventListener("submit", (event) => {
     event.preventDefault();
