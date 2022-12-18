@@ -33,7 +33,7 @@ export const updateListingPageDetails = function (page, numberPages, offset) {
                                           <form class="d-block w-100" role="search" id="listing-search-form">
                                             <div class="w-75 mx-auto">
                                               <label for="listing-search" class="form-label">Searching for;</label> 
-                                              <input class="form-control rounded " id="listing-search" type="search" name="search" value=${search} aria-label="Search">                                            
+                                              <input class="form-control rounded " id="listing-search" type="search" name="search" value="${search}" aria-label="Search">                                            
                                             </div>
                                           </form>
                                           <div class="text-center">
