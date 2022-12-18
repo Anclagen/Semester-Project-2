@@ -105,6 +105,7 @@ The project covers these user stories;
 "eslint-plugin-jest": "^27.1.5",
 "husky": "^8.0.2",
 "jest": "^29.3.1",
+"jsdoc": "^4.0.0",
 "lint-staged": "^13.0.3",
 "live-server": "^1.2.2",
 "prettier": "^2.7.1",
@@ -129,6 +130,14 @@ Then compile the css and open live server using
 
 ```
 npm run start
+```
+
+### JSDocs
+
+If you require JSDocs run
+
+```
+npm run docs
 ```
 
 ### Hosting

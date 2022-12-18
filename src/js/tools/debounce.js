@@ -3,7 +3,7 @@
  * https://www.joshwcomeau.com/snippets/javascript/debounce/
  * @param {Function} callback
  * @param {Number} wait milliseconds
- * @returns
+ * @returns {callback}
  */
 export const debounce = (callback, wait) => {
   let timeoutId = null;

@@ -3,7 +3,7 @@ import { countdown } from "./countdown.js";
 /**
  * Returns the time left for a listing to end.
  * @param {String} endsAt date format string
- * @returns
+ * @returns {Element} Returns span element with time left or countdown timer.
  */
 export const timeLeft = function (endsAt) {
   const totalSeconds = (new Date(endsAt) - new Date()) / 1000;

@@ -3,7 +3,6 @@ import { updateAvatar } from "../../api/profile/updateProfile.js";
 /**
  * lister to update users avatar
  * @param {Submit} event
- * @returns
  */
 export async function updateAvatarListener(event) {
   const avatarErrorContainer = document.querySelector(

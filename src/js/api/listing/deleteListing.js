@@ -4,7 +4,7 @@ import { createAuthHeader } from "../authHeader.js";
 /**
  * Deletes a listing
  * @param {String} id Listings id
- * @returns
+ * @returns {Boolean} returns true or throws error
  */
 export const deleteListing = async function (id) {
   const url = `${baseURL}listings/${id}`;

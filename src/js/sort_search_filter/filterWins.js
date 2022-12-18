@@ -2,7 +2,7 @@
  * Compares bid on item listings to wins array ids to return won listings.
  * @param {Object} profile users profile
  * @param {Array} bids array of bid on items
- * @returns
+ * @returns {Array} Filtered listing that were won.
  */
 export const filterWonListings = function (profile, bids) {
   const wins = profile.wins;

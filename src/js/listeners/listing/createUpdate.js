@@ -8,7 +8,6 @@ import { validateTags } from "../../tools/validation/validateTags.js";
 /**
  * Function for create/update form listener
  * @param {Submit} event submit event
- * @returns
  */
 export const createUpdateFormListener = async function (event) {
   event.preventDefault();
